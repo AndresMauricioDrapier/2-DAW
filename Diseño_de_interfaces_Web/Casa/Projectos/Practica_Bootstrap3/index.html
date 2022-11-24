@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mi centro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Inserta aquí el CSS de bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        h1 .icon {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .icon-news {
+            background: url('icons/news.png');
+        }
+
+        .icon-studies {
+            background: url('icons/studies.png');
+        }
+
+        .icon-contact {
+            background: url('icons/contact.png');
+        }
+
+
+        footer.footer {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            position: fixed;
+            bottom: 0px;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- inserta aquí el div container-fluid para que ocupe toda la página-->
+    <div id="contenido">
+        <nav class="navbar navbar-expand-md navbar-light bg-primary">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#desplegable"
+                aria-controls="desplegable" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <a class="navbar-brand text-white m-2" href="#">Mi instituto</a>
+
+            <div class="collapse navbar-collapse navbar-expand-md" id="desplegable">
+                <ul class="navbar-nav mr-auto ">
+
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" href="#">Nuestro centro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Enseñanzas</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Alumnado
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Profesorado</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Moodle</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        <!-- Inserta otra fila aquí, y dale un padding de 20px -->
+        <div>
+            <!-- El login será de tamaño 3 mientras que la resolución no sea xs que pasará a ocupar toda la pantalla -->
+            <div></div>
+            <!-- El contenido será de tamaño 9 mientras que la resolución no sea xs que pasará a ocupar toda la pantalla -->
+            <div>
+                <!-- Importante, este contenido será realizado en forma collapse/accordion toggle item, donde por defecto se verá al principio sólo 
+                la información de novedades, pero si pinchamos sobre cualquier item (novedades, estudios ofertados o contacto se desplegará
+                y nos mostrará su contenido o lo ocultará-->
+                <h1>
+                    <i class="icon icon-news"></i> Novedades
+                </h1>
+                <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper mauris nisl, ac euismod erat
+                    dictum
+                    vel. Nunc lobortis, lectus vitae pulvinar pellentesque, eros sapien posuere lacus, et eleifend risus
+                    nisi vel arcu. Sed porttitor eros lorem, ac pulvinar turpis scelerisque at. Praesent finibus nulla
+                    sit
+                    amet tortor varius, non elementum purus viverra. Suspendisse quis ipsum orci. Praesent gravida
+                    turpis
+                    felis, eu blandit magna egestas nec. Duis vulputate ornare nisi eu ultricies. Aliquam blandit luctus
+                    enim eget pharetra. Sed eleifend, tellus sed auctor condimentum, justo urna mollis enim, ut
+                    consectetur
+                    tortor orci et leo. In vitae magna in velit dapibus sollicitudin. Nam vitae dui convallis, tempor
+                    lacus
+                    et, placerat nibh. Vivamus vehicula, nunc lacinia venenatis tempor, purus magna euismod diam, a
+                    volutpat
+                    lacus ligula nec ante. Cras eget ultrices urna. Nullam at massa rhoncus, malesuada massa eu,
+                    vulputate
+                    quam. Ut vel rutrum justo. Donec quis lorem quam.
+                </p>
+                <h1>
+                    <i class="icon icon-studies"></i> Estudios ofertados
+                </h1>
+                <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper mauris nisl, ac euismod erat
+                    dictum
+                    vel. Nunc lobortis, lectus vitae pulvinar pellentesque, eros sapien posuere lacus, et eleifend risus
+                    nisi vel arcu. Sed porttitor eros lorem, ac pulvinar turpis scelerisque at. Praesent finibus nulla
+                    sit
+                    amet tortor varius, non elementum purus viverra. Suspendisse quis ipsum orci. Praesent gravida
+                    turpis
+                    felis, eu blandit magna egestas nec. Duis vulputate ornare nisi eu ultricies. Aliquam blandit luctus
+                    enim eget pharetra. Sed eleifend, tellus sed auctor condimentum, justo urna mollis enim, ut
+                    consectetur
+                    tortor orci et leo. In vitae magna in velit dapibus sollicitudin. Nam vitae dui convallis, tempor
+                    lacus
+                    et, placerat nibh. Vivamus vehicula, nunc lacinia venenatis tempor, purus magna euismod diam, a
+                    volutpat
+                    lacus ligula nec ante. Cras eget ultrices urna. Nullam at massa rhoncus, malesuada massa eu,
+                    vulputate
+                    quam. Ut vel rutrum justo. Donec quis lorem quam.
+                </p>
+                <h1>
+                    <i class="icon icon-contact"></i> Contactar
+                </h1>
+                <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper mauris nisl, ac euismod erat
+                    dictum
+                    vel. Nunc lobortis, lectus vitae pulvinar pellentesque, eros sapien posuere lacus, et eleifend risus
+                    nisi vel arcu. Sed porttitor eros lorem, ac pulvinar turpis scelerisque at. Praesent finibus nulla
+                    sit
+                    amet tortor varius, non elementum purus viverra. Suspendisse quis ipsum orci. Praesent gravida
+                    turpis
+                    felis, eu blandit magna egestas nec. Duis vulputate ornare nisi eu ultricies. Aliquam blandit luctus
+                    enim eget pharetra. Sed eleifend, tellus sed auctor condimentum, justo urna mollis enim, ut
+                    consectetur
+                    tortor orci et leo. In vitae magna in velit dapibus sollicitudin. Nam vitae dui convallis, tempor
+                    lacus
+                    et, placerat nibh. Vivamus vehicula, nunc lacinia venenatis tempor, purus magna euismod diam, a
+                    volutpat
+                    lacus ligula nec ante. Cras eget ultrices urna. Nullam at massa rhoncus, malesuada massa eu,
+                    vulputate
+                    quam. Ut vel rutrum justo. Donec quis lorem quam.
+                </p>
+            </div>
+        </div>
+
+
+
+    </div>
+    <footer class="footer w-100 bg-primary text-white">Curso Cefire - Diseño de interfaces web: Bootstrap, Sass y
+        compass</footer>
+
+    <!-- Inserta aquí los JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+        
+</body>
+
+</html>

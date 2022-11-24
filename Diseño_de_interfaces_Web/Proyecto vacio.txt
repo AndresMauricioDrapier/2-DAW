@@ -1,0 +1,1 @@
+compass create mi-segundo-proyecto --bare --sass-dir "sass" --css-dir "css" --javascripts-dir "js" --images-dir "img"

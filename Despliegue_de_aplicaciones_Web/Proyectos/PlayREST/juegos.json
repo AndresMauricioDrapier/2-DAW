@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "nombre": "League Of Legends",
+        "descripcion": "Juego MMORPG que tienes que ir al nexo enemigo",
+        "edadMinima": 15,
+        "numeroJugadores": 5,
+        "tipo": "MMORPG",
+        "precio": 0
+    },
+    {
+        "id": 2,
+        "nombre": "Borderlands 3",
+        "descripcion": "Mundo abierto",
+        "edadMinima": 15,
+        "numeroJugadores": 4,
+        "tipo": "Shooter",
+        "precio": 53.5
+    },
+    {
+        "id": 3,
+        "nombre": "League Of Legends",
+        "descripcion": "5 contra 5 intentando romper el nexo enemigo",
+        "edadMinima": 15,
+        "numeroJugadores": 5,
+        "tipo": "MMORPG",
+        "precio": 0
+    },
+    {
+        "id": 4,
+        "nombre": "The Binding of Isaac",
+        "descripcion": "The Binding of Isaac es un juego de acción RPG con fuertes elementos de tipo Roguelike",
+        "edadMinima": 8,
+        "numeroJugadores": 4,
+        "tipo": "Roguelike",
+        "precio": 40
+    }
+]

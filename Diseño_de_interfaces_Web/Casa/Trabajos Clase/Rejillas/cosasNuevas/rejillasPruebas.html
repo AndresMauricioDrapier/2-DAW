@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Mis metas -->
+        <meta charset="UTF-8">
+        <meta name="author" content="Rosa Medina">
+        <title>Mi primera web con Bootstrap</title>
+        <!-- Aquí irían los link de CSS de bootstrap que tenemos en local -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+        <!-- Resto de CSS y/o JS -->
+        <style>
+             .row>[class^="col-"]{
+                padding-top: .75rem;
+                padding-bottom: .75rem;
+                background-color: rgba(86,61,124,.15);
+                border: 1px solid rgba(86,61,124,.2);
+            }          
+        </style>
+    </head>
+    <body>
+        <div class="row"> 
+            <div class="col-sm-9"> 
+                Level 1: .col-sm-9 
+                <div class="row"> 
+                    <div class="col-xs-8 col-sm-6"> 
+                        Level 2: .col-xs-8 .col-sm-6 
+                    </div> 
+                    <div class="col-xs-4 col-sm-6"> 
+                        Level 2: .col-xs-4 .col-sm-6 
+                    </div> 
+                </div> 
+            </div>
+        </div>
+        <!-- scripts de Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    </body>
+</html>
