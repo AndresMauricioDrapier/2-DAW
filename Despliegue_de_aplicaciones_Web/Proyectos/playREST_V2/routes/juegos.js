@@ -1,3 +1,4 @@
+//? Llamadas a los distintos servicios como GET, POST, PUT y Delete
 const express = require("express");
 
 let Juego = require('../models/juego.js');
@@ -119,7 +120,6 @@ router.delete('/ediciones/:id/:idEdicion', (req, res) => {
         res.status(500).send({ ok: false, error: "Error encontrando por esa ID" });
     })
 });
-//find by id and update despues de hacer un filter para guardarmelo ({ediciones:edicion(este es el filtro)})
 module.exports = router;
 
 

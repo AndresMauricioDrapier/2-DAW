@@ -1,6 +1,6 @@
+//? Creacion de los SCHEMAS y el Modelo a exportar
 const mongoose = require('mongoose');
 
-//?SCHEMA
 let edicionSchema = mongoose.Schema({
     nombre:{
         type:String,
@@ -50,7 +50,6 @@ let juegoSchema = new mongoose.Schema({
     
 });
 
-//?MODELO
 let Juego = mongoose.model('juegos', juegoSchema);
 
 module.exports = Juego;

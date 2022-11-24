@@ -1,11 +1,29 @@
 <html>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">FoodScore</a>
+      <a class="navbar-brand" [routerLink]="['/restaurants']" [routerLinkActive]="['active']">FoodScore</a>
+      <ul class="navbar-nav me-auto mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/restaurants']" [routerLinkActive]="['active']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/restaurants/add']" [routerLinkActive]="['active']">New restaurant</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="logout">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/auth/login']" [routerLinkActive]="['active']" id="login">Login</a>
+        </li>
+      </ul>
+
     </div>
   </nav>
+
 
   <div class="container">
     <fs-restaurants-page></fs-restaurants-page>

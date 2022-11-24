@@ -16,8 +16,7 @@ mongoose.connect(
 //? Servidor Express
 let app = express();
 
-//? Middleware body-parser para peticiones POST Y PUT
-//? Enrutadores para cada grupo de rutas
+//? Middleware body-parser
 app.use(bodyParser.json());
 app.use('/juegos', juegos);
 
