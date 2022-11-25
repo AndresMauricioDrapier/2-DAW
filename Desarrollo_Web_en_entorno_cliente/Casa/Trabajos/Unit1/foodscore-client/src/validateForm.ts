@@ -124,22 +124,22 @@ export function days(openingDays: string[]): string {
     for (let i = 0; i < openingDays.length; i++) {
         switch (openingDays[i]) {
         case "1":
-            openClose += "Mo, ";
+            openClose += "Mo ";
             break;
         case "2":
-            openClose += "Tu, ";
+            openClose += "Tu ";
             break;
         case "3":
-            openClose += "We, ";
+            openClose += "We ";
             break;
         case "4":
-            openClose += "Th, ";
+            openClose += "Th ";
             break;
         case "5":
-            openClose += "Fr, ";
+            openClose += "Fr ";
             break;
         case "6":
-            openClose += "Sa, ";
+            openClose += "Sa ";
             break;
         case "0":
             openClose += "Su ";
