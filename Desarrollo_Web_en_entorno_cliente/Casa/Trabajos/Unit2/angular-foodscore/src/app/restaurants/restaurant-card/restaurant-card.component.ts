@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Restaurant } from "../interfaces/restaurant";
 import { RestaurantService } from "../services/restaurant.service";
+import { RouterModule } from "@angular/router";
 
 @Component({
     selector: "fs-restaurant-card",
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule,RouterModule],
     templateUrl: "./restaurant-card.component.html",
     styleUrls: ["./restaurant-card.component.css"],
 })

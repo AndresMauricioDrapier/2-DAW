@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component} from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Restaurant } from "../interfaces/restaurant";
 import { FormsModule } from "@angular/forms";
@@ -13,8 +13,6 @@ import { Router } from "@angular/router";
     styleUrls: ["./restaurant-form.component.css"],
 })
 export class RestaurantFormComponent {
-    @Output() add = new EventEmitter<Restaurant>();
-
     openDays: string[] = ["Mo ", "Tu ", "We ", "Th ", "Fr ", "Sa ", "Su "];
 
     fileName = "";

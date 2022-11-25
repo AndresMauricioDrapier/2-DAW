@@ -37,9 +37,6 @@ export class RestaurantsPageComponent implements OnInit {
         this.active = !this.active;
         return this.active;
     }
-    addProduct(product: Restaurant): void {
-        this.restaurants = [...this.restaurants, product];
-    }
     delete(restaurant: Restaurant): void {
         this.restaurants = this.restaurants.filter((p) => p != restaurant);
     }

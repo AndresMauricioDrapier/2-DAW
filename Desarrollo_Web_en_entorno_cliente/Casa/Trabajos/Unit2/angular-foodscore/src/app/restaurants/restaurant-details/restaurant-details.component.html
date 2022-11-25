@@ -1,1 +1,15 @@
-<p>restaurant-details works!</p>
+<div class="card" *ngIf="restaurant">
+  <div class="card-header bg-primary text-white">
+    {{ restaurant.description }}
+  </div>
+  <div class="card-block p-3 text-center">
+    <img [src]="restaurant.image" alt="" />
+    <div>Price: {{ restaurant.distance }}</div>
+    <div>Available since: {{ restaurant.creator}}</div>
+    <div class="mt-3">
+      <button type="button" class="btn btn-danger" (click)="goBack()">
+        Go back
+      </button>
+    </div>
+  </div>
+</div>
