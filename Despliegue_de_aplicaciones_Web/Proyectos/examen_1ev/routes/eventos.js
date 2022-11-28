@@ -97,11 +97,11 @@ router.post('/comentarios/:idEvento', (req, res) => {
 router.delete('/:id', (req, res) => {
     Evento.findByIdAndRemove(req.params['id']).then(resultado => {
             if (resultado)
-                res.status(200).send({ ok: true, resultado: resultado });
+                res.status(200).send({ resultado: resultado });
             else
-                res.status(400).send({ ok: false, error: "Error eliminando el evento" });
+                res.status(400).send({error: "Error eliminando el evento" });
         }).catch(error => {
-            res.status(500).send({ ok: false, error: error});
+            res.status(500).send({error: error});
         })
 });
 module.exports = router;
