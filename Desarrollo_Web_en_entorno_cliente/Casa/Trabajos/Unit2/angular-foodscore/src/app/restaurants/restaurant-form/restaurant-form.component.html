@@ -42,7 +42,7 @@
             accept="image/*"
             (change)="changeImage($event)"
             name="fileName"
-            [(ngModel)]="fileName"
+            ngModel
           />
     <div class="invalid-feedback">An image is required.</div>
   </div>

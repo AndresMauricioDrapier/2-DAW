@@ -33,7 +33,7 @@ export class RestaurantsPageComponent implements OnInit {
         });
     }
 
-    changeClass(): boolean {
+    changeClassButton(): boolean {
         this.active = !this.active;
         return this.active;
     }

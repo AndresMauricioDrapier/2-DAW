@@ -11,7 +11,8 @@
       <small class="text-muted">
         <strong>Opens: <span *ngFor="let day of restaurant.daysOpen">{{day}} </span></strong>
       </small>
-      <!--?Open OR CLOSED-->
+
+
       <span class="badge ms-2 bg-success" *ngIf="openOrClosed(restaurant.daysOpen); else elseBlock">Open</span>
       <ng-template #elseBlock><span class="badge ms-2 bg-danger">Closed</span></ng-template>
     </div>

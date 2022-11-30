@@ -1,9 +1,11 @@
-import { Component} from "@angular/core";
+import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Restaurant } from "../interfaces/restaurant";
 import { FormsModule } from "@angular/forms";
 import { RestaurantService } from "../services/restaurant.service";
-import { Router } from "@angular/router";
+import { Router, UrlTree } from "@angular/router";
+import { CanDeactivateComponent } from "src/app/guards/leavePageGuard.guard";
+import { Observable } from "rxjs";
 
 @Component({
     selector: "fs-restaurant-form",
@@ -12,17 +14,19 @@ import { Router } from "@angular/router";
     templateUrl: "./restaurant-form.component.html",
     styleUrls: ["./restaurant-form.component.css"],
 })
-export class RestaurantFormComponent {
+export class RestaurantFormComponent implements CanDeactivateComponent {
     openDays: string[] = ["Mo ", "Tu ", "We ", "Th ", "Fr ", "Sa ", "Su "];
-
-    fileName = "";
     newRestaurant!: Restaurant;
+    exit = false;
 
     constructor(
         private readonly http: RestaurantService,
         private readonly router: Router
     ) {
         this.resetRestaurant();
+    }
+    canDeactivate():| Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree{
+        return this.exit || confirm("Do you want to leave this page?. Changes can be lost");
     }
 
     daysOpenString(): void {
@@ -47,12 +51,11 @@ export class RestaurantFormComponent {
     }
 
     addRestaurant(): void {
+        this.exit = true;
         this.daysOpenString();
         this.http.addRestaurant(this.newRestaurant).subscribe(() => {
             this.router.navigate(["/restaurants"]);
         });
-        this.fileName = "";
-        this.resetRestaurant();
     }
     private resetRestaurant(): void {
         this.newRestaurant = {

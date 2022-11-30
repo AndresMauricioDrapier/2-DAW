@@ -3,6 +3,7 @@ import { isDevMode } from "@angular/core";
 
 export const baseUrlInterceptor: HttpInterceptorFn = (req, next) => {
     let serverUrl: string;
+
     if (isDevMode()) {
         // App in development mode
         serverUrl = "http://arturober.com:5007"; // Development server url
