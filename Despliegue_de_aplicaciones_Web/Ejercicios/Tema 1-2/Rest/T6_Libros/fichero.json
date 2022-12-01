@@ -1,0 +1,32 @@
+[
+    {
+        "codi": 1,
+        "titol": "El juego de Ender",
+        "autor": "Orson Scott Card",
+        "preu": 7.95
+    },
+    {
+        "codi": 2,
+        "titol": "El Señor de los Anillos",
+        "autor": "J.R.R. Tolkien",
+        "preu": 19.9
+    },
+    {
+        "codi": 3,
+        "titol": "La tabla de Flandes",
+        "autor": "Arturo Pérez Reverte",
+        "preu": 8.5
+    },
+    {
+        "codi": 4,
+        " titol": "La historia interminable",
+        "autor": "Michael Ende",
+        "preu": 12.35
+    },
+    {
+        "codi": 5,
+        "titol": "Hola",
+        "autor": "Orson Scott Card",
+        "preu": 10
+    }
+]
