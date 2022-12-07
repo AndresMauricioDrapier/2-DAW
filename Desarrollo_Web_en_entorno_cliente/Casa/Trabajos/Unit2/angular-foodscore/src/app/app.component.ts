@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { MenuComponent } from "./menu/menu.component";
+import { MenuComponent } from "./shared/menu/menu.component";
 import { RestaurantsPageComponent } from "./restaurants/restaurants-page/restaurants-page.component";
 
 @Component({

@@ -6,6 +6,7 @@ import { RestaurantService } from "../services/restaurant.service";
 import { Router, UrlTree } from "@angular/router";
 import { CanDeactivateComponent } from "src/app/guards/leavePageGuard.guard";
 import { Observable } from "rxjs";
+import { OPENDAYS } from "src/app/shared/consts";
 
 @Component({
     selector: "fs-restaurant-form",
@@ -15,18 +16,27 @@ import { Observable } from "rxjs";
     styleUrls: ["./restaurant-form.component.css"],
 })
 export class RestaurantFormComponent implements CanDeactivateComponent {
-    openDays: string[] = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-    openDaysNumber: string[] = ["0", "1", "2", "3", "4", "5", "6"];
-    newRestaurant!: Restaurant;
-    exit = false;
     @ViewChild("productForm") restaurantForm!: NgForm;
+    openDays = OPENDAYS;
+    exit = false;
+
+    newRestaurant: Restaurant = {
+        name: "",
+        description: "",
+        cuisine: "",
+        daysOpen: [],
+        image: "",
+        phone: "",
+        address: "",
+        lat: 0,
+        lng: 0,
+    };
 
     constructor(
         private readonly http: RestaurantService,
         private readonly router: Router
-    ) {
-        this.resetRestaurant();
-    }
+    ) {}
+
     canDeactivate():
         | Observable<boolean | UrlTree>
         | Promise<boolean | UrlTree>
@@ -40,14 +50,17 @@ export class RestaurantFormComponent implements CanDeactivateComponent {
     }
 
     daysOpenString(): void {
-        for (let i = 0; i < this.openDays.length; i++) {
+        const openDaysNumber: string[] = ["0", "1", "2", "3", "4", "5", "6"];
+        for (let i = 0; i < OPENDAYS.length; i++) {
             if (this.newRestaurant.daysOpen[i]) {
-                this.newRestaurant.daysOpen[i] = this.openDaysNumber[i];
+                this.newRestaurant.daysOpen[i] = openDaysNumber[i];
             } else {
                 this.newRestaurant.daysOpen[i] = "";
             }
         }
-        this.newRestaurant.daysOpen = this.newRestaurant.daysOpen.filter(day=> day!="");
+        this.newRestaurant.daysOpen = this.newRestaurant.daysOpen.filter(
+            (day) => day != ""
+        );
     }
 
     changeImage(event: Event): void {
@@ -70,24 +83,8 @@ export class RestaurantFormComponent implements CanDeactivateComponent {
             this.router.navigate(["/restaurants"]);
         });
     }
-    private resetRestaurant(): void {
-        this.newRestaurant = {
-            name: "",
-            description: "",
-            cuisine: "",
-            daysOpen: [],
-            image: "",
-            phone: "",
-            address: "",
-            lat: 0,
-            lng: 0,
-        };
-    }
-    validClasses(
-        ngModel: NgModel,
-        validClass = "is-valid",
-        errorClass = "is-invalid"
-    ): object {
+
+    validClasses(ngModel: NgModel,validClass = "is-valid",errorClass = "is-invalid"): object {
         return {
             [validClass]: ngModel.touched && ngModel.valid,
             [errorClass]: ngModel.touched && ngModel.invalid,

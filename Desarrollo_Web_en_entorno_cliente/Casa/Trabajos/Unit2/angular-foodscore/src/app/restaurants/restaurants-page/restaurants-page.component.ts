@@ -26,6 +26,7 @@ export class RestaurantsPageComponent implements OnInit {
     filterSearch = "";
 
     constructor(private readonly http: RestaurantService) {}
+
     ngOnInit(): void {
         this.http.getRestaurants().subscribe({
             next: (rest) => (this.restaurants = rest),
@@ -37,6 +38,7 @@ export class RestaurantsPageComponent implements OnInit {
         this.active = !this.active;
         return this.active;
     }
+
     delete(restaurant: Restaurant): void {
         this.restaurants = this.restaurants.filter((p) => p != restaurant);
     }

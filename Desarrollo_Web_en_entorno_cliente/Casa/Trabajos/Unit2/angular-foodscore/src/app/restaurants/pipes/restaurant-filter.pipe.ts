@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from "@angular/core";
+import { OPENDAYS } from "src/app/shared/consts";
 import { Restaurant } from "../interfaces/restaurant";
 
 @Pipe({
@@ -10,11 +11,9 @@ export class RestaurantFilterPipe implements PipeTransform {
 
         return restaurant.filter((r) => {
 
-            const openDays= ["Mo ", "Tu ", "We ", "Th ", "Fr ", "Sa ", "Su "];
-
             if(onlyOpen)
             {
-                return r.daysOpen.includes(openDays[new Date().getDay() - 1]) &&
+                return r.daysOpen.includes(OPENDAYS[new Date().getDay()]) &&
                 (r.description.toLowerCase().includes(search.toLowerCase()) ||r.name.toLowerCase().includes(search.toLowerCase()));
             }
             else
