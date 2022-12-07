@@ -6,10 +6,9 @@ let router = express.Router();
 //? Servicio GET
 router.get('/', (req, res) => {
     Contacto.find().then(resultado => {
-        res.status(200)
-            .send({ ok: true, resultado: resultado });
+        res.render('contactos_listado',{contactos:resultado});
     }).catch((error) => {
-        res.status(500).send({ ok: false, error: "Error obteniendo Contacto" })
+        res.render({ ok: false, error: "Error obteniendo Contacto" })
     })
 });
 

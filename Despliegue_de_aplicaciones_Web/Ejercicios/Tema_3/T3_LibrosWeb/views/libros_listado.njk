@@ -1,0 +1,18 @@
+{% extends "base.njk" %}
+{% block titulo %} Libros | Listados {% endblock %}
+
+{% block contenido %}
+
+    <h1>Listado de libros</h1>
+
+    <ul>
+        {% for libro in libros %}
+            <li>
+                {{ libro.titulo }}
+                <a class="btn btn-success" href="/libros/{{libro.id}}">Ver ficha</a>
+            </li>
+
+        {% endfor %}
+    </ul>
+
+{% endblock %}

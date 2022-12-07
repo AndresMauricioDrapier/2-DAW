@@ -1,0 +1,24 @@
+{% extends "base.njk" %}
+{% block titulo %}Contactos | Nuevo{% endblock %}
+{% block contenido %}
+
+    <hl>Insercién de nuevo contactos</h1>
+    <form action="/contactos" method="post">
+        <div class="form-group">
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" name="nombre" placeholder="Nombre del contacto..."/>
+        </div>
+        <div class="form-group">
+            <label for="edad">Edad:</label>
+
+            <input type="number" class="form-control" name="Edad" placeholder="Edad del contacto..."/>
+        </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" class="form-control" name="telefono" placeholder="Teléfono del contacto..."/>
+        </div>
+        <button type="submit" class="btn btn-primary"> Enviar </button>
+    </form>
+    
+{% endblock %}

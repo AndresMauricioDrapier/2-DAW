@@ -7,7 +7,7 @@ import { RouterModule } from "@angular/router";
 @Component({
     selector: "fs-restaurant-card",
     standalone: true,
-    imports: [CommonModule,RouterModule],
+    imports: [CommonModule, RouterModule],
     templateUrl: "./restaurant-card.component.html",
     styleUrls: ["./restaurant-card.component.css"],
 })
@@ -25,24 +25,31 @@ export class RestaurantCardComponent implements OnInit {
         for (let i = 0; i < this.restaurant.daysOpen.length; i++) {
             switch (this.restaurant.daysOpen[i]) {
             case "0":
+            case "Su":
                 this.restaurant.daysOpen[i] = this.openDays[0];
                 break;
             case "1":
+            case "Mo":
                 this.restaurant.daysOpen[i] = this.openDays[1];
                 break;
             case "2":
+            case "Tu":
                 this.restaurant.daysOpen[i] = this.openDays[2];
                 break;
             case "3":
+            case "We":
                 this.restaurant.daysOpen[i] = this.openDays[3];
                 break;
             case "4":
+            case "Th":
                 this.restaurant.daysOpen[i] = this.openDays[4];
                 break;
             case "5":
+            case "Fr":
                 this.restaurant.daysOpen[i] = this.openDays[5];
                 break;
             case "6":
+            case "Sa":
                 this.restaurant.daysOpen[i] = this.openDays[6];
                 break;
             }
@@ -50,7 +57,7 @@ export class RestaurantCardComponent implements OnInit {
     }
 
     openOrClosed(day: string[]): boolean {
-        if (day[new Date().getDay() - 1] != "") {
+        if (day.includes(this.openDays[new Date().getDay()])) {
             return true;
         } else {
             return false;

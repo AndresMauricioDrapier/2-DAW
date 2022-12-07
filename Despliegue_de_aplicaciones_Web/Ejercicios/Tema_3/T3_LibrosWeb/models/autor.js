@@ -1,19 +1,19 @@
 const mongoose = require('mongoose');
 
-let autorSchema = mongoose.Schema({
+let autorSchema = new mongoose.Schema({
     nombre: {
         type: String,
         required: true,
+        minlength: 1,
+        trim: true
     },
-    añoNacimiento: {
+    anyoNacimiento: {
         type: Number,
         min: 0,
         max: 2000
     }
 });
 
-
-//?MODELO
-let Autor = mongoose.model('autores', autorSchema);
+let Autor = mongoose.model('autor', autorSchema);
 
 module.exports = Autor;

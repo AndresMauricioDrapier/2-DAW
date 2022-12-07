@@ -1,0 +1,21 @@
+{% extends "base.njk" %}
+{% block titulo %}Contactos | Listadof{% endblock %}
+
+{% block contenido %}
+
+    <hl>Listado de contactos</hl>
+
+    <ul>
+        {% for contacto in contactos %}
+            {% if loop.index % 2 == 0 %}
+                <li class="par">
+            {% else %}
+                <li class="impar">
+            {% endif %}
+                {{ contacto.nombre }}</li>
+            {% else %}
+                <li>No hay contactos que mostrar.</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
