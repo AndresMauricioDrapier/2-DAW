@@ -44,6 +44,7 @@ app.get('/', (req, res) => {
 // Cargar middleware body-parser para peticiones POST y PUT
 // y enrutadores
 app.use(express.json());
+app.use(express.urlencoded());
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/libros', libros);

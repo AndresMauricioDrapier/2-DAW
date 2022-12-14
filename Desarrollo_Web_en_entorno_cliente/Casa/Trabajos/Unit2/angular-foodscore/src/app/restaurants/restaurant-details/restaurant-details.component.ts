@@ -17,8 +17,9 @@ export class RestaurantDetailsComponent implements OnInit {
     constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngOnInit(): void {
+
         this.route.data.subscribe((data) => {
-            this.restaurant = data["product"];
+            this.restaurant = data["restaurant"];
         });
     }
     goBack(): void {

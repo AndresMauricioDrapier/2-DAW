@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
 import { leavePageGuard } from "../guards/leavePageGuard.guard";
-import { productIdGuard } from "./guards/restaurantIdGuard.guard";
+import { restaurantIdGuard } from "./guards/restaurantIdGuard.guard";
 import { restaurantResolve } from "./resolvers/restaurant.resolver";
 import { RestaurantDetailsComponent } from "./restaurant-details/restaurant-details.component";
 import { RestaurantFormComponent } from "./restaurant-form/restaurant-form.component";
@@ -12,9 +12,9 @@ export const APP_ROUTES: Routes = [
     {
         path: ":id",
         component: RestaurantDetailsComponent,
-        canActivate:[productIdGuard],
+        canActivate:[restaurantIdGuard],
         resolve: {
-            product: restaurantResolve,
+            restaurant: restaurantResolve,
         },
     },
 ];

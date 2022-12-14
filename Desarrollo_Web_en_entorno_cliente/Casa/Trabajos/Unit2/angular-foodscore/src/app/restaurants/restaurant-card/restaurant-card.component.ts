@@ -19,6 +19,7 @@ export class RestaurantCardComponent implements OnInit {
     constructor(private readonly http: RestaurantService) {}
 
     ngOnInit(): void {
+        console.log(this.restaurant.daysOpen);
         this.daysOpenString();
     }
 

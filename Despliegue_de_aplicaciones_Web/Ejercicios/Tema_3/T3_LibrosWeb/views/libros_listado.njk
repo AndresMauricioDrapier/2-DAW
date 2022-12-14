@@ -11,7 +11,10 @@
                 {{ libro.titulo }}
                 <a class="btn btn-success" href="/libros/{{libro.id}}">Ver ficha</a>
             </li>
-
+        {% else %}
+            <div class="row">
+                <div class="col-12 bg-secondary text-white">No hay libros que mostrar.</div>
+            </div>
         {% endfor %}
     </ul>
 

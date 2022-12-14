@@ -4,11 +4,6 @@ let Libro = require(__dirname + '/../models/libro.js');
 let router = express.Router();
 
 // Servicio de listado general
-router.get('/menu', (req, res) => {
-    res.render('menu');
-
-})
-
 router.get('/', (req, res) => {
     Libro.find().then(resultado => {
         res.render('libros_listado', { libros: resultado });
@@ -20,7 +15,6 @@ router.get('/', (req, res) => {
 
 router.get('/nuevo', (req, res) => {
     res.render('libros_nuevo');
-
 });
 
 
@@ -54,14 +48,9 @@ router.post('/', (req, res) => {
         precio: req.body.precio
     });
     nuevoLibro.save().then(resultado => {
-        res.status(200)
-            .send({ ok: true, resultado: resultado });
+       res.redirect(req.baseUrl);
     }).catch(error => {
-        res.status(400)
-            .send({
-                ok: false,
-                error: "Error añadiendo libro"
-            });
+        res.render("error",{error:"Error añadiendo un nuevo libro"});
     });
 });
 

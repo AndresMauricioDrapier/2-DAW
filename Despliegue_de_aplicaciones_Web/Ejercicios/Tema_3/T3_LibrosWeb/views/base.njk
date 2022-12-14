@@ -4,10 +4,12 @@
     {% block titulo %}{% endblock %}
 </title>
 <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="../public/css/estilos.css"/>
 
 <html>
     <head></head>
     <body>
+        {% include "menu.njk" %}
         <div class="container">
             {% block contenido %}{% endblock %}
         </div>
