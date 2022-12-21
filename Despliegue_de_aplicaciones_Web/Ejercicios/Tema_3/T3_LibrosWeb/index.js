@@ -11,6 +11,7 @@ y enrutadores
 const express = require('express');
 const mongoose = require('mongoose');
 const nunjucks = require("nunjucks");
+const methodOverride = require("method-override");
 
 // Enrutadores
 const libros = require(__dirname + '/routes/libros');
@@ -36,7 +37,7 @@ nunjucks.configure('views', {
 });
 
 app.get('/', (req, res) => {
-    res.redirect('/libros/menu');
+    res.redirect('/libros/nuevo');
 });
 
 
@@ -44,11 +45,21 @@ app.get('/', (req, res) => {
 // Cargar middleware body-parser para peticiones POST y PUT
 // y enrutadores
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({
+    extended: true
+}));
+
+app.use(methodOverride((req, res) => {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+        let method = req.body._method;
+        delete req.body._method;
+        return method;
+    }
+}));
+
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/libros', libros);
-app.use('/autores', autores)
-
+app.use('/autores', autores);
 // Puesta en marcha del servidor
 app.listen(8080);

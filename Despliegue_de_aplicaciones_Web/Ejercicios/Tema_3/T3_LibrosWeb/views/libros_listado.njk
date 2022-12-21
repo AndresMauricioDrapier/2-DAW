@@ -1,15 +1,20 @@
 {% extends "base.njk" %}
-{% block titulo %} Libros | Listados {% endblock %}
-
+{% block titulo %}
+    Libros | Listados
+{% endblock %}
 {% block contenido %}
-
     <h1>Listado de libros</h1>
-
     <ul>
         {% for libro in libros %}
+        <hr>
             <li>
                 {{ libro.titulo }}
-                <a class="btn btn-success" href="/libros/{{libro.id}}">Ver ficha</a>
+                <a class="btn btn-success" href="/libros/{{ libro.id }}">Ver ficha</a>
+                <form action="/libros/{{ libro.id }}" method="post">
+                    <input type="hidden" name="_method" value="delete"/>
+                    <button type="submit" class="btn btn-danger"> Borrar </button>
+                </form>
+                <a class="btn btn-success" href="/libros/modificar/{{libro.id}}">Modificar</a>
             </li>
         {% else %}
             <div class="row">
@@ -17,5 +22,4 @@
             </div>
         {% endfor %}
     </ul>
-
 {% endblock %}

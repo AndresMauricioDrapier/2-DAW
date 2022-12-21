@@ -1,25 +1,26 @@
 {% extends "base.njk" %}
 {% block titulo %}Libro | Nuevo{% endblock %}
 {% block contenido %}
-
     <h1>Inserción de nuevo libro</h1>
-
-    <form action="/libros" method="post">
+    <form action="/libros" method="post" enctype="multipart/form-data">
         <div class="form-group">
-
             <label for="nombre">Titulo:</label>
             <input type="text" class="form-control" name="titulo" placeholder="Nombre del libro..."/>
         </div>
         <div class="form-group">
             <label for="edad">Editorial:</label>
-
             <input type="text" class="form-control" name="editorial" placeholder="Editorial del libro..."/>
         </div>
         <div class="form-group">
             <label for="telefono">Precio:</label>
-            <input type="number" class="form-control" name="precio" placeholder="Precio del libro..."/>
+            <input type="text" class="form-control" name="precio" placeholder="Precio del libro..."/>
         </div>
-        <button type="submit" class="btn btn-primary"> Enviar </button>
+        <div>
+            <label>Imagen: </label>
+            <input type="file" class="form-control" name="imagen"/>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            Enviar
+        </button>
     </form>
-    
 {% endblock %}

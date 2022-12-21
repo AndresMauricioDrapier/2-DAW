@@ -4,7 +4,11 @@
 {% block contenido %}
     
     <h1>Listado de libros</h1>
-
+    {% if libro.imagen %}
+        <ul>
+            <img class="card-img-top" src="../{{libro.imagen}}" width=100 height=1000>
+        </ul>
+    {% endif%}
     <ul>
         <b>Titulo:</b>
         {{libro.titulo}}

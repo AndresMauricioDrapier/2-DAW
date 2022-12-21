@@ -15,6 +15,10 @@ let libroSchema = new mongoose.Schema({
         type: Number,
         required: true,
         min: 0
+    },
+    imagen: {
+        required:true,
+        type: String
     }
 });
 
