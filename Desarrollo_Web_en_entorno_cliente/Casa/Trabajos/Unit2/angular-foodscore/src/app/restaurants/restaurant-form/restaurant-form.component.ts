@@ -105,11 +105,11 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
 
     addRestaurant(): void {
         this.addFormToRestaurant();
-        this.exit = true;
-        this.http.addRestaurant(this.newRestaurant).subscribe({
-            next: () => this.router.navigate(["/restaurants"]),
-            error: (e) => console.log(e),
-        });
+        // this.exit = true;
+        // this.http.addRestaurant(this.newRestaurant).subscribe({
+        //     next: () => this.router.navigate(["/restaurants"]),
+        //     error: (e) => console.log(e),
+        // });
     }
 
     addFormToRestaurant(): void {
@@ -118,8 +118,8 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
             if (v === true) {
                 arrayForm.push(i + "");
             }
-            return arrayForm;
         });
+
         this.newRestaurant.name = this.nameControl.value;
         this.newRestaurant.description = this.descriptionControl.value;
         this.newRestaurant.cuisine = this.cuisineControl.value;
