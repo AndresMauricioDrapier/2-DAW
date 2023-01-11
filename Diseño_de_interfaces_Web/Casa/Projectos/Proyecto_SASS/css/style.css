@@ -29,6 +29,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  
   border-radius: 10px;
   flex-shrink: 0;
   height: 700px;
