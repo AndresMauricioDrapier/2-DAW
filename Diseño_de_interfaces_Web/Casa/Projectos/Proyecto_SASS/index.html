@@ -9,20 +9,21 @@
   <link rel="shortcut icon" href="img/iconPage.jpg">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/footer.css">
   <script src="https://kit.fontawesome.com/7c62b3f9f5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <div class="navegacion">
-    <nav>
+    <nav class="navegacion">
       <input type="checkbox" id="show-search">
       <input type="checkbox" id="show-menu">
       <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
 
       <div class="contenido">
-        <div class="logo"><a href=""><img src="img/Iconos/iconPage.jpg"></a></div>
+        <div class="logo"><a href="index.html"><img src="img/Iconos/iconPage.jpg"></a></div>
         <ul class="links">
-          <li><a href="#">Nosotros</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
           <li>
             <a href="#" class="desktop-link">Categorias</a>
             <input type="checkbox" id="enseñar-categorias">
@@ -72,51 +73,105 @@
         <input type="text" placeholder="Type Something to Search..." required>
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
       </form>
-      
-
 
     </nav>
   </div>
-  <img src="img/Iconos/iconoInfo.png" alt=""> Novedades
-  <hr>
-  <section class="juegosSacados">
-    <div>
-      <img src="img/Juegos/LA.jpg" alt="">
-      <img src="img/Iconos/windows.png" alt="">
-      <label class="precio">9,99€</label>
-    </div>
-    <div>
-      <img src="img/Juegos/HK.jpg" alt="">
-      <img src="img/Iconos/windows.png" alt="">
-      <label class="precioOriginal">14,99€</label>
-      <label class="descuento">-35%</label>
-      <label class="precio">9,75€</label>
-    </div>
-    <div>
-      <img src="img/Juegos/SF.jpg" alt="">
-      <img src="img/Iconos/windows.png" alt="">
-      <label class="precio">58,99€</label>
-    </div>
-    <div>
-      <img src="img/Juegos/Inquisition.jpg" alt="">
-      <img src="img/Iconos/windows.png" alt="">
-      <img src="img/Iconos/apple.png" alt="">
-      <label class="precio">5,99€</label>
-    </div>
-  </section>
+  <main class="contenido">
+    <section class="carousel">
+      <div class="slides">
+        <div id="Diablo3" class="slide-item">
+          <div class="flex-item">Diablo III</div>
+          <div class="flex-item">
+            <div>29,99€ <a class="buy-icon" href=""><i class="fa-solid fa-cart-arrow-down"></i></a></div>
+          </div>
+          
+        </div>
+        <div id="HKS" class="slide-item">
+          <div class="flex-item">Hollow Knight Silksong</div>
+           <div>Proximamente<a class="buy-icon" href=""><i class="fa-solid fa-cart-arrow-down"></i></a></div>
+        </div>
+        <div id="SF" class="slide-item">
+          <div class="flex-item">Sonic Frontiers</div>
+           <div>58,99€ <a class="buy-icon" href=""><i class="fa-solid fa-cart-arrow-down"></i></a></div>
+        </div>
+        <div id="NMS" class="slide-item">
+          <div class="flex-item">No man's sky</div>
+           <div>29,99€ <a class="buy-icon" href=""><i class="fa-solid fa-cart-arrow-down"></i></a></div>
+        </div>
+      </div>
+      <div class="carouselBotones">
+        <a class="slider-nav" href="#Diablo3">1</a>
+        <a class="slider-nav" href="#HKS">2</a>
+        <a class="slider-nav" href="#SF">3</a>
+        <a class="slider-nav" href="#NMS">4</a>
+      </div>
+    </section>
 
-  <img src="img/Iconos/iconoInfo.png" alt=""> Novedades
-  <hr>
-  <section class="proximamente">
+    <label class="novedades"><i class="fa-solid fa-info"></i> Novedades</label>
+    <hr>
+    <section class="juegosSacados">
+      <div class="juegos">
+        <a href=""><img src="img/Juegos/LA.jpg"  alt=""></a>
+        <label class="icono"><i class="fa-brands fa-windows"></i></label>
+        <label class="precio">9,99€</label>
+      </div>
+      <div class="juegos">
 
-  </section>
+        <a href=""><img src="img/Juegos/HK.jpg" alt=""></a>
+        <label class="icono"><i class="fa-brands fa-windows"></i></label>
+        <label class="precio">9,75€</label>
+
+
+      </div>
+      <div class="juegos">
+        <a href=""><img src="img/Juegos/SF.jpg" alt=""></a>
+        <label class="icono"><i class="fa-brands fa-windows"></i></label>
+        <label class="precio">58,99€</label>
+      </div>
+      <div class="juegos">
+        <a href=""><img src="img/Juegos/Inquisition.jpg" alt=""></a>
+        <label class="icono"><i class="fa-brands fa-windows"></i></label>
+        <label class="icono"><i class="fa-brands fa-apple"></i></label>
+        <label class="precio2">5,99€</label>
+      </div>
+    </section>
+
+    <label class="proximamenteLabel"><i class="fa-solid fa-info"></i> Proximamente</label>
+    <hr>
+    <section class="proximamente">
+      <div class="juegoProximamente">
+        <a href=""><img src="img/Juegos/GOW.jpg" alt=""></a>
+        <label class="icono"><i class="fa-brands fa-windows"></i></label>
+        <label class="proximoJuego">Proximamente</label>
+      </div>
+      <div class="juegoProximamente">
+
+        <a href=""><img src="img/Juegos/HKS.jpg" alt=""></a>
+        <label class="icono"><i class="fa-brands fa-windows"></i></label>
+        <label class="proximoJuego">Proximamente</label>
+
+      </div>
+      <div class="juegoProximamente">
+        <a href=""><img src="img/Juegos/PU.jpg" alt=""></a>
+        <label class="icono"><i class="fa-brands fa-windows"></i></label>
+        <label class="proximoJuego">Proximamente</label>
+      </div>
+      <div class="juegoProximamente">
+        <a href=""><img src="img/Juegos/Isaac.jpg" alt=""></a>
+        <label class="icono"><i class="fa-brands fa-windows"></i></label>
+        <label class="icono"><i class="fa-brands fa-apple"></i></label>
+        <label class="proximoJuego2">Proximamente</label>
+      </div>
+    </section>
+  </main>
   <footer class="footer">
-    <div class="CopyRight">&#169 GamesBip - Aviso legal</div>
+    <label class="copyright-icon"><i class="fa-regular fa-copyright"></i></label>
+    <div class="avisoLegal">GamesBip - Aviso legal</div>
     <div class="imgContact">
-      <a href="#"><img src="img/Iconos/linkedinIcon.png" alt="Linkedin"></a>
-      <a href="#"><img src="img/Iconos/instagramIcon.jpg" alt="Instagram"></a>
-      <a href="#"><img src="img/Iconos/twitterIcon.png" alt="Twitter"></a>
-      <a href="#"><img src="img/Iconos/whatsappIcon.png" alt="Whatsapp"></a>
+      <a class="linkeding-icon" href="#"><i class="fa-brands fa-linkedin"></i></a>
+      <a class="instagram-icon" href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a class="twitter-icon" href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a class="whatsapp-icon" href="#"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
   </footer>
 </body>
