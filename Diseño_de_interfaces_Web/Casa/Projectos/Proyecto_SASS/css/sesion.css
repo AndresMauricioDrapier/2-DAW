@@ -1,21 +1,20 @@
 body {
     background-color: #354152;
-    color: #7e8ba3;
+    color: #d2dae9;
     font: 300 1rem/1.5 Helvetica Neue, sans-serif;
 }
 .contenido {
-    margin:73px;
-
+    margin:105px;
 }
 input {
     border: 0;
     font: inherit;
 }
 input::placeholder {
-    color: #7e8ba3;
+    color: #d2e0fc;
 }
 
-.form__field {
+.inputForm {
     margin-bottom: 1rem;
 }
 .form input {
@@ -23,11 +22,12 @@ input::placeholder {
     padding: 0.5rem 1rem;
 }
 .form input[type="email"],
-.form input[type="password"] {
+.form input[type="password"],
+.form input[type ="text"] {
     width: 100%;
 }
 
-.iniciarSesion {
+.iniciarSesion,.crearCuenta {
     margin: 0 auto;
     max-width: 25rem;
     width: 100%;
@@ -45,21 +45,34 @@ a {
     color: #7e8ba3;
 }
 
-.register {
+.login{
     box-shadow: 0 0 250px #000;
     text-align: center;
     padding: 4rem 2rem;
 }
+.register {
+    box-shadow: 0 0 250px rgb(160, 154, 154);
+    text-align: center;
+    padding: 4rem 2rem;
+}
+.register .checkbox{
+    text-align: left;
+    padding: 10px;
+}
+.login input,
 .register input {
     border: 1px solid #242c37;
     border-radius: 999px;
     background-color: transparent;
     text-align: center;
+    color:#d0e1ff;
 }
 
+.login input[type="submit"],
 .register input[type="submit"] {
     background-image: linear-gradient(160deg,  #354152, #171c24 100%);
     color: #fff;
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
     width: 100%;
+    cursor: pointer;
 }

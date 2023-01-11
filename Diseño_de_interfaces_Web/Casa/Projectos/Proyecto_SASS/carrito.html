@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GamesBip</title>
   <link rel="shortcut icon" href="img/iconPage.jpg">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/carrito.css">
   <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="css/footer.css">
   <script src="https://kit.fontawesome.com/7c62b3f9f5.js" crossorigin="anonymous"></script>
@@ -77,7 +77,65 @@
     </nav>
   </div>
   <main class="contenido">
-    
+
+    <div id="pedido">
+
+      <p class="tituloPedido">Tu pedido</p>
+      <div class="juego1">
+        <img class="imgJuego1" src="img/Juegos/HK.jpg" alt="">
+        <label class="tituloJuego1">
+          Hollow Knight
+          Mover a la lista de deseados
+          Eliminar
+          9,75€
+        </label>
+        
+      </div>
+      <div class="juego2">
+        <img class="imgJuego2" src="img/Juegos/SF.jpg" alt="">
+        <label class="tituloJuego1">
+          Hollow Knight
+          Mover a la lista de deseados
+          Eliminar
+          9,75€
+        </label>
+      </div>
+      <div class="pagoJuego">
+        Todos los precios llevan incluido el IVA
+        Total: 64,74€
+      </div>
+    </div>
+
+    <div id="datosPago">
+      <p class="tituloPago">Pago</p>
+      <div class="formasPago">
+        <div>
+          <input type="radio" name="formaPago" id="TargetaCredito">
+          <i class="fa-brands fa-cc-visa"></i>
+          <i class="fa-brands fa-cc-amex"></i>
+          <i class="fa-brands fa-cc-mastercard"></i>
+          <i class="fa-brands fa-cc-discover"></i>
+          <label>Targeta de credito</label>
+        </div>
+        <div>
+          <input type="radio" name="formaPago" id="PayPal">
+          <i class="fa-brands fa-paypal"></i>
+          <label>Paypal</label>
+        </div>
+        <div>
+          <input type="radio" name="formaPago" id="Stripe">
+          <i class="fa-brands fa-stripe"></i>
+          <label>Stripe</label>
+        </div>
+      </div>
+      <div class="regalo">
+        <input type="checkbox" name="regalo" id="">
+        <label>Comprar como regalo</label>
+      </div>
+      <div class="confirmar">
+        <input type="button" value="Pagar el pedido">
+      </div>
+    </div>
   </main>
   <footer class="footer">
     <label class="copyright-icon"><i class="fa-regular fa-copyright"></i></label>
