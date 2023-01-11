@@ -18,86 +18,89 @@
 
 <body>
     <div class="navegacion">
-        <nav>
-            <input type="checkbox" id="show-search">
-            <input type="checkbox" id="show-menu">
-            <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
-
-            <div class="contenido">
-                <div class="logo"><a href="index.html"><img src="img/Iconos/iconPage.jpg"></a></div>
-                <ul class="links">
-                    <li><a href="nosotros.html">Nosotros</a></li>
-                    <li>
-                        <a href="#" class="desktop-link">Categorias</a>
-                        <input type="checkbox" id="enseñar-categorias">
-                        <label for="enseñar-categorias">Categorias</label>
-                        <ul>
-                            <li><a href="#">Acción</a></li>
-                            <li><a href="#">Aventura</a></li>
-                            <li><a href="#">Indie</a></li>
-                            <li><a href="#">RPG</a></li>
-                            <li><a href="#">Todos los juegos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="desktop-link">Comunidad</a>
-                        <input type="checkbox" id="enseñar-comunidad">
-                        <label for="enseñar-comunidad">Comunidad</label>
-                        <ul>
-                            <li><a href="#">Comunidad</a></li>
-                            <li><a href="#">Foro</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="desktop-link">Soporte</a>
-                        <input type="checkbox" id="enseñar-soporte">
-                        <label for="enseñar-soporte">Soporte</label>
-                        <ul>
-                            <li><a href="#">Soporte</a></li>
-                            <li><a href="#">Problemas Tecnicos</a></li>
-                            <li><a href="#">Pedidos y pagos</a></li>
-                            <li><a href="#">Cuenta</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="desktop-link">Iniciar Sesión</a>
-                        <input type="checkbox" id="enseñar-sesion">
-                        <label for="enseñar-sesion">Iniciar Sesión</label>
-                        <ul>
-                            <li><a href="#">Crear cuenta</a></li>
-                            <li><a href="#">Iniciar Sesión</a></li>
-                        </ul>
-                    </li>
+        <nav class="navegacion">
+          <input type="checkbox" id="show-search">
+          <input type="checkbox" id="show-menu">
+          <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+    
+          <div class="contenidoNav">
+            <div class="logo"><a href="index.html"><img src="img/Iconos/iconPage.png"></a></div>
+            <ul class="links">
+              <li><a href="nosotros.html">Nosotros</a></li>
+              <li>
+                <a href="#" class="desktop-link">Categorias</a>
+                <input type="checkbox" id="enseñar-categorias">
+                <label for="enseñar-categorias">Categorias</label>
+                <ul>
+                  <li><a href="#">Acción</a></li>
+                  <li><a href="#">Aventura</a></li>
+                  <li><a href="#">Indie</a></li>
+                  <li><a href="#">RPG</a></li>
+                  <li><a href="#">Todos los juegos</a></li>
                 </ul>
-            </div>
-            <a class="buy-icon" href=""><i class="fa-solid fa-cart-shopping"></i></a>
-            <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
-            <form action="#" class="search-box">
-                <input type="text" placeholder="Type Something to Search..." required>
-                <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
-            </form>
-
+              </li>
+              <li>
+                <a href="#" class="desktop-link">Comunidad</a>
+                <input type="checkbox" id="enseñar-comunidad">
+                <label for="enseñar-comunidad">Comunidad</label>
+                <ul>
+                  <li><a href="#">Comunidad</a></li>
+                  <li><a href="#">Foro</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#" class="desktop-link">Soporte</a>
+                <input type="checkbox" id="enseñar-soporte">
+                <label for="enseñar-soporte">Soporte</label>
+                <ul>
+                  <li><a href="#">Soporte</a></li>
+                  <li><a href="#">Problemas Tecnicos</a></li>
+                  <li><a href="#">Pedidos y pagos</a></li>
+                  <li><a href="#">Cuenta</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="inicioSesion.html" class="desktop-link">Iniciar Sesión</a>
+                <input type="checkbox" id="enseñar-sesion">
+                <label for="enseñar-sesion">Iniciar Sesión</label>
+                <ul>
+                  <li><a href="crearCuenta.html">Crear cuenta</a></li>
+                  <li><a href="inicioSesion.html">Iniciar Sesión</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <a class="buy-icon" href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
+          <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+          <form action="#" class="search-box">
+            <input type="text" placeholder="Type Something to Search..." required>
+            <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+          </form>
+    
         </nav>
-    </div>
-    <div class="main">
+      </div>
+    <main class="contenido">
         <div class="contenedor-flex">
             <div id="imagenNosotros">
-               <div class="nosotros">Sobre Nosotros </div>
+                <div class="nosotros">Sobre Nosotros </div>
             </div>
         </div>
-        
+
         <div class="nosotrosTexto">
-            <h3>Hacemos que los juegos duren para siempre</h3>
-            Actualmente los videojuegos es una de las formas más comunes en todas las personas de todas las edades, por esa misma razón nosotros tenemos en nuestro catalogo
-            una gran variedad y cantidad de videojuegos a su disposición para poder divertirse en todo momento con las personas que más te gusta jugar.
-            Por esa misma razón hemos creado esta página para tu disposición ya que es un hogar para construir y jugar su colección de juegos seleccionados.
-            GamesBip es una plataforma de distribución digital que pone a los jugadores en primer lugar.
-            
+            <h3>Dedicados a la venta de videojuegos digitales exclusivamente para ordenadores</h3>
+            <p>En nuestra empresa, nos dedicamos a la venta de videojuegos digitales exclusivamente para ordenadores.
+            Contamos con una amplia variedad de títulos disponibles en nuestra tienda en línea, desde los últimos
+            lanzamientos hasta clásicos de todos los tiempos. Además, trabajamos estrechamente con los desarrolladores
+            independientes para ofrecer a nuestros clientes una selección única de juegos independientes. Ofrecemos
+            precios competitivos y un servicio al cliente excepcional para garantizar que nuestros clientes tengan la
+            mejor experiencia de compra posible. Además, nos esforzamos por mantenernos al día con las últimas
+            tendencias y tecnologías para ofrecer a nuestros clientes el mejor juego digitales para ordenadores.</p>
+
         </div>
         <div class="saberMas">
             <i class="fa-solid fa-circle-arrow-down"></i>
         </div>
-    </div>
+    </main>
     <footer class="footer">
         <label class="copyright-icon"><i class="fa-regular fa-copyright"></i></label>
         <div class="avisoLegal">GamesBip - Aviso legal</div>

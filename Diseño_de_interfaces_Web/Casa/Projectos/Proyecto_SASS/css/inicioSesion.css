@@ -1,0 +1,65 @@
+body {
+    background-color: #354152;
+    color: #7e8ba3;
+    font: 300 1rem/1.5 Helvetica Neue, sans-serif;
+}
+.contenido {
+    margin:73px;
+
+}
+input {
+    border: 0;
+    font: inherit;
+}
+input::placeholder {
+    color: #7e8ba3;
+}
+
+.form__field {
+    margin-bottom: 1rem;
+}
+.form input {
+    outline: 0;
+    padding: 0.5rem 1rem;
+}
+.form input[type="email"],
+.form input[type="password"] {
+    width: 100%;
+}
+
+.iniciarSesion {
+    margin: 0 auto;
+    max-width: 25rem;
+    width: 100%;
+}
+
+h2 {
+    font-size: 2.75rem;
+    font-weight: 100;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+}
+
+
+a {
+    color: #7e8ba3;
+}
+
+.register {
+    box-shadow: 0 0 250px #000;
+    text-align: center;
+    padding: 4rem 2rem;
+}
+.register input {
+    border: 1px solid #242c37;
+    border-radius: 999px;
+    background-color: transparent;
+    text-align: center;
+}
+
+.register input[type="submit"] {
+    background-image: linear-gradient(160deg,  #354152, #171c24 100%);
+    color: #fff;
+    margin-bottom: 6rem;
+    width: 100%;
+}
