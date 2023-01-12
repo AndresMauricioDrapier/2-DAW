@@ -1,0 +1,25 @@
+{% extends "base.njk" %}
+
+{% block titulo %}Usuario | Nuevo{% endblock %}
+
+{% block contenido %}
+
+    <h1>Inserción de nuevo usuario</h1>
+
+    <form action="/usuario/register" method="post">
+        <div class="form-group mb-3">
+            <label for="titulo">Nombre:</label>
+            <input type="text" class="form-control" name="nombre" 
+                placeholder="Nombre..." />
+        </div>
+        <div class="form-group mb-3">
+            <label for="editorial">Contraseña:</label>
+            <input type="password" class="form-control" name="contraseña"
+                placeholder="Contraseña..." />
+        </div>
+        <div class="form-group mb-3">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+    </form>
+
+{% endblock %}
