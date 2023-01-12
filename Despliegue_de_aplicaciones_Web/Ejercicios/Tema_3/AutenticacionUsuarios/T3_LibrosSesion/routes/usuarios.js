@@ -10,7 +10,7 @@ router.get('/login', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.session.destroy();
-    res.redirect('/');
+    res.redirect('/libros');
 });
 
 router.get('/register', (req, res) => {
@@ -25,24 +25,27 @@ router.post('/register', (req, res) => {
     nuevoUsuario.save().then(resultado => {
         res.redirect('login');
     }).catch(error => {
-        res.render('error', {error: "Error insertando libro"});
+        res.render('error', { error: "Error insertando libro" });
     });
 });
 
 
 router.post('/login', (req, res) => {
-    let login = req.body.login;
-    let password = req.body.password;
+    let nombre = req.body.nombre;
+    let contraseña = req.body.contraseña;
+    Usuario.find().then(usuarios => {
+        let existeUsuario = usuarios.filter(usuario => usuario.nombre == nombre && usuario.contraseña == contraseña);
+        if (existeUsuario.length > 0) {
+            req.session.usuario = existeUsuario[0].nombre;
+            req.session.contraseña = existeUsuario[0].contraseña;
+            res.redirect('/libros');
+        } else {
+            res.render('login', { error: "Usuario o contraseña incorrectos" });
+        }
+    }).catch(error => {
+    });
 
-    let existeUsuario = usuarios.filter(usuario => usuario.usuario == login && usuario.password == password);
-    if (existeUsuario.length > 0)
-    {
-        req.session.usuario = existeUsuario[0].usuario;
-        req.session.rol = existeUsuario[0].rol;
-        res.render('index');
-    } else {
-        res.render('login', {error: "Usuario o contraseña incorrectos"});
-    }
+
 });
 
 module.exports = router;
