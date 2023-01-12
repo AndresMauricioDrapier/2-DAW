@@ -1,0 +1,210 @@
+#carousel {
+	.slides {
+		margin-top: 10px;
+		width: 100%;
+		display: flex;
+		overflow-x: scroll;
+		scroll-behavior: smooth;
+
+		.slide-item {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			align-items: flex-end;
+			align-content: center;
+			color: $color_white;
+			font-size: 30px;
+			padding: 10px;
+
+			//Imagenes
+			background-position: center;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			border-radius: 10px;
+			flex-shrink: 0;
+			height: 700px;
+			transition: transform 0.5s;
+			width: 100%;
+
+			.flex-item {
+				&:nth-child(1) {
+					display: block;
+					flex-grow: 0;
+					flex-shrink: 1;
+					flex-basis: auto;
+					align-self: auto;
+					order: 0;
+				}
+				&:nth-child(2) {
+					display: block;
+					flex-grow: 0;
+					flex-shrink: 1;
+					flex-basis: auto;
+					align-self: auto;
+					order: 0;
+				}
+			}
+
+			.buy-iconCarrousell {
+				color: $color_white;
+			}
+		}
+
+		#Diablo3 {
+			background-image: url("../img/juegos/Diablo-III-Carrousell.webp");
+		}
+		#HKS {
+			background-image: url("../img/juegos/HKS-Carrousell.jpg");
+		}
+		#SF {
+			background-image: url("../img/juegos/SF-Carrousell.jpg");
+		}
+		#NMS {
+			background-image: url("../img/juegos/NMS-Carrousell.webp");
+		}
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	.carouselBotones {
+		padding: 1.25rem 0.5rem;
+		text-align: center;
+		.slider-nav {
+			align-items: center;
+			background-color: #ddd;
+			border-radius: 50%;
+			color: $color_black;
+			display: inline-flex;
+			height: 1.5rem;
+			justify-content: center;
+			padding: 1rem;
+			position: relative;
+			text-decoration: none;
+			width: 1.5rem;
+		}
+	}
+}
+
+.novedades {
+	margin-left: 10px;
+}
+
+.juegosSacadosIndex {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+	align-content: flex-start;
+	width: 100%;
+	height: auto;
+	flex-direction: row;
+	.juegosIndex {
+		width: 300px;
+		height: 192px;
+		margin: 46px;
+		border: 1px solid black;
+		.precioIndex {
+			margin-left: 200px;
+			border-radius: 5px;
+			background-color: $background-color_gray;
+			color: $color_white;
+			padding: 5px;
+		}
+		.precio2Index {
+			margin-left: 175px;
+			border-radius: 5px;
+			background-color: $background-color_gray;
+			color: $color_white;
+			padding: 5px;
+		}
+		&:hover {
+			img {
+				-webkit-animation: rotacion 0.5s linear;
+				animation: rotacion 0.5s linear;
+			}
+		}
+	}
+	div {
+		img {
+			width: 300px;
+			height: 150px;
+		}
+	}
+	.iconoIndex {
+		padding-left: 2%;
+	}
+}
+.proximamenteLabel {
+	margin-left: 10px;
+}
+.proximamente {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+	align-content: flex-start;
+	width: 100%;
+	height: auto;
+	flex-direction: row;
+	.juegoProximamente {
+		width: 300px;
+		height: 192px;
+		margin: 46px;
+		border: 1px solid black;
+		.proximoJuego {
+			margin-left: 140px;
+			border-radius: 5px;
+			background-color: $background-color_gray;
+			color: $color_white;
+			padding: 5px;
+		}
+		.proximoJuego2 {
+			margin-left: 120px;
+			border-radius: 5px;
+			background-color: $background-color_gray;
+			color: $color_white;
+			padding: 5px;
+		}
+		&:hover {
+			img {
+				-webkit-animation: rotacion 0.5s linear;
+				animation: rotacion 0.5s linear;
+			}
+		}
+	}
+	div {
+		img {
+			width: 300px;
+			height: 150px;
+		}
+	}
+	.iconoIndex {
+		padding-left: 2%;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.contenidoIndex {
+		background-color: $background-color_gray;
+		#carousel {
+			display: none;
+		}
+	}
+}
+
+@keyframes rotacion {
+	0% {
+		-webkit-transform: scale(0);
+		transform: scale(0);
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		opacity: 1;
+	}
+}

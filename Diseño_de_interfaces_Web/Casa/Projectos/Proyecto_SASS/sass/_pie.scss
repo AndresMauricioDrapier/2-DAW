@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 .footer {
     background: #171c24;
     position: fixed;
@@ -8,28 +7,26 @@
     align-items: center;
     color: white;
     justify-content: space-between;
+    i{
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        line-height: 50px;
+        text-align: center;
+        padding: 0px 10px 0px 10px;
+    }
+    .avisoLegal {
+        margin-left: 100px;
+    }
 }
 
-.footer i {
-    color: #fff;
-    font-size: 18px;
-    cursor: pointer;
-    line-height: 50px;
-    text-align: center;
-    padding: 0px 10px 0px 10px;
-}
-.avisoLegal {
-    margin-left: 100px;
-}
-
-/* Responsive code start */
-@media screen and (max-width: 1250px) {
+@include responsive(1250px){
     .footer {
         max-width: 100%;
         padding: 0 20px;
     }
 }
-@media screen and (max-width: 900px) {
+@include responsive(900px){
     .footer i {
         font-size: 15px;
         cursor: pointer;

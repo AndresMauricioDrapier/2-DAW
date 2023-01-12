@@ -8,21 +8,20 @@
   <title>GamesBip</title>
   <link rel="shortcut icon" href="img/iconPage.jpg">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/menu.css">
-  <link rel="stylesheet" href="css/footer.css">
   <script src="https://kit.fontawesome.com/7c62b3f9f5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <div class="navegacion">
-    <nav class="navegacion">
+  <div class="navegacionNav">
+    <nav id="navegacionNav">
+      
       <input type="checkbox" id="show-search">
       <input type="checkbox" id="show-menu">
       <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
 
       <div class="contenidoNav">
-        <div class="logo"><a href="index.html"><img src="img/Iconos/iconPage.png"></a></div>
-        <ul class="links">
+        <div class="logoNav"><a href="index.html"><img src="img/Iconos/iconPage.png"></a></div>
+        <ul class="linksNav">
           <li><a href="nosotros.html">Nosotros</a></li>
           <li>
             <a href="#" class="desktop-link">Categorias</a>
@@ -47,7 +46,7 @@
           </li>
           <li>
             <a href="#" class="desktop-link">Soporte</a>
-            <input type="checkbox" id="enseñar-soporte">
+            <input type="checkbox" class="enseñar-soporte">
             <label for="enseñar-soporte">Soporte</label>
             <ul>
               <li><a href="#">Soporte</a></li>
@@ -67,22 +66,22 @@
           </li>
         </ul>
       </div>
-      <a class="buy-icon" href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
-      <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
-      <form action="#" class="search-box">
-        <input type="text" placeholder="Type Something to Search..." required>
-        <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+      <a class="buy-iconNav" href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
+      <label for="show-search" class="search-iconNav"><i class="fas fa-search"></i></label>
+      <form action="#" class="search-boxNav">
+        <input class="search-inputNav" type="text" placeholder="Type Something to Search..." required>
+        <button type="submit" class="go-iconNav"><i class="fas fa-long-arrow-alt-right"></i></button>
       </form>
-
     </nav>
   </div>
-  <main class="contenido">
-    <section class="carousel">
+
+  <main class="contenidoIndex">
+    <section id="carousel">
       <div class="slides">
         <div id="Diablo3" class="slide-item">
           <div class="flex-item">Diablo III</div>
           <div class="flex-item">
-            <div>29,99€ <a class="buy-icon" href="carrito.html"><i class="fa-solid fa-cart-arrow-down"></i></a></div>
+            <div>29,99€ <a class="buy-iconCarrousell" href="carrito.html"><i class="fa-solid fa-cart-arrow-down"></i></a></div>
           </div>
         </div>
         <div id="HKS" class="slide-item">
@@ -108,30 +107,31 @@
 
     <label class="novedades"><i class="fa-solid fa-info"></i> Novedades</label>
     <hr>
-    <section class="juegosSacados">
-      <div class="juegos">
+    
+    <section class="juegosSacadosIndex">
+      <div class="juegosIndex">
         <a href="detalleJuego.html"><img src="img/Juegos/LA.jpg" alt=""></a>
-        <label class="icono"><i class="fa-brands fa-windows"></i></label>
-        <label class="precio">9,99€</label>
+        <label class="iconoIndex"><i class="fa-brands fa-windows"></i></label>
+        <label class="precioIndex">9,99€</label>
       </div>
-      <div class="juegos">
+      <div class="juegosIndex">
 
         <a href="detalleJuego.html"><img src="img/Juegos/HK.jpg" alt=""></a>
-        <label class="icono"><i class="fa-brands fa-windows"></i></label>
-        <label class="precio">9,75€</label>
+        <label class="iconoIndex"><i class="fa-brands fa-windows"></i></label>
+        <label class="precioIndex">9,75€</label>
 
 
       </div>
-      <div class="juegos">
+      <div class="juegosIndex">
         <a href="detalleJuego.html"><img src="img/Juegos/SF.jpg" alt=""></a>
-        <label class="icono"><i class="fa-brands fa-windows"></i></label>
-        <label class="precio">58,99€</label>
+        <label class="iconoIndex"><i class="fa-brands fa-windows"></i></label>
+        <label class="precioIndex">58,99€</label>
       </div>
-      <div class="juegos">
+      <div class="juegosIndex">
         <a href="detalleJuego.html"><img src="img/Juegos/Inquisition.jpg" alt=""></a>
-        <label class="icono"><i class="fa-brands fa-windows"></i></label>
-        <label class="icono"><i class="fa-brands fa-apple"></i></label>
-        <label class="precio2">5,99€</label>
+        <label class="iconoIndex"><i class="fa-brands fa-windows"></i></label>
+        <label class="iconoIndex"><i class="fa-brands fa-apple"></i></label>
+        <label class="precio2Index">5,99€</label>
       </div>
     </section>
 
@@ -140,29 +140,30 @@
     <section class="proximamente">
       <div class="juegoProximamente">
         <a href="detalleJuego.html"><img src="img/Juegos/GOW.jpg" alt=""></a>
-        <label class="icono"><i class="fa-brands fa-windows"></i></label>
+        <label class="iconoIndex"><i class="fa-brands fa-windows"></i></label>
         <label class="proximoJuego">Proximamente</label>
       </div>
       <div class="juegoProximamente">
 
         <a href="detalleJuego.html"><img src="img/Juegos/HKS.jpg" alt=""></a>
-        <label class="icono"><i class="fa-brands fa-windows"></i></label>
+        <label class="iconoIndex"><i class="fa-brands fa-windows"></i></label>
         <label class="proximoJuego">Proximamente</label>
 
       </div>
       <div class="juegoProximamente">
         <a href="detalleJuego.html"><img src="img/Juegos/PU.jpg" alt=""></a>
-        <label class="icono"><i class="fa-brands fa-windows"></i></label>
+        <label class="iconoIndex"><i class="fa-brands fa-windows"></i></label>
         <label class="proximoJuego">Proximamente</label>
       </div>
       <div class="juegoProximamente">
         <a href="detalleJuego.html"><img src="img/Juegos/Isaac.jpg" alt=""></a>
-        <label class="icono"><i class="fa-brands fa-windows"></i></label>
-        <label class="icono"><i class="fa-brands fa-apple"></i></label>
+        <label class="iconoIndex"><i class="fa-brands fa-windows"></i></label>
+        <label class="iconoIndex"><i class="fa-brands fa-apple"></i></label>
         <label class="proximoJuego2">Proximamente</label>
       </div>
     </section>
   </main>
+
   <footer class="footer">
     <label class="copyright-icon"><i class="fa-regular fa-copyright"></i></label>
     <div class="avisoLegal">GamesBip - Aviso legal</div>
