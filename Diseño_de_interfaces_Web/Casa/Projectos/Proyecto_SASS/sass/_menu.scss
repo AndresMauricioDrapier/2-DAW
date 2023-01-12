@@ -126,7 +126,7 @@ nav {
 				font-weight: 500;
 				padding: 9px 17px;
 				border-radius: 5px;
-				transition: all 0.3s ease;
+				@include highlight(transition,all,0.3s,ease);
 				&:hover {
 					background: #323c4e;
 				}
@@ -137,7 +137,7 @@ nav {
 				font-weight: 500;
 				padding: 9px 17px;
 				border-radius: 5px;
-				transition: all 0.3s ease;
+				@include highlight(transition,all,0.3s,ease);
 				display: none;
 				&:hover {
 					background: #323c4e;
@@ -148,7 +148,7 @@ nav {
 					top: 70px;
 					opacity: 1;
 					visibility: visible;
-					transition: all 0.3s ease;
+					@include highlight(transition,all,0.3s,ease);
 				}
 			}
 		}
@@ -183,12 +183,12 @@ nav {
 }
 
 .logoNav {
-	-webkit-animation: rotacion 0.65s linear both;
-	animation: rotacion 0.65s linear both;
+	@include highlight(animation,rotacion,0.65s,linear);
 	padding-left: 20px;
 	padding-top: 10px;
 }
-@media screen and (max-width: 1250px) {
+
+@include responsive(1250px){
 	.navegacionNav {
 		nav {
 			max-width: 100%;
@@ -220,7 +220,8 @@ nav {
 		}
 	}
 }
-@media screen and (max-width: 900px) {
+
+@include responsive(900px){
 	.navegacionNav {
 		.menu-icon {
 			display: block;
@@ -353,7 +354,7 @@ nav {
 		}
 	}
 }
-@media screen and (max-width: 400px) {
+@include responsive(400px) {
 	.navegacionNav {
 		nav {
 			padding: 0 10px;

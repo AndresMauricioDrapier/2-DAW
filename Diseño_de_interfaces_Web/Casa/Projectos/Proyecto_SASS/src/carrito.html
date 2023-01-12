@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GamesBip</title>
-  <link rel="shortcut icon" href="img/iconPage.jpg">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="../img/iconPage.jpg">
+  <link rel="stylesheet" href="../css/style.css">
   <script src="https://kit.fontawesome.com/7c62b3f9f5.js" crossorigin="anonymous"></script>
 </head>
-
 
 <body>
   <div class="navegacionNav">
@@ -20,7 +19,7 @@
       <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
 
       <div class="contenidoNav">
-        <div class="logoNav"><a href="index.html"><img src="img/Iconos/iconPage.png"></a></div>
+        <div class="logoNav"><a href="../index.html"><img src="../img/Iconos/iconPage.png"></a></div>
         <ul class="linksNav">
           <li><a href="nosotros.html">Nosotros</a></li>
           <li>
@@ -75,30 +74,95 @@
     </nav>
   </div>
 
-  <main class="contenidoNosotros">
-    
-    <div class="contenedor-flex">
-      <div id="imagenNosotros">
-        <div class="nosotros">Sobre Nosotros </div>
+  <main id="carritoPrincipal">
+
+    <div id="izquierdaCarrito">
+      <h2 class="carritoTitulo">TUS PRODUCTOS</h2>
+
+      <div id="carritoIzquierda">
+
+        <div class="carritoProductos">
+
+          <div class="carritoProducto hollowKnightCarrito">
+
+            <img src="../img/Juegos/HK.jpg" alt="Hollow Knight" class="imgProductoCarrito" />
+
+            <div class="textoProductoCarrito">
+              <div class="nombreCarrito">
+                Hollow Knight
+              </div>
+              <div class="precioCarrito">
+                9,75€
+              </div>
+            </div>
+          </div>
+
+          <div class="carritoProducto SonicFrontiersCarrito">
+            <img src="../img/Juegos/SF.jpg" alt="Sonic Frontiers" class="imgProductoCarrito" />
+            
+            <div class="textoProductoCarrito">
+              <div class="nombreCarrito">
+                Sonic Frontiers
+              </div>
+              <div class="precioCarrito">
+                58,99€
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="nosotrosTexto">
-      <h3>Dedicados a la venta de videojuegos digitales exclusivamente para ordenadores</h3>
-      <p>En nuestra empresa, nos dedicamos a la venta de videojuegos digitales exclusivamente para ordenadores.
-        Contamos con una amplia variedad de títulos disponibles en nuestra tienda en línea, desde los últimos
-        lanzamientos hasta clásicos de todos los tiempos. Además, trabajamos estrechamente con los desarrolladores
-        independientes para ofrecer a nuestros clientes una selección única de juegos independientes. Ofrecemos
-        precios competitivos y un servicio al cliente excepcional para garantizar que nuestros clientes tengan la
-        mejor experiencia de compra posible. Además, nos esforzamos por mantenernos al día con las últimas
-        tendencias y tecnologías para ofrecer a nuestros clientes el mejor juego digitales para ordenadores.</p>
+    <div class="derechaCarrito">
+      <h2 class="carritoTitulo">Pago</h2>
+      
+      <div id="carritoDerecha">
+        <h4>RESUMEN DEL PEDIDO</h4>
 
-    </div>
-    <div class="saberMas">
-      <i class="fa-solid fa-circle-arrow-down"></i>
-    </div>
+        <div class="nombrePrecioPago">
+          <div class="nombrePago">
+            Hollow Knight
+          </div>
+          <div class="precioPago">9,75€</div>
+        </div>
+
+        <div class="nombrePrecioPago">
+          <div class="nombrePago">
+            Sonic Frontiers
+          </div>
+          <div class="precioPago">
+            58,99€
+          </div>
+        </div>
+        <hr>
+        <div class="nombrePrecioPago">
+          <div class="nombrePago">
+            <h4>TOTAL</h4>
+          </div>
+          <div class="precioPago">68,74€</div>
+        </div>
+
+        <form class="carritoCodigo">
+          <input class= "carritoInput" type="text" name="codigoPro" id="codigoPro" placeholder="Código promocional">
+        </form>
+
+        <div class="carritoFormaspago">
+          <h5>FORMAS DE PAGO ACEPTADAS</h5>
+          <i class="fa-brands fa-cc-stripe"></i>
+          <i class="fa-brands fa-cc-visa"></i>
+          <i class="fa-brands fa-cc-mastercard"></i>
+          <i class="fa-brands fa-cc-amex"></i>
+        </div>
+        <div id="pagar">
+          <input class="inputPagar" type="submit" value="Pagar">
+          O
+          <input class="inputPagar" type="submit" value="Paypal">
+        </div>
+
+
+      </div>
+
   </main>
-
   <footer class="footer">
     <label class="copyright-icon"><i class="fa-regular fa-copyright"></i></label>
     <div class="avisoLegal">GamesBip - Aviso legal</div>
