@@ -1,0 +1,45 @@
+$colorText: #eee
+$colorTextHover: lighten($colorText, 10%)
+$colorBack: #15a
+$colorBackHover: lighten($colorBack, 10%)
+$colorTitulo: darken($colorBack, 10%)
+$theme: light
+
+@if $theme == dark
+  $colorBack: #138
+@else if $theme == light
+  $colorBack: #ddf
+  $colorText: #138
+
+@import _mixin
+@import _menu
+@import _contenido
+
+@keyframes iluminar
+  from
+    +colorNormal
+
+  to
+    +colorHover
+
+body
+  padding: 0px
+  margin: 0px
+
+header
+  +colorNormal
+
+  padding: 12px 30px 12px 30px
+  font-size: 1.8em
+  font-weight: bold
+  text-shadow: 1px 1px 2px #aaa
+  font-family: Georgia, "Times New Roman", Times, serif
+
+footer
+  +colorNormal
+  +box-sizing(border-box)
+
+  position: fixed
+  width: 100%
+  bottom: 0px
+  padding: 5px
