@@ -24,11 +24,11 @@
       [ngClass]="validClasses(emailControl)" placeholder="Enter email" />
 
     <div class="invalid-feedback" *ngIf="emailControl.errors?.['required']">
-      Name is required
+      Email is required
     </div>
 
     <div class="invalid-feedback" *ngIf="emailControl.errors?.['email']">
-      Name must be contains letters and spaces
+      Must be in email format i.e.: usuario@usuario.com
     </div>
   </div>
 
@@ -39,33 +39,44 @@
     <div class="invalid-feedback" *ngIf="email2Control.errors">
       The emails aren't equals
     </div>
+    <div class="invalid-feedback" *ngIf="email2Control.errors?.['email']">
+      Must be in email format i.e.: usuario@usuario.com
+    </div>
   </div>
 
   <div class="mb-3">
     <label for="password">Password:</label>
     <input type="password" class="form-control" id="password" name="password" placeholder="Password" name="password"
-      formControlName="password" [ngClass]="validClasses(passwordControl)" />
+      formControlName="password" [ngClass]="validClasses(passwordControl)" required/>
+
     <div class="invalid-feedback" *ngIf="passwordControl.errors?.['pattern']">
-      The emails aren't equals
+      Password must have at least 4 characters
+    </div>
+    <div class="invalid-feedback" *ngIf="passwordControl.errors?.['required']">
+      Password is required
     </div>
   </div>
 
   <div class="form-row">
     <div class="mb-3 col">
       <label for="lat">Latitude:</label>
-      <input type="text" class="form-control" id="lat" name="lat" placeholder="Geolocating..." readonly />
+      <input type="text" class="form-control" id="lat" name="lat" placeholder="Geolocating..." readonly [value]="newUser.lat"/>
     </div>
 
     <div class="mb-3 col">
       <label for="lng">Longitude:</label>
-      <input type="text" class="form-control" id="lng" name="lng" placeholder="Geolocating..." readonly />
+      <input type="text" class="form-control" id="lng" name="lng" placeholder="Geolocating..." readonly [value]="newUser.lng"/>
     </div>
 
   </div>
 
   <div class="mb-3">
     <label for="image">Avatar image</label>
-    <input type="file" class="form-control" id="avatar" name="avatar" formControlName="avatar" />
+    <input type="file" class="form-control" id="avatar" name="avatar" formControlName="avatar" required
+    formControlName="avatar" />
+    <div class="invalid-feedback" *ngIf="imageControl.errors?.['required']">
+      Avatar is required
+    </div>
   </div>
 
   <img src="" alt="" id="imgPreview" class="img-thumbnail d-none" />

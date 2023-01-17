@@ -15,7 +15,7 @@ import { RestaurantService } from "../services/restaurant.service";
         FormsModule,
         RestaurantFormComponent,
         RestaurantCardComponent,
-        RestaurantFilterPipe,
+        RestaurantFilterPipe
     ],
     templateUrl: "./restaurants-page.component.html",
     styleUrls: ["./restaurants-page.component.css"],
@@ -25,12 +25,14 @@ export class RestaurantsPageComponent implements OnInit {
     active = true;
     filterSearch = "";
 
-    constructor(private readonly http: RestaurantService) {}
+    constructor(
+        private readonly http: RestaurantService,
+    ) {}
 
     ngOnInit(): void {
         this.http.getRestaurants().subscribe({
             next: (rest) => (this.restaurants = rest),
-            error: (error) => console.log(error)
+            error: (error) => console.log(error),
         });
     }
 

@@ -12,12 +12,12 @@ import {
     Validators,
 } from "@angular/forms";
 import { User } from "../interfaces/user";
-import { RestaurantService } from "src/app/restaurants/services/restaurant.service";
 import { sameEmails } from "src/app/shared/validators/sameEmail";
 import { ArcgisMapComponent } from "src/app/shared/maps/arcgis-map/arcgis-map.component";
 import { ArcgisMarkerDirective } from "src/app/shared/maps/arcgis-marker/arcgis-marker.directive";
 import { ArcgisSearchDirective } from "src/app/shared/maps/arcgis-search/arcgis-search.directive";
 import { SearchResult } from "src/app/shared/maps/interfaces/search-result";
+import { UserService } from "../services/user.service";
 
 @Component({
     selector: "fs-restaurant-register",
@@ -52,7 +52,7 @@ export class RestaurantRegisterComponent implements OnInit, CanDeactivateCompone
     };
 
     constructor(
-        private readonly http: RestaurantService,
+        private readonly http: UserService,
         private readonly router: Router,
         private readonly fb: NonNullableFormBuilder
     ) {}
@@ -118,15 +118,15 @@ export class RestaurantRegisterComponent implements OnInit, CanDeactivateCompone
         this.newUser.password = this.passwordControl.value;
         this.newUser.avatar = this.imageControl.value;
 
-        console.log(this.newUser);
-
+        this.http.register(this.newUser).subscribe(() => {
+            console.log("hola");
+        });
     }
 
     searchResult(result: SearchResult): void {
         this.newUser.lat = result.latitude;
         this.newUser.lng = result.longitude;
         console.log("nuevo");
-
     }
     validClasses(
         ngModel: FormControl,

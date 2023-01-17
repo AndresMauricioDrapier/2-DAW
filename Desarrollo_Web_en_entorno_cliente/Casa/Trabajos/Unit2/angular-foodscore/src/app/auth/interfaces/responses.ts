@@ -7,3 +7,7 @@ export interface UserResponse {
 export interface UsersResponse {
   users: User[];
 }
+
+export interface TokenResponse {
+  accessToken: string;
+}

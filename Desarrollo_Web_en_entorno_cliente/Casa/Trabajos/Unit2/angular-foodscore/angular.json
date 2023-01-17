@@ -50,6 +50,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/sweetalert2/src/sweetalert2.scss",
               "node_modules/@arcgis/core/assets/esri/themes/light/main.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
@@ -114,6 +115,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/sweetalert2/src/sweetalert2.scss",
               "node_modules/@arcgis/core/assets/esri/themes/light/main.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"

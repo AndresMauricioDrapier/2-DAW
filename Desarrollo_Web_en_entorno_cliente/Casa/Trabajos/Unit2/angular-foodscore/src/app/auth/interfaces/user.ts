@@ -15,5 +15,8 @@ export interface UserLogin {
     password: string;
     lat?: number;
     lng?: number;
+    token?:string;
+    image?:string;
+    userId?:string;
 }
 
