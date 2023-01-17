@@ -67,7 +67,7 @@ export class RestaurantRegisterComponent implements OnInit, CanDeactivateCompone
         ]);
         this.email2Control = this.fb.control("", [
             Validators.email,
-            sameEmails(this.emailControl.value),
+            sameEmails(this.emailControl),
         ]);
         this.passwordControl = this.fb.control("", [
             Validators.required,

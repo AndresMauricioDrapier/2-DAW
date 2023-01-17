@@ -1,9 +1,10 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
-export function sameEmails(emailCompare: string): ValidatorFn {
+export function sameEmails(emailCompare: FormControl): ValidatorFn {
+    console.log("hola");
 
     return (email: AbstractControl): ValidationErrors | null => {
-        if (emailCompare == email.value) {
+        if (emailCompare.value !== email.value) {
             return { sameEmail: true };
         }
 
