@@ -1,9 +1,13 @@
 import { User } from "./user";
 
-export interface UsersResponse {
-  restaurants: User[];
+export interface UserResponse {
+  user: User;
 }
 
-export interface UserResponse {
-  restaurant: User;
+export interface UsersResponse {
+  users: User[];
+}
+
+export interface TokenResponse {
+  accessToken: string;
 }
