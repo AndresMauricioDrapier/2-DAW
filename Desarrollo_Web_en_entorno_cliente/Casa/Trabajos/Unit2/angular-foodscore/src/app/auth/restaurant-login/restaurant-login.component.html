@@ -11,6 +11,6 @@
       <input type="password" class="form-control" name="password" id="password" placeholder="Password" required />
     </div>
     <p class="text-danger" id="errorInfo"></p>
-    <a class="btn btn-secondary" href="/register.html" role="button">Create account</a>
+    <a class="btn btn-secondary" [routerLink]="['/auth/register']" [routerLinkActive]="['active']" role="button">Create account</a>
     <button type="submit" class="btn btn-primary">Login</button>
   </form>

@@ -12,7 +12,10 @@ import { Router, RouterModule } from "@angular/router";
 })
 export class RestaurantLoginComponent {
     constructor(private readonly router: Router) {}
-    goRestaurants():void {
+    goRestaurants(): void {
         this.router.navigate(["/restaurants"]);
+    }
+    goRegister(): void {
+        this.router.navigate(["/auth/register"]);
     }
 }
