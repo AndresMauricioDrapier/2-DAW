@@ -1,0 +1,65 @@
+
+
+.contenidoNosotros {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: center;
+	background-color: $background-color_gray;
+	.nosotros {
+		text-align: center;
+		color: $color_white;
+		text-shadow: 3px 3px 2px white;
+		font-size: 50px;
+	}
+	.nosotrosTexto {
+		margin: 2%;
+		font-family: $font-family;
+		text-align: left;
+		h3 {
+			text-align: center;
+			margin: 10px;
+		}
+		&:nth-child(2) {
+			display: block;
+			flex-grow: 0;
+			flex-shrink: 1;
+			flex-basis: auto;
+			align-self: auto;
+			order: 0;
+		}
+	}
+	.saberMas {
+		text-align: center;
+		font-size: 25px;
+		&:nth-child(3) {
+			display: block;
+			flex-grow: 0;
+			flex-shrink: 1;
+			flex-basis: auto;
+			align-self: auto;
+			order: 0;
+		}
+	}
+	#imagenNosotros {
+		background-image: url("../img/Juegos/sobreNosotros.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		border-radius: 10px;
+		margin: 2%;
+		padding: 15%;
+		background-position: center;
+		&:nth-child(1) {
+			display: block;
+			flex-grow: 0;
+			flex-shrink: 1;
+			flex-basis: auto;
+			align-self: auto;
+			order: 0;
+		}
+	}
+}
+
+
