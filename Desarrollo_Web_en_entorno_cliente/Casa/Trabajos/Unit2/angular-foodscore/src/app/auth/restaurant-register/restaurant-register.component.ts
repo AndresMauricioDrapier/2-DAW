@@ -33,7 +33,8 @@ import { UserService } from "../services/user.service";
     templateUrl: "./restaurant-register.component.html",
     styleUrls: ["./restaurant-register.component.css"],
 })
-export class RestaurantRegisterComponent implements OnInit, CanDeactivateComponent
+export class RestaurantRegisterComponent
+implements OnInit, CanDeactivateComponent
 {
     userForm!: FormGroup;
     nameControl!: FormControl<string>;
@@ -119,7 +120,7 @@ export class RestaurantRegisterComponent implements OnInit, CanDeactivateCompone
         this.newUser.avatar = this.imageControl.value;
 
         this.http.register(this.newUser).subscribe(() => {
-            console.log("hola");
+            this.router.navigate(["/auth/login"]);
         });
     }
 

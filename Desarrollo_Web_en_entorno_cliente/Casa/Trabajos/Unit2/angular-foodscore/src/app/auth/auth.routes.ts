@@ -1,9 +1,20 @@
 import { Routes } from "@angular/router";
 import { leavePageGuard } from "../guards/leavePageGuard.guard";
-import { RestaurantLoginComponent } from "./restaurant-login/restaurant-login.component";
-import { RestaurantRegisterComponent } from "./restaurant-register/restaurant-register.component";
 
 export const APP_ROUTES: Routes = [
-    { path: "login", component: RestaurantLoginComponent },
-    { path: "register", component: RestaurantRegisterComponent,canDeactivate:[leavePageGuard] }
+    {
+        path: "login",
+        loadComponent: () =>
+            import("./restaurant-login/restaurant-login.component").then(
+                (m) => m.RestaurantLoginComponent
+            ),
+    },
+    {
+        path: "register",
+        loadComponent: () =>
+            import("./restaurant-register/restaurant-register.component").then(
+                (m) => m.RestaurantRegisterComponent
+            ),
+        canDeactivate: [leavePageGuard],
+    },
 ];

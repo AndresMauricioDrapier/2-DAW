@@ -13,7 +13,7 @@ export class UsersService {
 
     getUser(id: number): Observable<User> {
         return this.http.get<UserResponse>(`${this.USERS_URL}/${id}`).pipe(
-            map((r) => r.restaurant),
+            map((r) => r.user),
             catchError((resp: HttpErrorResponse) =>
                 throwError(
                     () =>
@@ -26,7 +26,7 @@ export class UsersService {
     addUser(user: User): Observable<User> {
         return this.http
             .post<UserResponse>(this.USERS_URL, user)
-            .pipe(map((resp) => resp.restaurant));
+            .pipe(map((resp) => resp.user));
     }
 
     saveProfile(name: string, email: string): Observable<void> {

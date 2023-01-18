@@ -1,7 +1,7 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient} from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, map, Observable, ReplaySubject, throwError } from "rxjs";
-import { TokenResponse, UserResponse, UsersResponse } from "../interfaces/responses";
+import { Observable, ReplaySubject } from "rxjs";
+import { TokenResponse} from "../interfaces/responses";
 import { User, UserLogin } from "../interfaces/user";
 
 @Injectable({
@@ -38,29 +38,4 @@ export class UserService {
         localStorage.removeItem("token");
         location.assign("../index.html");
     }
-    // getRestaurants(): Observable<User[]> {
-    //     return this.http.get<UsersResponse>().pipe(
-    //         map((r) => r.users),
-    //         catchError((resp: HttpErrorResponse) =>
-    //             throwError(
-    //                 () =>
-    //                     `Error getting products. Status: ${resp.status}. Message: ${resp.message}`
-    //             )
-    //         )
-    //     );
-    // }
-    // getIdRestaurant(id: number): Observable<User> {
-    //     return this.http
-    //         .get<UserResponse>(`${this.RESTAURANTS_URL}/${id}`)
-    //         .pipe(map((r) => r.user));
-    // }
-    // addRestaurant(rest: User): Observable<User> {
-    //     return this.http
-    //         .post<UserResponse>(this.RESTAURANTS_URL, rest)
-    //         .pipe(map((rest) => rest.user));
-    // }
-
-    // deleteRestaurant(id: number): Observable<void> {
-    //     return this.http.delete<void>(`${this.RESTAURANTS_URL}/${id}`);
-    // }
 }

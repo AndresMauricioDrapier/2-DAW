@@ -2,7 +2,7 @@ import { AppComponent } from "./app/app.component";
 import { provideHttpClient, withInterceptors } from "@angular/common/http";
 import { bootstrapApplication } from "@angular/platform-browser";
 import { provideRouter } from "@angular/router";
-import { APP_ROUTES } from "./app/routes";
+import { APP_ROUTES } from "./app/users.routes";
 import { baseUrlInterceptor } from "./app/interceptors/base-url.interceptor";
 import { provideArcgisToken } from "./app/shared/maps/arcgis-maps.config";
 import { provideGoogleId } from "./app/auth/restaurant-login/google-login/google-login.config";
