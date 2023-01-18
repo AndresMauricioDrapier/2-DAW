@@ -117,7 +117,6 @@ implements OnInit, CanDeactivateComponent
         this.newUser.name = this.nameControl.value;
         this.newUser.email = this.emailControl.value;
         this.newUser.password = this.passwordControl.value;
-        this.newUser.avatar = this.imageControl.value;
 
         this.http.register(this.newUser).subscribe(() => {
             this.router.navigate(["/auth/login"]);
