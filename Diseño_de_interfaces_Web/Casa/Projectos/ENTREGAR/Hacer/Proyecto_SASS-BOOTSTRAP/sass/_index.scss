@@ -1,87 +1,21 @@
 #carousel {
-	.slides {
+	img{
 		margin-top: 10px;
 		width: 100%;
-		display: flex;
-		overflow-x: scroll;
-		scroll-behavior: smooth;
-
-		.slide-item {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: nowrap;
-			justify-content: space-between;
-			align-items: flex-end;
-			align-content: center;
-			color: $color_white;
-			font-size: 30px;
-			padding: 10px;
-
-			//Imagenes
-			background-position: center;
-			background-size: cover;
-			border-radius: 10px;
-			flex-shrink: 0;
-			height: 700px;
-			transition: transform 0.5s;
-			width: 100%;
-
-			.flex-item {
-				&:nth-child(1) {
-					display: block;
-					flex-grow: 0;
-					flex-shrink: 1;
-					flex-basis: auto;
-					align-self: auto;
-					order: 0;
-				}
-				&:nth-child(2) {
-					display: block;
-					flex-grow: 0;
-					flex-shrink: 1;
-					flex-basis: auto;
-					align-self: auto;
-					order: 0;
-				}
-			}
-
-			.buy-iconCarrousell {
-				color: $color_white;
-			}
-		}
-
-		#Diablo3 {
-			background-image: url("../img/juegos/Diablo-III-Carrousell.webp");
-		}
-		#HKS {
-			background-image: url("../img/juegos/HKS-Carrousell.jpg");
-		}
-		#SF {
-			background-image: url("../img/juegos/SF-Carrousell.jpg");
-		}
-		#NMS {
-			background-image: url("../img/juegos/NMS-Carrousell.webp");
-		}
-		&::-webkit-scrollbar {
-			display: none;
-		}
+		height: 800px;
 	}
-
-	.carouselBotones {
-		padding: 1.25rem 0.5rem;
-		text-align: center;
-		.slider-nav {
-			align-items: center;
-			background-color: #ddd;
-			border-radius: 50%;
-			color: $color_black;
-			display: inline-flex;
-			height: 1.5rem;
-			justify-content: center;
-			padding: 1rem;
-			position: relative;
+	.carousel-item{
+		h5{
+			text-align: right;
+			font-size: 1.5vw;
+		}
+		p{
+			font-size: 2vw;
+			text-align: start;
+		}
+		a{
 			text-decoration: none;
-			width: 1.5rem;
+			color: $color_white;
 		}
 	}
 }

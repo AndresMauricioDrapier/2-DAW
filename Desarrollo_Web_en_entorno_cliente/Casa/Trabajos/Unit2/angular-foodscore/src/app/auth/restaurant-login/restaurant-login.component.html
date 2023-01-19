@@ -1,4 +1,4 @@
-<form action="#" id="form-login" class="mt-4" method="POST" role="form" (ngSubmit)="goRestaurants()"
+<form action="#" id="form-login" class="mt-4" method="POST" role="form" (ngSubmit)="loggin()"
   [formGroup]="userForm">
   <legend>Welcome to FoodScore!</legend>
 
@@ -30,22 +30,9 @@
   <fa-icon [icon]="googleIcon"></fa-icon>
   Login with Google
 </button>
-
-<div>
-  <p>{{userInfo.email}}</p>
-  <p><img [src]="userInfo.image" alt=""></p>
-  <p>{{userInfo.token}}</p>
-</div>
-
-<hr>
-
+&nbsp;
 <button appFbLogin type="button" class="btn btn-primary" (loginOk)="loggedFacebook($event)"
   [scopes]="['email', 'public_profile']">
   <fa-icon [icon]="fbIcon"></fa-icon>
   Login with Facebook
 </button>
-
-<div>
-  <p>{{userInfo.token}}</p>
-  <p>{{userInfo.userId}}</p>
-</div>

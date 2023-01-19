@@ -7,6 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { Res } from '@nestjs/common/decorators';
 import { ContactoService } from './contacto.service';
 import { ContactoDto } from './dto/contacto-dto/contacto-dto';
 
@@ -14,15 +15,19 @@ import { ContactoDto } from './dto/contacto-dto/contacto-dto';
 export class ContactoController {
   constructor(private readonly contactoService: ContactoService) {}
   @Get()
-  async listar() {
-    return this.contactoService.listar();
+  async listar(@Res() res) {
+    const resultado = await this.contactoService.listar();
+    if (resultado)
+      return res.render('contactos_listado', { contacto: resultado });
   }
   // GET /contacto/buscar/:id
-  @Get('buscar/:id')
-  async buscarPorId(@Param('id') id: string) {
+  @Get('/:id')
+  async buscarPorId(@Res() res, @Param('id') id: string) {
     try {
       const resultado = await this.contactoService.listarId(id);
-      if (resultado) return { resultado: resultado };
+      if (resultado)
+        return res.render('contactos_ficha', { contacto: resultado });
+
       throw new Error();
     } catch (Error) {
       return { error: 'Error buscando al contacto' };

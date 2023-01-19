@@ -7,6 +7,10 @@
   width: 100%;
 }
 /* line 6, ../sass/_menu.scss */
+.navegacionNav a {
+  color: white;
+}
+/* line 12, ../sass/_menu.scss */
 .navegacionNav nav {
   position: relative;
   display: flex;
@@ -16,7 +20,7 @@
   align-items: center;
   z-index: 100;
 }
-/* line 15, ../sass/_menu.scss */
+/* line 21, ../sass/_menu.scss */
 .navegacionNav .search-iconNav {
   color: white;
   font-size: 18px;
@@ -25,7 +29,7 @@
   width: 70px;
   text-align: center;
 }
-/* line 23, ../sass/_menu.scss */
+/* line 29, ../sass/_menu.scss */
 .navegacionNav .buy-iconNav {
   color: white;
   font-size: 18px;
@@ -34,7 +38,7 @@
   width: 70px;
   text-align: center;
 }
-/* line 31, ../sass/_menu.scss */
+/* line 37, ../sass/_menu.scss */
 .navegacionNav .menu-icon {
   color: white;
   font-size: 18px;
@@ -44,16 +48,16 @@
   text-align: center;
   display: none;
 }
-/* line 45, ../sass/_menu.scss */
+/* line 51, ../sass/_menu.scss */
 .navegacionNav #show-search:checked ~ .search-iconNav i::before {
   content: "\f00d";
 }
-/* line 50, ../sass/_menu.scss */
+/* line 56, ../sass/_menu.scss */
 .navegacionNav #show-search:checked ~ .search-boxNav {
   opacity: 1;
   pointer-events: auto;
 }
-/* line 57, ../sass/_menu.scss */
+/* line 63, ../sass/_menu.scss */
 .navegacionNav .search-boxNav {
   position: absolute;
   height: 100%;
@@ -64,7 +68,7 @@
   transition: all 0.3s ease;
   right: 0%;
 }
-/* line 66, ../sass/_menu.scss */
+/* line 72, ../sass/_menu.scss */
 .navegacionNav .search-boxNav .search-inputNav {
   width: 100%;
   height: 100%;
@@ -73,13 +77,14 @@
   font-size: 17px;
   color: white;
   background: #171c24;
+  margin-right: 100px;
   padding: 0 100px 0 15px;
 }
-/* line 75, ../sass/_menu.scss */
+/* line 82, ../sass/_menu.scss */
 .navegacionNav .search-boxNav .search-inputNav::placeholder {
   color: white;
 }
-/* line 79, ../sass/_menu.scss */
+/* line 86, ../sass/_menu.scss */
 .navegacionNav .search-boxNav .go-iconNav {
   position: absolute;
   right: 10px;
@@ -94,38 +99,38 @@
   font-size: 20px;
   cursor: pointer;
 }
-/* line 94, ../sass/_menu.scss */
+/* line 101, ../sass/_menu.scss */
 .navegacionNav input[type="checkbox"] {
   display: none;
 }
-/* line 97, ../sass/_menu.scss */
+/* line 104, ../sass/_menu.scss */
 .navegacionNav img {
   width: 50px;
 }
 
-/* line 102, ../sass/_menu.scss */
+/* line 109, ../sass/_menu.scss */
 nav .contenidoNav {
   display: flex;
   align-items: center;
 }
-/* line 105, ../sass/_menu.scss */
+/* line 112, ../sass/_menu.scss */
 nav .contenidoNav .linksNav {
   margin-left: 80px;
   display: flex;
 }
 
-/* line 113, ../sass/_menu.scss */
+/* line 120, ../sass/_menu.scss */
 .contenidoNav .logoNav a {
   color: white;
   font-size: 30px;
   font-weight: 600;
 }
-/* line 120, ../sass/_menu.scss */
+/* line 127, ../sass/_menu.scss */
 .contenidoNav .linksNav li {
   list-style: none;
   line-height: 70px;
 }
-/* line 123, ../sass/_menu.scss */
+/* line 130, ../sass/_menu.scss */
 .contenidoNav .linksNav li a {
   color: white;
   font-size: 18px;
@@ -136,11 +141,11 @@ nav .contenidoNav .linksNav {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-/* line 130, ../sass/_menu.scss */
+/* line 137, ../sass/_menu.scss */
 .contenidoNav .linksNav li a:hover {
   background: #323c4e;
 }
-/* line 134, ../sass/_menu.scss */
+/* line 141, ../sass/_menu.scss */
 .contenidoNav .linksNav li label {
   color: white;
   font-size: 18px;
@@ -152,11 +157,11 @@ nav .contenidoNav .linksNav {
   transition: all 0.3s ease;
   display: none;
 }
-/* line 142, ../sass/_menu.scss */
+/* line 149, ../sass/_menu.scss */
 .contenidoNav .linksNav li label:hover {
   background: #323c4e;
 }
-/* line 147, ../sass/_menu.scss */
+/* line 154, ../sass/_menu.scss */
 .contenidoNav .linksNav li:hover > ul {
   top: 70px;
   opacity: 1;
@@ -165,7 +170,7 @@ nav .contenidoNav .linksNav {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-/* line 155, ../sass/_menu.scss */
+/* line 162, ../sass/_menu.scss */
 .contenidoNav .linksNav ul {
   position: absolute;
   background: #171c24;
@@ -174,29 +179,29 @@ nav .contenidoNav .linksNav {
   opacity: 0;
   visibility: hidden;
 }
-/* line 162, ../sass/_menu.scss */
+/* line 169, ../sass/_menu.scss */
 .contenidoNav .linksNav ul li {
   position: relative;
 }
-/* line 163, ../sass/_menu.scss */
+/* line 170, ../sass/_menu.scss */
 .contenidoNav .linksNav ul li a {
   display: block;
   width: 100%;
   line-height: 30px;
   border-radius: 0px;
 }
-/* line 171, ../sass/_menu.scss */
+/* line 178, ../sass/_menu.scss */
 .contenidoNav .linksNav ul li:hover ul {
   top: 0;
 }
-/* line 176, ../sass/_menu.scss */
+/* line 183, ../sass/_menu.scss */
 .contenidoNav .linksNav ul ul {
   position: absolute;
   top: 0;
   right: calc(-100% + 8px);
 }
 
-/* line 185, ../sass/_menu.scss */
+/* line 192, ../sass/_menu.scss */
 .logoNav {
   -moz-animation: rotacion 0.65s linear;
   -webkit-animation: rotacion 0.65s linear;
@@ -206,43 +211,43 @@ nav .contenidoNav .linksNav {
 }
 
 @media screen and (max-width: 1250px) {
-  /* line 193, ../sass/_menu.scss */
+  /* line 200, ../sass/_menu.scss */
   .navegacionNav nav {
     max-width: 100%;
     padding: 0 20px;
   }
-  /* line 197, ../sass/_menu.scss */
+  /* line 204, ../sass/_menu.scss */
   .navegacionNav .search-boxNav {
     max-width: 45%;
     width: 100%;
     right: 0%;
   }
-  /* line 201, ../sass/_menu.scss */
+  /* line 208, ../sass/_menu.scss */
   .navegacionNav .search-boxNav input {
     padding: 0 100px 0 15px;
   }
 
-  /* line 208, ../sass/_menu.scss */
+  /* line 215, ../sass/_menu.scss */
   nav .contenidoNav .linksNav {
     margin-left: 30px;
   }
 
-  /* line 216, ../sass/_menu.scss */
+  /* line 223, ../sass/_menu.scss */
   .contenidoNav .linksNav li a {
     padding: 8px 13px;
   }
 }
 @media screen and (max-width: 900px) {
-  /* line 226, ../sass/_menu.scss */
+  /* line 233, ../sass/_menu.scss */
   .navegacionNav .menu-icon {
     display: block;
   }
-  /* line 234, ../sass/_menu.scss */
+  /* line 241, ../sass/_menu.scss */
   .navegacionNav #show-menu:checked ~ .menu-icon i::before {
     content: "\f00d";
   }
 
-  /* line 245, ../sass/_menu.scss */
+  /* line 252, ../sass/_menu.scss */
   nav .contenidoNav .linksNav {
     display: block;
     position: fixed;
@@ -257,16 +262,16 @@ nav .contenidoNav .linksNav {
     padding-bottom: 100px;
     transition: all 0.3s ease;
   }
-  /* line 264, ../sass/_menu.scss */
+  /* line 271, ../sass/_menu.scss */
   nav #show-menu:checked ~ .contenidoNav .linksNav {
     left: 0%;
   }
 
-  /* line 274, ../sass/_menu.scss */
+  /* line 281, ../sass/_menu.scss */
   .contenidoNav .linksNav li {
     margin: 15px 20px;
   }
-  /* line 276, ../sass/_menu.scss */
+  /* line 283, ../sass/_menu.scss */
   .contenidoNav .linksNav li a {
     line-height: 40px;
     font-size: 20px;
@@ -274,7 +279,7 @@ nav .contenidoNav .linksNav {
     padding: 8px 18px;
     cursor: pointer;
   }
-  /* line 283, ../sass/_menu.scss */
+  /* line 290, ../sass/_menu.scss */
   .contenidoNav .linksNav li label {
     line-height: 40px;
     font-size: 20px;
@@ -282,11 +287,11 @@ nav .contenidoNav .linksNav {
     padding: 8px 18px;
     cursor: pointer;
   }
-  /* line 290, ../sass/_menu.scss */
+  /* line 297, ../sass/_menu.scss */
   .contenidoNav .linksNav li a.desktop-link {
     display: none;
   }
-  /* line 294, ../sass/_menu.scss */
+  /* line 301, ../sass/_menu.scss */
   .contenidoNav .linksNav ul {
     position: static;
     opacity: 1;
@@ -295,7 +300,7 @@ nav .contenidoNav .linksNav {
     max-height: 0px;
     overflow: hidden;
   }
-  /* line 301, ../sass/_menu.scss */
+  /* line 308, ../sass/_menu.scss */
   .contenidoNav .linksNav ul ul {
     position: static;
     opacity: 1;
@@ -304,51 +309,51 @@ nav .contenidoNav .linksNav {
     max-height: 0px;
     overflow: hidden;
   }
-  /* line 309, ../sass/_menu.scss */
+  /* line 316, ../sass/_menu.scss */
   .contenidoNav .linksNav ul li {
     margin: 7px 20px;
   }
-  /* line 311, ../sass/_menu.scss */
+  /* line 318, ../sass/_menu.scss */
   .contenidoNav .linksNav ul li a {
     font-size: 18px;
     line-height: 30px;
     border-radius: 5px;
   }
-  /* line 321, ../sass/_menu.scss */
+  /* line 328, ../sass/_menu.scss */
   .contenidoNav .linksNav #enseñar-categorias:checked ~ ul {
     max-height: 100vh;
   }
-  /* line 330, ../sass/_menu.scss */
+  /* line 337, ../sass/_menu.scss */
   .contenidoNav .linksNav #enseñar-comunidad:checked ~ ul {
     max-height: 100vh;
   }
-  /* line 339, ../sass/_menu.scss */
+  /* line 346, ../sass/_menu.scss */
   .contenidoNav .linksNav #enseñar-soporte:checked ~ ul {
     max-height: 100vh;
   }
-  /* line 348, ../sass/_menu.scss */
+  /* line 355, ../sass/_menu.scss */
   .contenidoNav .linksNav #enseñar-sesion:checked ~ ul {
     max-height: 100vh;
   }
 }
 @media screen and (max-width: 400px) {
-  /* line 359, ../sass/_menu.scss */
+  /* line 366, ../sass/_menu.scss */
   .navegacionNav nav {
     padding: 0 10px;
   }
-  /* line 362, ../sass/_menu.scss */
+  /* line 369, ../sass/_menu.scss */
   .navegacionNav .search-boxNav {
     max-width: 45%;
     width: 100%;
     right: 0%;
   }
-  /* line 366, ../sass/_menu.scss */
+  /* line 373, ../sass/_menu.scss */
   .navegacionNav .search-boxNav .go-iconNav {
     width: 30px;
     right: 0;
   }
 
-  /* line 374, ../sass/_menu.scss */
+  /* line 381, ../sass/_menu.scss */
   .contenidoNav .logoNav a {
     font-size: 27px;
   }
@@ -413,100 +418,33 @@ nav .contenidoNav .linksNav {
   }
 }
 /* line 2, ../sass/_index.scss */
-#carousel .slides {
+#carousel img {
   margin-top: 10px;
   width: 100%;
-  display: flex;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
+  height: 800px;
 }
-/* line 9, ../sass/_index.scss */
-#carousel .slides .slide-item {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: flex-end;
-  align-content: center;
-  color: white;
-  font-size: 30px;
-  padding: 10px;
-  background-position: center;
-  background-size: cover;
-  border-radius: 10px;
-  flex-shrink: 0;
-  height: 700px;
-  transition: transform 0.5s;
-  width: 100%;
+/* line 8, ../sass/_index.scss */
+#carousel .carousel-item h5 {
+  text-align: right;
+  font-size: 1.5vw;
 }
-/* line 30, ../sass/_index.scss */
-#carousel .slides .slide-item .flex-item:nth-child(1) {
-  display: block;
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  align-self: auto;
-  order: 0;
+/* line 12, ../sass/_index.scss */
+#carousel .carousel-item p {
+  font-size: 2vw;
+  text-align: start;
 }
-/* line 38, ../sass/_index.scss */
-#carousel .slides .slide-item .flex-item:nth-child(2) {
-  display: block;
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  align-self: auto;
-  order: 0;
-}
-/* line 48, ../sass/_index.scss */
-#carousel .slides .slide-item .buy-iconCarrousell {
-  color: white;
-}
-/* line 53, ../sass/_index.scss */
-#carousel .slides #Diablo3 {
-  background-image: url("../img/juegos/Diablo-III-Carrousell.webp");
-}
-/* line 56, ../sass/_index.scss */
-#carousel .slides #HKS {
-  background-image: url("../img/juegos/HKS-Carrousell.jpg");
-}
-/* line 59, ../sass/_index.scss */
-#carousel .slides #SF {
-  background-image: url("../img/juegos/SF-Carrousell.jpg");
-}
-/* line 62, ../sass/_index.scss */
-#carousel .slides #NMS {
-  background-image: url("../img/juegos/NMS-Carrousell.webp");
-}
-/* line 65, ../sass/_index.scss */
-#carousel .slides::-webkit-scrollbar {
-  display: none;
-}
-/* line 70, ../sass/_index.scss */
-#carousel .carouselBotones {
-  padding: 1.25rem 0.5rem;
-  text-align: center;
-}
-/* line 73, ../sass/_index.scss */
-#carousel .carouselBotones .slider-nav {
-  align-items: center;
-  background-color: #ddd;
-  border-radius: 50%;
-  color: black;
-  display: inline-flex;
-  height: 1.5rem;
-  justify-content: center;
-  padding: 1rem;
-  position: relative;
+/* line 16, ../sass/_index.scss */
+#carousel .carousel-item a {
   text-decoration: none;
-  width: 1.5rem;
+  color: white;
 }
 
-/* line 89, ../sass/_index.scss */
+/* line 23, ../sass/_index.scss */
 .novedades {
   margin-left: 10px;
 }
 
-/* line 93, ../sass/_index.scss */
+/* line 27, ../sass/_index.scss */
 .juegosSacadosIndex {
   display: flex;
   flex-wrap: wrap;
@@ -517,14 +455,14 @@ nav .contenidoNav .linksNav {
   height: auto;
   flex-direction: row;
 }
-/* line 102, ../sass/_index.scss */
+/* line 36, ../sass/_index.scss */
 .juegosSacadosIndex .juegosIndex {
   width: 300px;
   height: 192px;
   margin: 46px;
   border: 1px solid black;
 }
-/* line 107, ../sass/_index.scss */
+/* line 41, ../sass/_index.scss */
 .juegosSacadosIndex .juegosIndex .precioIndex {
   margin-left: 200px;
   border-radius: 5px;
@@ -532,7 +470,7 @@ nav .contenidoNav .linksNav {
   color: white;
   padding: 5px;
 }
-/* line 114, ../sass/_index.scss */
+/* line 48, ../sass/_index.scss */
 .juegosSacadosIndex .juegosIndex .precio2Index {
   margin-left: 175px;
   border-radius: 5px;
@@ -540,28 +478,28 @@ nav .contenidoNav .linksNav {
   color: white;
   padding: 5px;
 }
-/* line 122, ../sass/_index.scss */
+/* line 56, ../sass/_index.scss */
 .juegosSacadosIndex .juegosIndex:hover img {
   -moz-animation: aparecer 0.5s linear;
   -webkit-animation: aparecer 0.5s linear;
   animation: aparecer 0.5s linear;
 }
-/* line 128, ../sass/_index.scss */
+/* line 62, ../sass/_index.scss */
 .juegosSacadosIndex div img {
   width: 300px;
   height: 150px;
 }
-/* line 133, ../sass/_index.scss */
+/* line 67, ../sass/_index.scss */
 .juegosSacadosIndex .iconoIndex {
   padding-left: 2%;
 }
 
-/* line 137, ../sass/_index.scss */
+/* line 71, ../sass/_index.scss */
 .proximamenteLabel {
   margin-left: 10px;
 }
 
-/* line 140, ../sass/_index.scss */
+/* line 74, ../sass/_index.scss */
 .proximamente {
   display: flex;
   flex-wrap: wrap;
@@ -572,14 +510,14 @@ nav .contenidoNav .linksNav {
   height: auto;
   flex-direction: row;
 }
-/* line 149, ../sass/_index.scss */
+/* line 83, ../sass/_index.scss */
 .proximamente .juegoProximamente {
   width: 300px;
   height: 192px;
   margin: 46px;
   border: 1px solid black;
 }
-/* line 154, ../sass/_index.scss */
+/* line 88, ../sass/_index.scss */
 .proximamente .juegoProximamente .proximoJuego {
   margin-left: 140px;
   border-radius: 5px;
@@ -587,7 +525,7 @@ nav .contenidoNav .linksNav {
   color: white;
   padding: 5px;
 }
-/* line 161, ../sass/_index.scss */
+/* line 95, ../sass/_index.scss */
 .proximamente .juegoProximamente .proximoJuego2 {
   margin-left: 120px;
   border-radius: 5px;
@@ -595,27 +533,27 @@ nav .contenidoNav .linksNav {
   color: white;
   padding: 5px;
 }
-/* line 169, ../sass/_index.scss */
+/* line 103, ../sass/_index.scss */
 .proximamente .juegoProximamente:hover img {
   -webkit-animation: aparecer 0.5s linear;
   animation: aparecer 0.5s linear;
 }
-/* line 176, ../sass/_index.scss */
+/* line 110, ../sass/_index.scss */
 .proximamente div img {
   width: 300px;
   height: 150px;
 }
-/* line 181, ../sass/_index.scss */
+/* line 115, ../sass/_index.scss */
 .proximamente .iconoIndex {
   padding-left: 2%;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 187, ../sass/_index.scss */
+  /* line 121, ../sass/_index.scss */
   .contenidoIndex {
     background-color: gray;
   }
-  /* line 189, ../sass/_index.scss */
+  /* line 123, ../sass/_index.scss */
   .contenidoIndex #carousel {
     display: none;
   }

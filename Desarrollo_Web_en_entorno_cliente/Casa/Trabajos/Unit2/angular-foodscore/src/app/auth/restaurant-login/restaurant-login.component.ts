@@ -14,6 +14,8 @@ import { GoogleLoginDirective } from "./google-login/google-login.directive";
 import { FbLoginDirective } from "./facebook-login/fb-login.directive";
 import { UserService } from "../services/user.service";
 import { UserLogin } from "../interfaces/user";
+import { TokenResponse } from "../interfaces/responses";
+import Swal from "sweetalert2";
 
 @Component({
     selector: "fs-restaurant-login",
@@ -39,7 +41,6 @@ export class RestaurantLoginComponent implements OnInit {
     userInfo: UserLogin = {
         email: "",
         password: "",
-        image: "",
         lat: 0,
         lng: 0,
         token: "",
@@ -83,8 +84,6 @@ export class RestaurantLoginComponent implements OnInit {
         };
     }
 
-
-
     loggedGoogle(user: gapi.auth2.GoogleUser): void {
         // Send this token to your server for register / login
         this.userInfo.token = user.getAuthResponse().id_token;
@@ -98,8 +97,25 @@ export class RestaurantLoginComponent implements OnInit {
         this.userInfo.userId = resp.authResponse.userID;
     }
 
-    goRestaurants(): void {
-        this.router.navigate(["/restaurants"]);
+    loggin(): void {
+        this.userInfo.email = this.userForm.controls["email"].value;
+        this.userInfo.password = this.userForm.controls["password"].value;
+        this.http.login(this.userInfo).subscribe({
+            next: (user: void | TokenResponse) => {
+                this.http.putToken(user?.accessToken);
+                this.http.loginChange$.next(true);
+                this.router.navigate(["/restaurants"]);
+
+            },
+            error: (error) => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error.error.message
+                });
+            },
+        });
+        // this.router.navigate(["/restaurants"]);
     }
     goRegister(): void {
         this.router.navigate(["/auth/register"]);

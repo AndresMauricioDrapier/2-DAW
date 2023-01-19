@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CanDeactivateComponent } from "src/app/guards/leavePageGuard.guard";
-import { Router, UrlTree } from "@angular/router";
+import { Router, RouterModule, UrlTree } from "@angular/router";
 import { Observable } from "rxjs";
 import {
     FormControl,
@@ -29,6 +29,7 @@ import { UserService } from "../services/user.service";
         ArcgisMapComponent,
         ArcgisMarkerDirective,
         ArcgisSearchDirective,
+        RouterModule
     ],
     templateUrl: "./restaurant-register.component.html",
     styleUrls: ["./restaurant-register.component.css"],

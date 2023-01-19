@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnChanges } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { UserService } from "src/app/auth/services/user.service";
@@ -10,7 +10,18 @@ import { UserService } from "src/app/auth/services/user.service";
     templateUrl: "./menu.component.html",
     styleUrls: ["./menu.component.css"],
 })
-export class MenuComponent {
+export class MenuComponent implements OnChanges {
+    logged?: boolean;
     constructor(private readonly http: UserService) {}
-    logged = this.http.logged;
+
+    ngOnChanges(): void {
+        this.http.loginChange$.subscribe((data) => {
+            console.log(data);
+
+        });
+    }
+
+    logout(): void {
+        this.http.logout();
+    }
 }
