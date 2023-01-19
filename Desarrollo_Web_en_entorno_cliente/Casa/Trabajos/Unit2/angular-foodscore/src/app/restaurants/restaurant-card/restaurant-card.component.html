@@ -1,28 +1,33 @@
 <div class="card h-100 shadow">
-  <a [routerLink]="['/restaurants', restaurant.id]">
-    <img class="card-img-top" src="{{restaurant.image}}">
-  </a>
-
+  <a [routerLink]="['/restaurants/',restaurant.id]"><img class="card-img-top" src="{{restaurant.image}}" /></a>
   <div class="card-body">
-    <button class="btn btn-danger btn-sm float-end" (click)="deleteRestaurant()">Delete</button>
-    <h4 class="card-title">{{restaurant.name}}</h4>
+    <button *ngIf="restaurant.mine" (click)="deleteRestaurant()" class="btn btn-danger btn-sm float-end">Delete</button>
+    <h4 class="card-title"><a href="restaurant-detail.html?id={{restaurant.id}}">{{restaurant.name}}</a></h4>
     <p class="card-text">{{restaurant.description}}</p>
     <div class="card-text">
       <small class="text-muted">
-        <strong>Opens: <span *ngFor="let day of restaurant.daysOpen">{{day}} </span></strong>
+        <strong>Opens: </strong>{{restaurant.daysOpen}}
       </small>
-
-
-      <span class="badge ms-2 bg-success" *ngIf="openOrClosed(restaurant.daysOpen); else elseBlock">Open</span>
-      <ng-template #elseBlock><span class="badge ms-2 bg-danger">Closed</span></ng-template>
+      <span *ngIf="openOrClosed(restaurant.daysOpen);else isClosed" class="badge ms-2 bg-success">Open</span>
+      <ng-template #isClosed><span class="badge ms-2 bg-danger">Closed</span></ng-template>
     </div>
     <div class="card-text">
       <small class="text-muted">
         <strong>Phone: </strong>{{restaurant.phone}}
       </small>
     </div>
+    <div class="card-text">
+      <small class="text-muted">
+        <span *ngFor="let a of fullStars">★</span>
+        <span *ngFor="let star of emptyStars">☆</span>
+        ({{restaurant.stars}})
+      </small>
+    </div>
   </div>
   <div class="card-footer">
     <small class="text-muted">{{restaurant.cuisine}}</small>
+    <small class="text-muted float-end">
+      {{restaurant.distance}} km
+    </small>
   </div>
 </div>

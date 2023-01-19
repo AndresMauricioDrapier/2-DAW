@@ -3,186 +3,67 @@ import { CommonModule } from "@angular/common";
 import { Restaurant } from "../interfaces/restaurant";
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import { RestaurantCardComponent } from "../restaurant-card/restaurant-card.component";
+import { ArcgisMapComponent } from "src/app/shared/maps/arcgis-map/arcgis-map.component";
+import { ArcgisMarkerDirective } from "src/app/shared/maps/arcgis-marker/arcgis-marker.directive";
+import { ArcgisSearchDirective } from "src/app/shared/maps/arcgis-search/arcgis-search.directive";
+import { RestaurantService } from "../services/restaurant.service";
+import { Commentary } from "../interfaces/comment";
+import { ReactiveFormsModule } from "@angular/forms";
+import { StarRatingComponent } from "src/app/shared/star-rating/star-rating.component";
 
 @Component({
     selector: "fs-restaurant-details",
     standalone: true,
-    imports: [CommonModule, RouterModule, RestaurantCardComponent],
+    imports: [
+        CommonModule,
+        RouterModule,
+        RestaurantCardComponent,
+        ArcgisMapComponent,
+        ArcgisMarkerDirective,
+        ArcgisSearchDirective,
+        ReactiveFormsModule,
+        StarRatingComponent,
+    ],
     templateUrl: "./restaurant-details.component.html",
     styleUrls: ["./restaurant-details.component.css"],
 })
 export class RestaurantDetailsComponent implements OnInit {
     restaurant!: Restaurant;
+    comments!: Commentary[];
+    newComment: Commentary = {
+        stars: 0,
+        text: "",
+    };
 
-    constructor(private router: Router, private route: ActivatedRoute) {}
+    constructor(
+        private router: Router,
+        private route: ActivatedRoute,
+        private readonly http: RestaurantService
+    ) {}
 
     ngOnInit(): void {
         this.route.data.subscribe((data) => {
             this.restaurant = data["restaurant"];
         });
+        this.http.getComments(this.restaurant.id!).subscribe((comment) => {
+            this.comments = comment.comments;
+        });
     }
+
     goBack(): void {
         this.router.navigate(["/restaurants"]);
     }
 
-    //     function getId(): number {
+    delete(): void {
+        this.router.navigate(["/restaurants"]);
+    }
+    submitComment(): void {
+        this.http.addComment(this.restaurant.id!, this.newComment);
+    }
 
-    //     const split = window.location.href.split("?");
-
-    //     if (!split[1].includes("id=")) {
-    //         location.assign("../index.html");
-    //     }
-    //     return +split[1].split("=")[1];
-
-    // }
-
-    // let idRestaurant:number;
-
-    // restaurant.get(getId()).then((e) => {
-    //     showRestaurants(e.restaurant);
-    //     coordinates.latitude = e.restaurant.lat;
-    //     coordinates.longitude = e.restaurant.lng;
-    //     showMap();
-    //     userCreator(e.restaurant.creator);
-    //     idRestaurant = e.restaurant.id;
-    //     restaurant.getComments(e.restaurant.id).then((comments) => {
-    //         comments.comments.forEach(comment => {
-    //             userComment(comment);
-    //         });
-
-    //     });
-    //     if(e.restaurant.mine)
-    //     {
-    //         commentDescription.classList.add("d-none");
-    //     }
-
-    // }).catch((e) => {
-    //     swal("Error loading restaurant", e, "error").then(() => {
-    //         console.log(e);
-    //         // location.assign("../index.html");
-    //     });
-
-    // });
-
-    // function showRestaurants(element: Restaurant): void {
-    //     const placesContainer = document.getElementById("cardContainer");
-
-    //     const divCol = document.createElement("div");
-    //     const openOrClose = openClosedHBS(element.daysOpen);
-
-    //     const producHTML = RESTAURANT({
-    //         id: element.id,
-    //         name: element.name,
-    //         description: element.description,
-    //         days: days(element.daysOpen),
-    //         phone: element.phone,
-    //         image: element.image,
-    //         cuisine: element.cuisine,
-    //         stars: Math.round(element.stars),
-    //         distance: element.distance.toFixed(2),
-    //         mine: element.mine,
-    //         open: (openOrClose === "Open" ? true : false),
-    //         fullStars: Array(element.stars).fill(""),
-    //         emptyStars: Array(5 - element.stars).fill("")
-
-    //     });
-
-    //     divCol.classList.add("col");
-    //     divCol.innerHTML = producHTML;
-
-    //     if (element.mine) {
-    //         const button = divCol.querySelector("button");
-    //         button.addEventListener("click", () => deleteRestaurant(element, divCol));
-    //     }
-    //     clickStars();
-    //     placesContainer.append(divCol);
-
-    // }
-
-    // async function deleteRestaurant(element: Restaurant, divCol: HTMLElement): Promise<void> {
-    //     if (confirm("Sure deleting this restaurant?")) {
-    //         const response = await restaurant.delete(element.id);
-    //         divCol.remove();
-    //         location.assign("../index.html");
-    //         return response;
-    //     }
-    // }
-
-    // async function showMap(): Promise<void> {
-    //     const mapService = MapService.createMapService(coordinates, "map");
-    //     mapService.createMarker(coordinates, "purple");
-    // }
-
-    // function userCreator(user: User): void {
-    //     const creatorImg = document.getElementById("creatorImg") as HTMLImageElement;
-    //     const creatorName = document.getElementById("creatorName") as HTMLInputElement;
-    //     const creatorEmail = document.getElementById("creatorEmail") as HTMLInputElement;
-    //     creatorImg.src = user.avatar;
-    //     creatorName.append(user.name);
-    //     creatorEmail.append(user.email);
-    //     eventUser(user.id);
-
-    // }
-
-    // function eventUser(id: number): void {
-    //     const cardBody = document.getElementsByClassName("card-body");
-    //     cardBody[1].addEventListener("click", () => {
-    //         console.log(id);
-    //         //location.assign("../profile.html?id=" + id);
-    //     });
-    // }
-
-    // function userComment(comment: Comment): void {
-    //     const comments = document.getElementById("comments");
-    //     const li = document.createElement("li");
-    //     li.classList.add("list-group-item", "d-flex", "flex-row");
-
-    //     const commentUser = COMMENT({
-    //         id: comment.user.id,
-    //         avatar: comment.user.avatar,
-    //         name: comment.user.name,
-    //         text:comment.text,
-    //         fullStars: Array(comment.stars).fill(""),
-    //         emptyStars: Array(5 - comment.stars).fill(""),
-    //         date:comment.date
-
-    //     });
-    //     li.innerHTML = commentUser;
-    //     comments.append(li);
-    // }
-
-    // function clickStars(): void {
-    //     const stars = document.getElementById("stars").children;
-
-    //     for (let i = 0; i < stars.length; i++) {
-    //         stars[i].addEventListener("click", () => {
-    //             const numberStars = +(stars[i] as HTMLElement).dataset.score;
-    //             for (let a = 1; a <= numberStars; a++) {
-    //                 (stars[a - 1] as HTMLElement).textContent = "★";
-    //             }
-    //             for (let a = numberStars + 1; a <= 5; a++) {
-    //                 (stars[a - 1] as HTMLElement).textContent = "☆";
-    //             }
-    //         });
-    //     }
-    // }
-
-    // document.addEventListener("submit",(e)=>{
-    //     e.preventDefault();
-    //     const stars = document.getElementById("stars").children;
-
-    //     let numStars:number;
-    //     for (let i = 1; i <= stars.length; i++) {
-    //         if((stars[i - 1] as HTMLElement).textContent === "★"){
-    //             numStars = +(stars[i - 1] as HTMLElement).dataset.score;
-    //         }
-    //     }
-
-    //     restaurant.addComment(idRestaurant,{
-    //         "stars":numStars,
-    //         "text":commentDescription.comment.value
-    //     }).then(()=>{
-    //         commentDescription.classList.add("d-none");
-    //     });
-    // });
+    setRating(newRating: number): void {
+        const oldRating = this.newComment.stars;
+        this.newComment.stars = newRating;
+        console.log(oldRating);
+    }
 }
