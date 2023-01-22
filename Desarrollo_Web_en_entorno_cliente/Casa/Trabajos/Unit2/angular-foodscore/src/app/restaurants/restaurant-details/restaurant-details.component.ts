@@ -22,7 +22,7 @@ import { StarRatingComponent } from "src/app/shared/star-rating/star-rating.comp
         ArcgisMarkerDirective,
         ArcgisSearchDirective,
         ReactiveFormsModule,
-        StarRatingComponent,
+        StarRatingComponent
     ],
     templateUrl: "./restaurant-details.component.html",
     styleUrls: ["./restaurant-details.component.css"],
@@ -34,6 +34,8 @@ export class RestaurantDetailsComponent implements OnInit {
         stars: 0,
         text: "",
     };
+    fullStars!: string[];
+    emptyStars!: string[];
 
     constructor(
         private router: Router,
@@ -48,6 +50,10 @@ export class RestaurantDetailsComponent implements OnInit {
         this.http.getComments(this.restaurant.id!).subscribe((comment) => {
             this.comments = comment.comments;
         });
+        this.fullStars = Array(Math.round(this.restaurant.stars!)).fill("");
+        this.emptyStars = Array(5 - Math.round(this.restaurant.stars!)).fill(
+            ""
+        );
     }
 
     goBack(): void {

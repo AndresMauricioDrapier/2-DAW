@@ -3,10 +3,15 @@
     <div id="cardContainer" class="col">
       <fs-restaurant-card [restaurant]="restaurant" (deleted)="delete()"></fs-restaurant-card>
     </div>
+    <div class="card mt-4" *ngIf="restaurant.mine">
+      <button class="btn btn-primary btn-sm float-end" [routerLink]="['/restaurant', restaurant.id, 'edit']">
+        Edit
+      </button>
+    </div>
   </div>
 
   <div class="card mt-4">
-    <div class="card-header bg-success text-white" id="address">Restaurant's address</div>
+    <div class="card-header bg-success text-white" id="address">{{restaurant.address}}</div>
     <div id="map">
       <arcgis-map [coords]="[restaurant.lng,restaurant.lat]">
         <arcgis-marker [coords]="[restaurant.lng,restaurant.lat]" color="red"></arcgis-marker>
@@ -32,7 +37,7 @@
     <li class="list-group-item active">Restaurant comments</li>
     <li *ngFor="let comment of comments " class="list-group-item d-flex flex-row">
       <div>
-        <a [routerLink]="['/user',restaurant.creator?.id]">
+        <a [routerLink]="['/user',comment.user?.id]">
           <img class="rounded-circle me-3" style="width: 40px;" src="{{comment.user!.avatar}}" alt="">
         </a>
       </div>
@@ -44,8 +49,9 @@
           {{comment.text}}
         </div>
         <div>
-          <span >★</span>
-          <span>☆</span>
+          <span *ngFor="let a of fullStars">★</span>
+          <span *ngFor="let star of emptyStars">☆</span>
+          <fs-star-rating [rating]="0"></fs-star-rating>
         </div>
         <div>
           <small>{{comment.date}}</small>
@@ -59,10 +65,7 @@
     <div class="form-group">
       <textarea class="form-control" name="comment" placeholder="Write an opinion"></textarea>
     </div>
-    <fs-star-rating
-        [rating]="0"
-        (changed)="setRating($event)"
-      ></fs-star-rating>
+    <fs-star-rating [rating]="0"></fs-star-rating>
     <button type="submit" class="btn btn-primary mt-3">Send</button>
   </form>
 

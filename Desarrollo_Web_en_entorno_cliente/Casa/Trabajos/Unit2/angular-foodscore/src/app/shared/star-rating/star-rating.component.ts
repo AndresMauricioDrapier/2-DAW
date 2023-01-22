@@ -29,7 +29,7 @@ export class StarRatingComponent implements OnInit, OnChanges {
         this.auxRating = this.rating;
     }
 
-    setRating(newRating: number) {
+    setRating(newRating: number): void {
         this.changed.emit(newRating);
     }
 }

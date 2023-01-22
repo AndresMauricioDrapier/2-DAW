@@ -127,7 +127,6 @@ implements OnInit, CanDeactivateComponent
     searchResult(result: SearchResult): void {
         this.newUser.lat = result.latitude;
         this.newUser.lng = result.longitude;
-        console.log("nuevo");
     }
     validClasses(
         ngModel: FormControl,

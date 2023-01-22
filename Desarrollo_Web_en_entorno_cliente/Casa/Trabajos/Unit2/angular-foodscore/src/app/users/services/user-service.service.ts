@@ -11,16 +11,28 @@ export class UsersService {
     private readonly USERS_URL = "users";
     constructor(private readonly http: HttpClient) {}
 
-    getUser(id: number): Observable<User> {
-        return this.http.get<UserResponse>(`${this.USERS_URL}/${id}`).pipe(
-            map((r) => r.user),
-            catchError((resp: HttpErrorResponse) =>
-                throwError(
-                    () =>
-                        `Error getting user. Status: ${resp.status}. Message: ${resp.message}`
+    getUser(id?: number): Observable<User> {
+        if (id) {
+            return this.http.get<UserResponse>(`${this.USERS_URL}/${id}`).pipe(
+                map((r) => r.user),
+                catchError((resp: HttpErrorResponse) =>
+                    throwError(
+                        () =>
+                            `Error getting user. Status: ${resp.status}. Message: ${resp.message}`
+                    )
                 )
-            )
-        );
+            );
+        } else {
+            return this.http.get<UserResponse>(`${this.USERS_URL}/me`).pipe(
+                map((r) => r.user),
+                catchError((resp: HttpErrorResponse) =>
+                    throwError(
+                        () =>
+                            `Error getting user. Status: ${resp.status}. Message: ${resp.message}`
+                    )
+                )
+            );
+        }
     }
 
     addUser(user: User): Observable<User> {

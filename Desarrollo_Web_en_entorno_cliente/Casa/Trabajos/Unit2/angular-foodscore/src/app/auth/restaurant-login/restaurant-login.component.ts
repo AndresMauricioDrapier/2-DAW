@@ -101,9 +101,7 @@ export class RestaurantLoginComponent implements OnInit {
         this.userInfo.email = this.userForm.controls["email"].value;
         this.userInfo.password = this.userForm.controls["password"].value;
         this.http.login(this.userInfo).subscribe({
-            next: (user: void | TokenResponse) => {
-                this.http.putToken(user?.accessToken);
-                this.http.loginChange$.next(true);
+            next: () => {
                 this.router.navigate(["/restaurants"]);
 
             },

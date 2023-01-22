@@ -81,9 +81,8 @@
 
   <img src="" alt="" id="imgPreview" class="img-thumbnail d-none" />
   <p class="text-danger" id="errorInfo"></p>
-  <a class="btn btn-secondary" href="login.html" role="button">Go back</a>
-  <button type="submit" [routerLink]="['/auth/login']" routerLinkActive="router-link-active"  class="btn btn-primary">Have an account?</button>
-
+  <button [routerLink]="['/auth/login']" routerLinkActive="router-link-active"  class="btn btn-secondary">Have an account?</button>
+  <button type="submit" class="btn btn-primary">Login</button>
 </form>
 <hr>
 <arcgis-map [coords]="[newUser.lng, newUser.lat]">

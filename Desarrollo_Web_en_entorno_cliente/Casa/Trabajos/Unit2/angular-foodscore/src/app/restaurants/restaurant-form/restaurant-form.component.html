@@ -3,14 +3,8 @@
 
     <label for="name">Name</label>
 
-    <input
-      type="text"
-      class="form-control"
-      name="name"
-      placeholder="Enter name"
-      pattern="[a-zA-Z ]+"
-      formControlName="name"
-      [ngClass]="validClasses(nameControl)">
+    <input type="text" class="form-control" name="name" placeholder="Enter name" pattern="[a-zA-Z ]+"
+      formControlName="name" [ngClass]="validClasses(nameControl)">
 
     <div class="invalid-feedback" *ngIf="nameControl.errors?.['required']">
       Name is required
@@ -26,14 +20,8 @@
 
     <label for="description">Description</label>
 
-    <textarea
-      class="form-control"
-      name="description"
-      rows="3"
-      placeholder="Description"
-      formControlName="description"
-      [ngClass]="validClasses(descriptionControl)"
-      >
+    <textarea class="form-control" name="description" rows="3" placeholder="Description" formControlName="description"
+      [ngClass]="validClasses(descriptionControl)">
     </textarea>
 
     <div class="invalid-feedback" *ngIf="descriptionControl.errors?.['required']">
@@ -46,14 +34,8 @@
 
     <label for="cuisine">Cuisine</label>
 
-    <input
-      type="text"
-      class="form-control"
-      name="cuisine"
-      placeholder="Cuisine"
-      [ngClass]="validClasses(cuisineControl)"
-      formControlName="cuisine"
-    >
+    <input type="text" class="form-control" name="cuisine" placeholder="Cuisine"
+      [ngClass]="validClasses(cuisineControl)" formControlName="cuisine">
 
     <div class="invalid-feedback" *ngIf="cuisineControl.errors?.['required']">
       Cuisine is required
@@ -66,13 +48,9 @@
 
   <div class="mb-3">
 
-    <div class="form-check form-check-inline" *ngFor="let day of daysOpenArray.controls; let i = index" formArrayName="checkDay">
-      <input
-        type="checkbox"
-        class="custom-control-input"
-        [formControlName]="i"
-        [ngClass]="validClasses(daysOpenArray)"
-        >
+    <div class="form-check form-check-inline" *ngFor="let day of daysOpenArray.controls; let i = index"
+      formArrayName="checkDay">
+      <input type="checkbox" class="custom-control-input" [formControlName]="i" [ngClass]="validClasses(daysOpenArray)">
       <label class="custom-control-label ms-2">{{daysOpen[i]}}</label>
     </div>
     <div class="text-danger" *ngIf="daysOpenArray.errors">
@@ -83,14 +61,8 @@
 
     <label for="phone">Phone number</label>
 
-    <input
-      type="text"
-      class="form-control"
-      name="phone"
-      placeholder="Phone number"
-      formControlName="phone"
-      [ngClass]="validClasses(phoneControl)"
-    >
+    <input type="text" class="form-control" name="phone" placeholder="Phone number" formControlName="phone"
+      [ngClass]="validClasses(phoneControl)">
 
     <div class="invalid-feedback" *ngIf="phoneControl.errors?.['required']">
       Phone is required
@@ -106,15 +78,8 @@
 
     <label for="image">Image</label>
 
-    <input
-      type="file"
-      class="form-control"
-      accept="image/*"
-      (change)="changeImage($event)"
-      name="fileName"
-      formControlName="image"
-      [ngClass]="validClasses(imageControl)"
-      />
+    <input type="file" class="form-control" accept="image/*" (change)="changeImage($event)" name="fileName"
+      formControlName="image" [ngClass]="validClasses(imageControl)" />
 
     <div class="invalid-feedback" *ngIf="imageControl.errors?.['required']">
       Image is required
@@ -125,7 +90,21 @@
   <img [src]="newRestaurant.image" alt="" class="img-thumbnail mb-3 mb-3"
     *ngIf="!(newRestaurant.image ==='')?'d-none':''">
 
-    <div>
+  <div class="mb-3">
+    <label for="address">Address</label>
+    <input type="search" class="form-control" id="address" name="address" readonly [value]="newRestaurant.address"
+      formControlName="address" [ngClass]="validClasses(addressControl)">
+    <div class="invalid-feedback">Address is required.</div>
+  </div>
+
+  <div id="map">
+    <arcgis-map [coords]="[newRestaurant.lng, newRestaurant.lat]">
+      <arcgis-marker [coords]="[newRestaurant.lng, newRestaurant.lat]" color="red"></arcgis-marker>
+      <arcgis-search position="top-right" (result)="searchResult($event)"></arcgis-search>
+    </arcgis-map>
+  </div>
+
+  <div>
     <button type="submit" [disabled]="restaurantForm.invalid" class="btn btn-primary">Create</button>
   </div>
 

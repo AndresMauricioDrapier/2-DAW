@@ -1,16 +1,19 @@
-<div id="profile">
-  <div class="row mt-4">
-    <div class="col-3">
-      <img class="w-100" id="avatar" src="" alt="" />
-    </div>
-    <div class="col-9">
-      <h4>User name</h4>
-      <h4>
-        <small class="text-muted">email</small>
-      </h4>
-      <p>
-        <a href="user/120/edit" class="btn btn-primary">Edit profile</a>
-      </p>
-    </div>
+<div class="row mt-4">
+  <div class="col-3">
+    <img class="w-100" id="avatar" src="{{user.avatar}}" alt="" />
+  </div>
+  <div class="col-9">
+    <h4>{{user.name}}</h4>
+    <h4>
+      <small class="text-muted">{{user.email}}</small>
+    </h4>
+    <p *ngIf="user.me">
+      <a [routerLink]="['/user/edit',user.id]" routerLinkActive="router-link-active" class="btn btn-primary">Edit
+        profile</a>
+    </p>
+    <p>
+      <a [routerLink]="['/restaurants']" [queryParams]="{ creator: user.id }" class="btn btn-info">Restaurants created</a>
+    </p>
   </div>
 </div>
+

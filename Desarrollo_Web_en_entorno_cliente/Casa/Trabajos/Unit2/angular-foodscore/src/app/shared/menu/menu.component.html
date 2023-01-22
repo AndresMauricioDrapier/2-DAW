@@ -3,10 +3,10 @@
     <a class="navbar-brand" [routerLink]="['/restaurants']" [routerLinkActive]="['active']">FoodScore</a>
     <ul class="navbar-nav me-auto mb-lg-0">
       <li class="nav-item">
-        <a class="nav-link active" [routerLink]="['/restaurants']" [routerLinkActive]="['active']">Home</a>
+        <a class="nav-link active"*ngIf="logged" [routerLink]="['/restaurants']" [routerLinkActive]="['active']">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/restaurants/add']" [routerLinkActive]="['active']">New restaurant</a>
+        <a class="nav-link" *ngIf="logged" [routerLink]="['/restaurants/add']" [routerLinkActive]="['active']">New restaurant</a>
       </li>
     </ul>
     <ul class="navbar-nav">
@@ -14,7 +14,7 @@
         <a class="nav-link" *ngIf="logged" (click)="logout()" id="logout">Logout</a>
       </li>
       <li>
-        <a class="nav-link" *ngIf="logged" [routerLink]="['/auth/me']" href="#" id="logout">Me</a>
+        <a class="nav-link" *ngIf="logged" [routerLink]="['/user/me']" href="#" id="logout">Me</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" *ngIf="!logged" [routerLink]="['/auth/login']" [routerLinkActive]="['active']" id="login">Login</a>

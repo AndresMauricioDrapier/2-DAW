@@ -1,68 +1,56 @@
-<form action="#" id="form-profile" class="mt-4" method="POST" role="form">
+<form action="#" id="registerProfile" class="mt-4" (ngSubmit)="submitProfile()">
   <legend>Edit profile</legend>
-
-  <div class="form-group">
-    <label for="correo">Email:</label>
-    <input
-      type="email"
-      class="form-control"
-      name="email"
-      id="email"
-      placeholder="Email"
-    />
-    <label for="name">Name:</label>
-    <input
-      type="text"
-      class="form-control"
-      name="nameUser"
-      id="name"
-      placeholder="Name"
-    />
+  <div class="mb-3">
+    <label for="nombre">Name:</label>
+    <input type="text" class="form-control" [value]="user.name" />
   </div>
-  <p class="text-danger" id="errorInfo1"></p>
-  <p class="text-success" id="okInfo1"></p>
+
+  <div class="mb-3">
+    <label for="correo">Email:</label>
+    <input type="text" class="form-control" [value]="user.email" />
+  </div>
+
   <button type="submit" class="btn btn-primary">Edit profile</button>
 </form>
-<form action="#" id="form-photo" class="mt-4" method="POST" role="form">
+
+
+<form action="#" id="registerAvatar" class="mt-4" (ngSubmit)="submitAvatar()" novalidate [formGroup]="avatarForm">
   <legend>Edit photo</legend>
 
-  <div class="form-group">
-    <input type="file" class="form-control" id="image" name="image" />
+  <div class="mb-3">
+    <label for="image">Avatar image</label>
+    <input type="file" class="form-control" formControlName="avatar" formControlName="avatar"
+      (change)="changeImage($event)" />
   </div>
-  <div class="row">
-    <div class="col" class="w-100">
-      <img class="w-100" id="photo" src="" alt="" />
-    </div>
-    <div class="col">
-      <img class="d-none w-100" src="" alt="" id="imgPreview" />
-    </div>
+  <div>
+    <img src="{{user.avatar}}" alt="" id="imgPreview" class="img-thumbnail" />
+    <img src="{{imageControl.value}}" alt="" id="imgPreview" class="img-thumbnail" />
   </div>
-  <p class="text-danger" id="errorInfo2"></p>
-  <p class="text-success" id="okInfo2"></p>
   <button type="submit" class="btn btn-primary">Edit photo</button>
 </form>
-<form action="#" id="form-password" class="mt-4" method="POST" role="form">
+
+
+<form action="#" id="registerPass" class="mt-4" (ngSubmit)="submitPassword()" novalidate [formGroup]="passwordForm">
   <legend>Edit password</legend>
 
-  <div class="form-group">
+  <div class="mb-3">
     <label for="password">Password:</label>
-    <input
-      type="password"
-      class="form-control"
-      name="password"
-      id="password"
-      placeholder="Password"
-    />
-    <label for="password2">Repeat password:</label>
-    <input
-      type="password"
-      class="form-control"
-      name="password2"
-      id="password2"
-      placeholder="Repeat password"
-    />
+    <input type="password" class="form-control"placeholder="Password"
+      formControlName="password" [ngClass]="validClasses(passwordControl)"/>
+
+    <div class="invalid-feedback" *ngIf="passwordControl.errors?.['pattern']">
+      Password must have at least 4 characters
+    </div>
   </div>
-  <p class="text-danger" id="errorInfo3"></p>
-  <p class="text-success" id="okInfo3"></p>
+
+  <div class="mb-3">
+    <label for="password">Repeat password:</label>
+    <input type="password" class="form-control"placeholder="Password"
+      formControlName="password2" [ngClass]="validClasses(password2Control)" />
+
+    <div class="invalid-feedback" *ngIf="passwordControl.errors">
+      Password aren't same
+    </div>
+  </div>
   <button type="submit" class="btn btn-primary">Edit password</button>
 </form>
