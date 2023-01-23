@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -6,7 +6,13 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  async index(@Res() res) {
+    return res.render('publico_index');
+  }
+  @Get('/buscar')
+  async listar(@Res() res, @Body() buscar: string) {
+    const resultado = await this.appService.listar(buscar);
+    if (resultado)
+      return res.render('contactos_listado', { contacto: resultado });
   }
 }
