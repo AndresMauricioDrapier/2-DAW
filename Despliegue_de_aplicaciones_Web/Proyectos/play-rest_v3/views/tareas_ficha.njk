@@ -1,0 +1,14 @@
+{% extends "base.njk" %}
+
+{% block titulo %}Tareas | Ficha{% endblock %}
+
+{% block contenido %}
+
+    <h1>Ficha de la tarea</h1>
+    <div>
+        <p><strong>Nombre:</strong> {{ tarea.nombre }}</p>
+        <p><strong>Prioridad:</strong> {{ tarea.prioridad }}</p>
+        <p><strong>Fecha:</strong> {{ tarea.fecha }}</p>
+    </div>
+
+{% endblock %}

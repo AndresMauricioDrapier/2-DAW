@@ -8,7 +8,12 @@ import { ArcgisMarkerDirective } from "src/app/shared/maps/arcgis-marker/arcgis-
 import { ArcgisSearchDirective } from "src/app/shared/maps/arcgis-search/arcgis-search.directive";
 import { RestaurantService } from "../services/restaurant.service";
 import { Commentary } from "../interfaces/comment";
-import { ReactiveFormsModule } from "@angular/forms";
+import {
+    FormControl,
+    FormGroup,
+    NonNullableFormBuilder,
+    ReactiveFormsModule,
+} from "@angular/forms";
 import { StarRatingComponent } from "src/app/shared/star-rating/star-rating.component";
 
 @Component({
@@ -22,7 +27,8 @@ import { StarRatingComponent } from "src/app/shared/star-rating/star-rating.comp
         ArcgisMarkerDirective,
         ArcgisSearchDirective,
         ReactiveFormsModule,
-        StarRatingComponent
+        StarRatingComponent,
+        ReactiveFormsModule,
     ],
     templateUrl: "./restaurant-details.component.html",
     styleUrls: ["./restaurant-details.component.css"],
@@ -30,17 +36,20 @@ import { StarRatingComponent } from "src/app/shared/star-rating/star-rating.comp
 export class RestaurantDetailsComponent implements OnInit {
     restaurant!: Restaurant;
     comments!: Commentary[];
+
     newComment: Commentary = {
         stars: 0,
         text: "",
     };
-    fullStars!: string[];
-    emptyStars!: string[];
+
+    commentGroup!: FormGroup;
+    commentControl!: FormControl<string>;
 
     constructor(
         private router: Router,
         private route: ActivatedRoute,
-        private readonly http: RestaurantService
+        private readonly http: RestaurantService,
+        private readonly fb: NonNullableFormBuilder
     ) {}
 
     ngOnInit(): void {
@@ -50,10 +59,10 @@ export class RestaurantDetailsComponent implements OnInit {
         this.http.getComments(this.restaurant.id!).subscribe((comment) => {
             this.comments = comment.comments;
         });
-        this.fullStars = Array(Math.round(this.restaurant.stars!)).fill("");
-        this.emptyStars = Array(5 - Math.round(this.restaurant.stars!)).fill(
-            ""
-        );
+
+        this.commentGroup = this.fb.group({
+            commentary: (this.commentControl = this.fb.control("")),
+        });
     }
 
     goBack(): void {
@@ -64,12 +73,14 @@ export class RestaurantDetailsComponent implements OnInit {
         this.router.navigate(["/restaurants"]);
     }
     submitComment(): void {
-        this.http.addComment(this.restaurant.id!, this.newComment);
+        this.newComment.text = this.commentControl.value;
+        this.http.addComment(this.restaurant.id!, this.newComment).subscribe({
+            next: () => console.log("All good"),
+            error: (e) => console.log(e),
+        });
     }
 
     setRating(newRating: number): void {
-        const oldRating = this.newComment.stars;
         this.newComment.stars = newRating;
-        console.log(oldRating);
     }
 }

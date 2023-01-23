@@ -18,8 +18,7 @@
     </div>
     <div class="card-text">
       <small class="text-muted">
-        <span *ngFor="let a of fullStars">★</span>
-        <span *ngFor="let star of emptyStars">☆</span>
+        <fs-star-rating [rating]="restaurant.stars!" [edit]="false"></fs-star-rating>
         ({{restaurant.stars}})
       </small>
     </div>

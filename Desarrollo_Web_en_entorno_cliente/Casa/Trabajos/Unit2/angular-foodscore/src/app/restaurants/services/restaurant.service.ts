@@ -38,10 +38,15 @@ export class RestaurantService {
         );
     }
     addComment(id: number, comment: Commentary): Observable<Commentary> {
-        return this.http.post<Commentary>(
-            `${this.RESTAURANTS_URL}/${id}/comments`,
-            comment
-        );
+        return this.http
+            .post<Commentary>(`${this.RESTAURANTS_URL}/${id}/comments`, comment)
+            .pipe(
+                map((rest) => {
+                    console.log(rest);
+
+                    return rest;
+                })
+            );
     }
     addRestaurant(rest: Restaurant): Observable<Restaurant> {
         return this.http

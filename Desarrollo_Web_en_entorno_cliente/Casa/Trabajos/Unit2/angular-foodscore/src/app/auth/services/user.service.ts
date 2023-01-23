@@ -18,8 +18,30 @@ export class UserService {
     ) {}
 
     login(userLogin: UserLogin): Observable<void> {
-        const login = this.http.post<void>("/auth/login", userLogin);
+        const login = this.http.post<void>("auth/login", userLogin);
+
         login.subscribe((token) => {
+            this.loginChange$.next(true);
+            this.putToken((token as unknown as TokenResponse).accessToken);
+        });
+
+        return login;
+    }
+    loginGoogle(userLogin: UserLogin): Observable<void> {
+        const login = this.http.post<void>("auth/google", userLogin);
+
+        login.subscribe((token) => {
+            this.loginChange$.next(true);
+            this.putToken((token as unknown as TokenResponse).accessToken);
+        });
+
+        return login;
+    }
+    loginFaceebok(userLogin: UserLogin): Observable<void> {
+        const login = this.http.post<void>("/auth/facebook", userLogin);
+
+        login.subscribe((token) => {
+            this.loginChange$.next(true);
             this.putToken((token as unknown as TokenResponse).accessToken);
         });
 

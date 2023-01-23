@@ -15,7 +15,7 @@ export class MenuComponent implements OnInit {
     constructor(private readonly http: UserService) {}
 
     ngOnInit(): void {
-        this.http.isLogged().subscribe((bol) => {
+        this.http.loginChange$.subscribe((bol) => {
             this.logged = bol;
         });
     }

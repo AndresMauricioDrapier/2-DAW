@@ -49,9 +49,7 @@
           {{comment.text}}
         </div>
         <div>
-          <span *ngFor="let a of fullStars">★</span>
-          <span *ngFor="let star of emptyStars">☆</span>
-          <fs-star-rating [rating]="0"></fs-star-rating>
+          <fs-star-rating [rating]="comment.stars" [edit]="false"></fs-star-rating>
         </div>
         <div>
           <small>{{comment.date}}</small>
@@ -60,12 +58,16 @@
     </li>
   </ul>
 
-  <form class="mt-4" id="commentForm" (submit)="submitComment()">
+  <form class="mt-4" id="commentForm" (submit)="submitComment()" [formGroup]="commentGroup">
     <h4>Write about this restaurant:</h4>
     <div class="form-group">
-      <textarea class="form-control" name="comment" placeholder="Write an opinion"></textarea>
+      <textarea class="form-control" formControlName="commentary" name="comment"
+        placeholder="Write an opinion"></textarea>
     </div>
-    <fs-star-rating [rating]="0"></fs-star-rating>
+    <div>
+      <fs-star-rating [rating]="newComment.stars" (changed)="setRating($event)" [edit]="true"></fs-star-rating>
+    </div>
+
     <button type="submit" class="btn btn-primary mt-3">Send</button>
   </form>
 

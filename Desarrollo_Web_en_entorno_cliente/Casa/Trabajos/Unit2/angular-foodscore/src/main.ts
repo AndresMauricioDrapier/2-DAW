@@ -11,14 +11,16 @@ import { tokenInterceptor } from "./app/interceptors/token.interceptor";
 
 bootstrapApplication(AppComponent, {
     providers: [
-        provideHttpClient(withInterceptors([baseUrlInterceptor,tokenInterceptor])),
+        provideHttpClient(
+            withInterceptors([baseUrlInterceptor, tokenInterceptor])
+        ),
         provideRouter(APP_ROUTES),
         provideArcgisToken(
             "AAPKc2940b004f38491b869000328dd73685GNKiJxJwOBscpCvz9Pxpae-LVDdvsqr_p6VDTqAas1Kj7idPwcMZqSc-fuDAY91R"
         ),
         provideGoogleId(
-            "533632096-so95a1h949v2ddc3ce22ooemrd9c9cpf.apps.googleusercontent.com"
+            "746820501392-nc4pet9ffnm8gq8hg005re9e6ho65nua.apps.googleusercontent.com"
         ),
-        provideFacebookId("551918016324547", "v15.0"),
+        provideFacebookId("735121904815672", "v15.0"),
     ],
 });

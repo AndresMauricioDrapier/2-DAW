@@ -5,7 +5,6 @@ import {
     OnChanges,
     OnInit,
     Output,
-    SimpleChanges,
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
@@ -18,6 +17,7 @@ import { CommonModule } from "@angular/common";
 })
 export class StarRatingComponent implements OnInit, OnChanges {
     @Input() rating!: number;
+    @Input() edit!: boolean;
     @Output() changed = new EventEmitter<number>();
     auxRating!: number;
 
@@ -25,7 +25,7 @@ export class StarRatingComponent implements OnInit, OnChanges {
         this.auxRating = this.rating;
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
+    ngOnChanges(): void {
         this.auxRating = this.rating;
     }
 

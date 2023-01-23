@@ -1,11 +1,10 @@
-<form action="#" id="form-login" class="mt-4" method="POST" role="form" (ngSubmit)="loggin()"
-  [formGroup]="userForm">
+<form action="#" id="form-login" class="mt-4" method="POST" role="form" (ngSubmit)="loggin()" [formGroup]="userForm">
   <legend>Welcome to FoodScore!</legend>
 
   <div class="mb-3">
     <label for="correo">Email:</label>
     <input type="email" class="form-control" name="email" id="email" placeholder="Email" formControlName="email"
-      required [ngClass]="validClasses(emailControl)"/>
+      required [ngClass]="validClasses(emailControl)" />
     <div class="invalid-feedback" *ngIf="emailControl.errors?.['required']">
       Name is required
     </div>
@@ -13,7 +12,7 @@
   <div class="mb-3">
     <label for="password">Password:</label>
     <input type="password" class="form-control" name="password" id="password" placeholder="Password"
-      formControlName="password" required [ngClass]="validClasses(passwordControl)"/>
+      formControlName="password" required [ngClass]="validClasses(passwordControl)" />
     <div class="invalid-feedback" *ngIf="passwordControl.errors?.['required']">
       Name is required
     </div>

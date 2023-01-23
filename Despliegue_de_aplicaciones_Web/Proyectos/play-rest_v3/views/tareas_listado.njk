@@ -1,0 +1,31 @@
+{% extends "base.njk" %}
+{% block titulo %}Tareas | Listado{% endblock %}
+{% block contenido %}
+    <div class="container">
+        <h1>Listado de tareas</h1>
+        {% for tarea in tareas %}
+            <div class="row m-1">
+                <div class="p-1 col-6">{{ tarea.nombre }}</div>
+                
+                <div class="col-auto">
+                    <a class="btn btn-success" href="/web/tareas/{{ tarea.id }}">Ver ficha</a>
+                </div>
+                <!--
+                <div class="col-auto">
+                    <form action="/tareas/{{ tarea.id }}" method="post">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button type="submit" class="btn btn-danger">Borrar</button>
+                    </form>
+                </div>
+                <div class="col-auto">
+                    <a class="btn btn-primary" href="/tareas/editar/{{ tarea.id }}">Editar</a>
+                </div>
+                -->
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col-12">No hay tareas que mostrar.</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

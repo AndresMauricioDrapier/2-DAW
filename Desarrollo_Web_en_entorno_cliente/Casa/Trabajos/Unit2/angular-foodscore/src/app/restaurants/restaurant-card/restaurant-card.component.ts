@@ -5,25 +5,22 @@ import { RestaurantService } from "../services/restaurant.service";
 import { RouterModule } from "@angular/router";
 import { OPENDAYS } from "src/app/shared/consts";
 import Swal from "sweetalert2";
+import { StarRatingComponent } from "src/app/shared/star-rating/star-rating.component";
 
 @Component({
     selector: "fs-restaurant-card",
     standalone: true,
-    imports: [CommonModule, RouterModule],
+    imports: [CommonModule, RouterModule, StarRatingComponent],
     templateUrl: "./restaurant-card.component.html",
     styleUrls: ["./restaurant-card.component.css"],
 })
 export class RestaurantCardComponent implements OnInit {
     @Input() restaurant!: Restaurant;
     @Output() deleted = new EventEmitter<void>();
-    fullStars!: string[];
-    emptyStars!: string[];
     constructor(private readonly http: RestaurantService) {}
 
     ngOnInit(): void {
         this.daysOpenString();
-        this.fullStars = Array(Math.round(this.restaurant.stars!)).fill("");
-        this.emptyStars = Array(5 - Math.round(this.restaurant.stars!)).fill("");
     }
 
     daysOpenString(): void {
