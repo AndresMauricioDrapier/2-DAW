@@ -10,7 +10,7 @@ import {
     ReactiveFormsModule,
     Validators,
 } from "@angular/forms";
-import { sameEmail } from "../validators/sameEmails.validator";
+import { sameEmails } from "src/app/shared/validators/sameEmail";
 
 @Component({
     selector: "fs-user-form",
@@ -21,6 +21,10 @@ import { sameEmail } from "../validators/sameEmails.validator";
 })
 export class UserFormComponent implements OnInit {
     user!: User;
+
+    profileForm!: FormGroup;
+    nameControl!: FormControl<string>;
+    emailControl!: FormControl<string>;
 
     avatarForm!: FormGroup;
     imageControl!: FormControl<string>;
@@ -40,12 +44,17 @@ export class UserFormComponent implements OnInit {
             this.user = data["user"];
         });
 
+        this.profileForm = this.fb.group({
+            name: (this.nameControl = this.fb.control(this.user.name)),
+            email: (this.emailControl = this.fb.control(this.user.email)),
+        });
+
         this.passwordForm = this.fb.group({
             password: (this.passwordControl = this.fb.control("", [
                 Validators.pattern("^.{4,}$"),
             ])),
             password2: (this.password2Control = this.fb.control("", [
-                sameEmail(this.passwordControl),
+                sameEmails(this.passwordControl),
             ])),
         });
 
@@ -54,18 +63,19 @@ export class UserFormComponent implements OnInit {
         });
     }
     submitProfile(): void {
-        console.log(this.user.name, this.user.email);
+        this.user.name = this.nameControl.value;
+        this.user.email = this.emailControl.value;
 
-        // this.http.saveProfile(this.user.name, this.user.email);
+        this.http.saveProfile(this.user.name, this.user.email).subscribe();
     }
     submitAvatar(): void {
-        this.http.saveAvatar(this.user.avatar);
+        this.user.avatar = this.imageControl.value;
+        this.http.saveAvatar(this.user.avatar).subscribe();
     }
     submitPassword(): void {
         if (this.passwordControl.value === this.password2Control.value) {
-            this.http.savePassword(this.passwordControl.value);
+            this.http.savePassword(this.passwordControl.value).subscribe();
         }
-        console.log(this.passwordControl.value, this.password2Control.value);
     }
     changeImage(event: Event): void {
         const fileInput = event.target as HTMLInputElement;

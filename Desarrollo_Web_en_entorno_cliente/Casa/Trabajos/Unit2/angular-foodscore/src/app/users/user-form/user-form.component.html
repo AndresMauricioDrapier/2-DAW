@@ -1,17 +1,18 @@
-<form action="#" id="registerProfile" class="mt-4" (ngSubmit)="submitProfile()">
+<form action="#" id="registerProfile" class="mt-4" (ngSubmit)="submitProfile()" [formGroup]="profileForm">
   <legend>Edit profile</legend>
   <div class="mb-3">
     <label for="nombre">Name:</label>
-    <input type="text" class="form-control" [value]="user.name" />
+    <input type="text" class="form-control"  formControlName="name"/>
   </div>
 
   <div class="mb-3">
     <label for="correo">Email:</label>
-    <input type="text" class="form-control" [value]="user.email" />
+    <input type="text" class="form-control"  formControlName="email" />
   </div>
 
   <button type="submit" class="btn btn-primary">Edit profile</button>
 </form>
+
 
 
 <form action="#" id="registerAvatar" class="mt-4" (ngSubmit)="submitAvatar()" novalidate [formGroup]="avatarForm">

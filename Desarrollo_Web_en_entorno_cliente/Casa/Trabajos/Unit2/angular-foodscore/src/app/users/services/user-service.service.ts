@@ -42,20 +42,20 @@ export class UsersService {
     }
 
     saveProfile(name: string, email: string): Observable<void> {
-        return this.http.put<void>(this.USERS_URL + "/users/me", {
+        return this.http.put<void>(this.USERS_URL + "/me", {
             name,
             email,
         });
     }
 
     saveAvatar(avatar: string): Observable<string> {
-        return this.http.put<string>(this.USERS_URL + "/users/me/avatar", {
+        return this.http.put<string>(this.USERS_URL + "/me/avatar", {
             avatar,
         });
     }
 
     savePassword(password: string): Observable<void> {
-        return this.http.put<void>(this.USERS_URL + "/users/me/password", {
+        return this.http.put<void>(this.USERS_URL + "/me/password", {
             password,
         });
     }
