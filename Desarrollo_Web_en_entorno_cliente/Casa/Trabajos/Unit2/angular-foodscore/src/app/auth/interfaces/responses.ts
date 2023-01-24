@@ -1,11 +1,11 @@
-import { User } from "./user";
+import { Auth } from "./auth";
 
-export interface UserResponse {
-  user: User;
+export interface AuthResponse {
+  user: Auth;
 }
 
-export interface UsersResponse {
-  users: User[];
+export interface AuthResponses {
+  users: Auth[];
 }
 
 export interface TokenResponse {

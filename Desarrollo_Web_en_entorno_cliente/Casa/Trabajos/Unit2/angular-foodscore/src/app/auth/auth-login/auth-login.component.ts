@@ -12,12 +12,12 @@ import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { GoogleLoginDirective } from "./google-login/google-login.directive";
 import { FbLoginDirective } from "./facebook-login/fb-login.directive";
-import { UserService } from "../services/user.service";
-import { UserLogin } from "../interfaces/user";
+import { AuthService } from "../services/auth.service";
+import { AuthLogin } from "../interfaces/auth";
 import Swal from "sweetalert2";
 
 @Component({
-    selector: "fs-restaurant-login",
+    selector: "fs-auth-login",
     standalone: true,
     imports: [
         CommonModule,
@@ -27,17 +27,17 @@ import Swal from "sweetalert2";
         FbLoginDirective,
         ReactiveFormsModule,
     ],
-    templateUrl: "./restaurant-login.component.html",
-    styleUrls: ["./restaurant-login.component.css"],
+    templateUrl: "./auth-login.component.html",
+    styleUrls: ["./auth-login.component.css"],
 })
-export class RestaurantLoginComponent implements OnInit {
+export class AuthLoginComponent implements OnInit {
     userForm!: FormGroup;
     emailControl!: FormControl<string>;
     passwordControl!: FormControl<string>;
     googleIcon = faGoogle;
     fbIcon = faFacebook;
 
-    userInfo: UserLogin = {
+    userInfo: AuthLogin = {
         email: "",
         password: "",
         lat: 0,
@@ -48,7 +48,7 @@ export class RestaurantLoginComponent implements OnInit {
 
     constructor(
         private readonly router: Router,
-        private readonly http: UserService,
+        private readonly http: AuthService,
         private readonly fb: NonNullableFormBuilder
     ) {}
 

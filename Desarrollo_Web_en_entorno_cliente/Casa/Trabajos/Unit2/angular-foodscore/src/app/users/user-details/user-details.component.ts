@@ -2,10 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { User } from "../interfaces/user";
 import { ActivatedRoute, RouterLink } from "@angular/router";
-import { UsersService } from "../services/user-service.service";
-import { Restaurant } from "src/app/restaurants/interfaces/restaurant";
 import { RestaurantService } from "src/app/restaurants/services/restaurant.service";
 import { RestaurantCardComponent } from "src/app/restaurants/restaurant-card/restaurant-card.component";
+import { UserService } from "../services/user-service.service";
 
 @Component({
     selector: "fs-user-details",
@@ -19,7 +18,7 @@ export class UserDetailsComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private readonly httpUser: UsersService,
+        private readonly httpUser: UserService,
         private readonly http: RestaurantService
     ) {}
 

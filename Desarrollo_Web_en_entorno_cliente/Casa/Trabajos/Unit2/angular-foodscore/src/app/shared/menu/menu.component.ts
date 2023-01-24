@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Router, RouterModule } from "@angular/router";
-import { UserService } from "src/app/auth/services/user.service";
+import { AuthService } from "src/app/auth/services/auth.service";
 
 @Component({
     selector: "fs-menu",
@@ -13,7 +13,7 @@ import { UserService } from "src/app/auth/services/user.service";
 export class MenuComponent implements OnInit {
     logged?: boolean;
     constructor(
-        private readonly http: UserService,
+        private readonly http: AuthService,
         private readonly router: Router
     ) {}
 

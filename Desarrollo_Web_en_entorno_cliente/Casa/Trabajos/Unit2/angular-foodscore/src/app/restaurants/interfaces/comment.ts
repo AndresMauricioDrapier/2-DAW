@@ -1,4 +1,4 @@
-import { User } from "src/app/auth/interfaces/user";
+import { Auth } from "src/app/auth/interfaces/auth";
 
 
 export interface Commentary {
@@ -6,5 +6,5 @@ export interface Commentary {
     stars: number;
     text: string;
     date?: string;
-    user?: User;
+    user?: Auth;
 }

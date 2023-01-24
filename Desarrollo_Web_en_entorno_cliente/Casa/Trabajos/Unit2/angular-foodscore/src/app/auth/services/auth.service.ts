@@ -3,12 +3,12 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, of, ReplaySubject } from "rxjs";
 import { TokenResponse } from "../interfaces/responses";
-import { User, UserLogin } from "../interfaces/user";
+import { Auth, AuthLogin } from "../interfaces/auth";
 
 @Injectable({
     providedIn: "root",
 })
-export class UserService {
+export class AuthService {
     logged = false;
     loginChange$ = new ReplaySubject<boolean>();
 
@@ -17,7 +17,7 @@ export class UserService {
         private readonly router: Router
     ) {}
 
-    login(userLogin: UserLogin): Observable<void> {
+    login(userLogin: AuthLogin): Observable<void> {
         const login = this.http.post<void>("auth/login", userLogin);
 
         login.subscribe((token) => {
@@ -27,7 +27,7 @@ export class UserService {
 
         return login;
     }
-    loginGoogle(userLogin: UserLogin): Observable<void> {
+    loginGoogle(userLogin: AuthLogin): Observable<void> {
         const login = this.http.post<void>("auth/google", userLogin);
 
         login.subscribe((token) => {
@@ -37,7 +37,7 @@ export class UserService {
 
         return login;
     }
-    loginFaceebok(userLogin: UserLogin): Observable<void> {
+    loginFaceebok(userLogin: AuthLogin): Observable<void> {
         const login = this.http.post<void>("/auth/facebook", userLogin);
 
         login.subscribe((token) => {
@@ -48,7 +48,7 @@ export class UserService {
         return login;
     }
 
-    register(userInfo: User): Observable<void> {
+    register(userInfo: Auth): Observable<void> {
         return this.http.post<void>("auth/register", userInfo);
     }
 

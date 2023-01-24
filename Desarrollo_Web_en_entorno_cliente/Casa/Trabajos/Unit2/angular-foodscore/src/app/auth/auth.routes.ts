@@ -5,16 +5,16 @@ export const APP_ROUTES: Routes = [
     {
         path: "login",
         loadComponent: () =>
-            import("./restaurant-login/restaurant-login.component").then(
-                (m) => m.RestaurantLoginComponent
+            import("./auth-login/auth-login.component").then(
+                (m) => m.AuthLoginComponent
             ),
         canDeactivate: [leavePageGuard],
     },
     {
         path: "register",
         loadComponent: () =>
-            import("./restaurant-register/restaurant-register.component").then(
-                (m) => m.RestaurantRegisterComponent
+            import("./auth-register/auth-register.component").then(
+                (m) => m.AuthRegisterComponent
             ),
         canDeactivate: [leavePageGuard],
     },

@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { User } from "../interfaces/user";
 import { ActivatedRoute } from "@angular/router";
-import { UsersService } from "../services/user-service.service";
 import {
     FormControl,
     FormGroup,
@@ -10,7 +9,8 @@ import {
     ReactiveFormsModule,
     Validators,
 } from "@angular/forms";
-import { sameEmails } from "src/app/shared/validators/sameEmail";
+import { UserService } from "../services/user-service.service";
+import { isTheSame } from "src/app/shared/validators/isTheSame";
 
 @Component({
     selector: "fs-user-form",
@@ -35,7 +35,7 @@ export class UserFormComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private readonly http: UsersService,
+        private readonly http: UserService,
         private readonly fb: NonNullableFormBuilder
     ) {}
 
@@ -54,7 +54,7 @@ export class UserFormComponent implements OnInit {
                 Validators.pattern("^.{4,}$"),
             ])),
             password2: (this.password2Control = this.fb.control("", [
-                sameEmails(this.passwordControl),
+                isTheSame(this.passwordControl),
             ])),
         });
 

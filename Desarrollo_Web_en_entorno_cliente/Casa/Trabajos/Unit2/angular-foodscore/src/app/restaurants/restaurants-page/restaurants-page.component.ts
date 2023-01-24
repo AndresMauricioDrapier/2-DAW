@@ -7,9 +7,8 @@ import { RestaurantCardComponent } from "../restaurant-card/restaurant-card.comp
 import { RestaurantFilterPipe } from "../pipes/restaurant-filter.pipe";
 import { RestaurantService } from "../services/restaurant.service";
 import { ActivatedRoute } from "@angular/router";
-import { User } from "src/app/auth/interfaces/user";
-import { UsersService } from "src/app/users/services/user-service.service";
-import { faL } from "@fortawesome/free-solid-svg-icons";
+import { Auth } from "src/app/auth/interfaces/auth";
+import { UserService } from "src/app/users/services/user-service.service";
 
 @Component({
     selector: "fs-restaurants-page",
@@ -26,13 +25,13 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 })
 export class RestaurantsPageComponent implements OnInit {
     restaurants: Restaurant[] = [];
-    user!: User;
+    user!: Auth;
     active = true;
     filterSearch = "";
     constructor(
         private readonly http: RestaurantService,
         private readonly route: ActivatedRoute,
-        private readonly httpUser: UsersService
+        private readonly httpUser: UserService
     ) {}
 
     ngOnInit(): void {

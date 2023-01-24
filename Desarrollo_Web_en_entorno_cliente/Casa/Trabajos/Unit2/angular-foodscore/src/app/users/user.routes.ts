@@ -6,7 +6,9 @@ export const APP_ROUTES: Routes = [
     {
         path: "",
         loadComponent: () =>
-            import("./users.component").then((m) => m.UsersComponent),
+            import("./user-details/user-details.component").then(
+                (m) => m.UserDetailsComponent
+            ),
         canDeactivate: [leavePageGuard],
     },
     {

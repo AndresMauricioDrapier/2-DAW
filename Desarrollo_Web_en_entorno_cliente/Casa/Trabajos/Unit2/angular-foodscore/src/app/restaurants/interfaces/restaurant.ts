@@ -1,4 +1,4 @@
-import { User } from "src/app/auth/interfaces/user";
+import { Auth } from "src/app/auth/interfaces/auth";
 
 
 export interface Restaurant {
@@ -9,7 +9,7 @@ export interface Restaurant {
     daysOpen: string[];
     image: string;
     phone: string;
-    creator?: User;
+    creator?: Auth;
     mine?: boolean;
     distance?: number;
     commented?: boolean;

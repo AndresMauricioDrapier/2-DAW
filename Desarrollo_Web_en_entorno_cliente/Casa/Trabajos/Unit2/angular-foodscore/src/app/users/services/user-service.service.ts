@@ -7,7 +7,7 @@ import { UserResponse } from "../interfaces/responses";
 @Injectable({
     providedIn: "root",
 })
-export class UsersService {
+export class UserService {
     private readonly USERS_URL = "users";
     constructor(private readonly http: HttpClient) {}
 

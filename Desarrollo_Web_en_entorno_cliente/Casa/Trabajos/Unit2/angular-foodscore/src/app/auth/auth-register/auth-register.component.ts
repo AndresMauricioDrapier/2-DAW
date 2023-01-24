@@ -11,16 +11,16 @@ import {
     ReactiveFormsModule,
     Validators,
 } from "@angular/forms";
-import { User } from "../interfaces/user";
-import { sameEmails } from "src/app/shared/validators/sameEmail";
+import { Auth } from "../interfaces/auth";
+import { isTheSame } from "src/app/shared/validators/isTheSame";
 import { ArcgisMapComponent } from "src/app/shared/maps/arcgis-map/arcgis-map.component";
 import { ArcgisMarkerDirective } from "src/app/shared/maps/arcgis-marker/arcgis-marker.directive";
 import { ArcgisSearchDirective } from "src/app/shared/maps/arcgis-search/arcgis-search.directive";
 import { SearchResult } from "src/app/shared/maps/interfaces/search-result";
-import { UserService } from "../services/user.service";
+import { AuthService } from "../services/auth.service";
 
 @Component({
-    selector: "fs-restaurant-register",
+    selector: "fs-auth-register",
     standalone: true,
     imports: [
         CommonModule,
@@ -31,10 +31,10 @@ import { UserService } from "../services/user.service";
         ArcgisSearchDirective,
         RouterModule
     ],
-    templateUrl: "./restaurant-register.component.html",
-    styleUrls: ["./restaurant-register.component.css"],
+    templateUrl: "./auth-register.component.html",
+    styleUrls: ["./auth-register.component.css"],
 })
-export class RestaurantRegisterComponent
+export class AuthRegisterComponent
 implements OnInit, CanDeactivateComponent
 {
     userForm!: FormGroup;
@@ -45,7 +45,7 @@ implements OnInit, CanDeactivateComponent
     imageControl!: FormControl<string>;
     exit = false;
 
-    newUser: User = {
+    newUser: Auth = {
         name: "",
         email: "",
         avatar: "",
@@ -54,7 +54,7 @@ implements OnInit, CanDeactivateComponent
     };
 
     constructor(
-        private readonly http: UserService,
+        private readonly http: AuthService,
         private readonly router: Router,
         private readonly fb: NonNullableFormBuilder
     ) {}
@@ -69,7 +69,7 @@ implements OnInit, CanDeactivateComponent
         ]);
         this.email2Control = this.fb.control("", [
             Validators.email,
-            sameEmails(this.emailControl),
+            isTheSame(this.emailControl),
         ]);
         this.passwordControl = this.fb.control("", [
             Validators.required,

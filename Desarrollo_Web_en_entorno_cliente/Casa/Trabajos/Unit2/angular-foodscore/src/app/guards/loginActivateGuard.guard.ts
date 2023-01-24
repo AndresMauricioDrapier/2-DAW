@@ -4,11 +4,11 @@ import {
     Router,
 } from "@angular/router";
 import { map } from "rxjs";
-import { UserService } from "../auth/services/user.service";
+import { AuthService } from "../auth/services/auth.service";
 
 export const loginActivateGuard: CanActivateFn = () => {
     const router = inject(Router);
-    return inject(UserService)
+    return inject(AuthService)
         .isLogged()
         .pipe(
             map((logged) => {

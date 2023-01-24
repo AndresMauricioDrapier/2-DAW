@@ -5,8 +5,8 @@ import { provideRouter } from "@angular/router";
 import { APP_ROUTES } from "./app/users.routes";
 import { baseUrlInterceptor } from "./app/interceptors/base-url.interceptor";
 import { provideArcgisToken } from "./app/shared/maps/arcgis-maps.config";
-import { provideGoogleId } from "./app/auth/restaurant-login/google-login/google-login.config";
-import { provideFacebookId } from "./app/auth/restaurant-login/facebook-login/fb-login.config";
+import { provideGoogleId } from "./app/auth/auth-login/google-login/google-login.config";
+import { provideFacebookId } from "./app/auth/auth-login/facebook-login/fb-login.config";
 import { tokenInterceptor } from "./app/interceptors/token.interceptor";
 
 bootstrapApplication(AppComponent, {
