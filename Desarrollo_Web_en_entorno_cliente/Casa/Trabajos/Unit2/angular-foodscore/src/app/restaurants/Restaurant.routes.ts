@@ -9,13 +9,28 @@ export const APP_ROUTES: Routes = [
     {
         path: "add",
         loadComponent: () =>
-            import("./restaurant-form/restaurant-form.component").then((m) => m.RestaurantFormComponent),
+            import("./restaurant-form/restaurant-form.component").then(
+                (m) => m.RestaurantFormComponent
+            ),
         canDeactivate: [leavePageGuard],
+    },
+    {
+        path: "edit/:id",
+        loadComponent: () =>
+            import("./restaurant-form/restaurant-form.component").then(
+                (m) => m.RestaurantFormComponent
+            ),
+        canActivate: [restaurantIdGuard],
+        resolve: {
+            restaurant: restaurantResolve,
+        },
     },
     {
         path: ":id",
         loadComponent: () =>
-            import("./restaurant-details/restaurant-details.component").then((m) => m.RestaurantDetailsComponent),
+            import("./restaurant-details/restaurant-details.component").then(
+                (m) => m.RestaurantDetailsComponent
+            ),
         canActivate: [restaurantIdGuard],
         resolve: {
             restaurant: restaurantResolve,

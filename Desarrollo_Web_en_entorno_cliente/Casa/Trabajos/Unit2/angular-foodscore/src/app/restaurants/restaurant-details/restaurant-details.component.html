@@ -4,7 +4,7 @@
       <fs-restaurant-card [restaurant]="restaurant" (deleted)="delete()"></fs-restaurant-card>
     </div>
     <div class="card mt-4" *ngIf="restaurant.mine">
-      <button class="btn btn-primary btn-sm float-end" [routerLink]="['/restaurant', restaurant.id, 'edit']">
+      <button class="btn btn-primary btn-sm float-end" [routerLink]="['/restaurants/edit',restaurant.id]">
         Edit
       </button>
     </div>

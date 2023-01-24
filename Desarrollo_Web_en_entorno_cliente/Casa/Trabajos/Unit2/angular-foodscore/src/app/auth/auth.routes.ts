@@ -8,6 +8,7 @@ export const APP_ROUTES: Routes = [
             import("./restaurant-login/restaurant-login.component").then(
                 (m) => m.RestaurantLoginComponent
             ),
+        canDeactivate: [leavePageGuard],
     },
     {
         path: "register",

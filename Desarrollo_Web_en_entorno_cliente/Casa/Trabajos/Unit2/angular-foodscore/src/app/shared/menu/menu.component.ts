@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 import { UserService } from "src/app/auth/services/user.service";
 
 @Component({
@@ -12,7 +12,10 @@ import { UserService } from "src/app/auth/services/user.service";
 })
 export class MenuComponent implements OnInit {
     logged?: boolean;
-    constructor(private readonly http: UserService) {}
+    constructor(
+        private readonly http: UserService,
+        private readonly router: Router
+    ) {}
 
     ngOnInit(): void {
         this.http.loginChange$.subscribe((bol) => {
@@ -22,5 +25,6 @@ export class MenuComponent implements OnInit {
 
     logout(): void {
         this.http.logout();
+        this.router.navigate(["auth/login"]);
     }
 }

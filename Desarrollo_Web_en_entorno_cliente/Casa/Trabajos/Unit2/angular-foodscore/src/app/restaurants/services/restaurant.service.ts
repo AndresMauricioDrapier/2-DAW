@@ -48,10 +48,16 @@ export class RestaurantService {
                 })
             );
     }
-    addRestaurant(rest: Restaurant): Observable<Restaurant> {
-        return this.http
-            .post<RestaurantResponse>(this.RESTAURANTS_URL, rest)
-            .pipe(map((rest) => rest.restaurant));
+    addRestaurant(rest: Restaurant, id?: number): Observable<Restaurant> {
+        if (id) {
+            return this.http
+                .put<RestaurantResponse>(`${this.RESTAURANTS_URL}/${id}`, rest)
+                .pipe(map((rest) => rest.restaurant));
+        } else {
+            return this.http
+                .post<RestaurantResponse>(`${this.RESTAURANTS_URL}`, rest)
+                .pipe(map((rest) => rest.restaurant));
+        }
     }
 
     deleteRestaurant(id: number): Observable<void> {

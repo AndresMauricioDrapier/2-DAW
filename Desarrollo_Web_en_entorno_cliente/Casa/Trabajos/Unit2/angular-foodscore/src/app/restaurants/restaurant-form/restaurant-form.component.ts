@@ -12,7 +12,7 @@ import {
     Validators,
 } from "@angular/forms";
 import { RestaurantService } from "../services/restaurant.service";
-import { Router, UrlTree } from "@angular/router";
+import { ActivatedRoute, Router, UrlTree } from "@angular/router";
 import { CanDeactivateComponent } from "src/app/guards/leavePageGuard.guard";
 import { Observable } from "rxjs";
 import { oneChecked } from "src/app/shared/validators/checkedArray.validator";
@@ -62,25 +62,41 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
     constructor(
         private readonly http: RestaurantService,
         private readonly router: Router,
-        private readonly fb: NonNullableFormBuilder
-    ) {}
+        private readonly fb: NonNullableFormBuilder,
+        private readonly route: ActivatedRoute
+    ) {
+        this.route.data.subscribe((data) => {
+            if (data["restaurant"]) {
+                this.newRestaurant = data["restaurant"];
+                console.log(this.newRestaurant);
+
+            }
+        });
+    }
     ngOnInit(): void {
-        this.nameControl = this.fb.control("", [
+        this.nameControl = this.fb.control(this.newRestaurant.name, [
             Validators.required,
             Validators.pattern("[a-zA-Z ]+"),
         ]);
-        this.descriptionControl = this.fb.control("", [Validators.required]);
+        this.descriptionControl = this.fb.control(
+            this.newRestaurant.description,
+            [Validators.required]
+        );
         this.daysOpenArray = this.fb.array(
             new Array(7).fill(true),
             oneChecked()
         );
-        this.cuisineControl = this.fb.control("", [Validators.required]);
-        this.phoneControl = this.fb.control("", [
+        this.cuisineControl = this.fb.control(this.newRestaurant.cuisine, [
+            Validators.required,
+        ]);
+        this.phoneControl = this.fb.control(this.newRestaurant.phone, [
             Validators.required,
             Validators.pattern("(\\+?[0-9]2 ?)?[0-9]{9}"),
         ]);
-        this.imageControl = this.fb.control("", [Validators.required]);
-        this.addressControl = this.fb.control("");
+        this.imageControl = this.fb.control(this.newRestaurant.image, [
+            Validators.required,
+        ]);
+        this.addressControl = this.fb.control(this.newRestaurant.address);
 
         this.restaurantForm = this.fb.group({
             name: this.nameControl,
@@ -130,9 +146,22 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
     addRestaurant(): void {
         this.addFormToRestaurant();
         this.exit = true;
-        this.http.addRestaurant(this.newRestaurant).subscribe({
-            next: () => this.router.navigate(["/restaurants"]),
-            error: (e) => console.log(e),
+
+        this.route.data.subscribe((data) => {
+
+            if (data["restaurant"]) {
+                this.http
+                    .addRestaurant(this.newRestaurant, data["restaurant"].id)
+                    .subscribe({
+                        next: () => this.router.navigate(["/restaurants"]),
+                        error: (e) => console.log(e),
+                    });
+            } else {
+                this.http.addRestaurant(this.newRestaurant).subscribe({
+                    next: () => this.router.navigate(["/restaurants"]),
+                    error: (e) => console.log(e),
+                });
+            }
         });
     }
 

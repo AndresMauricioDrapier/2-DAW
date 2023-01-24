@@ -60,8 +60,12 @@ export class UserService {
     }
     isLogged(): Observable<boolean> {
         if (!this.logged && !localStorage.getItem("token")) {
+            this.logged = false;
+            this.loginChange$.next(false);
             return of(false);
         } else if (this.logged && localStorage.getItem("token")) {
+            this.logged = true;
+            this.loginChange$.next(true);
             return of(true);
         } else {
             if (this.validateToken()) {
