@@ -59,6 +59,8 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
         lng: 0,
     };
 
+    data!: Restaurant;
+
     constructor(
         private readonly http: RestaurantService,
         private readonly router: Router,
@@ -67,9 +69,8 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
     ) {
         this.route.data.subscribe((data) => {
             if (data["restaurant"]) {
+                this.data = data["restaurant"];
                 this.newRestaurant = data["restaurant"];
-                console.log(this.newRestaurant);
-
             }
         });
     }
@@ -82,10 +83,17 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
             this.newRestaurant.description,
             [Validators.required]
         );
-        this.daysOpenArray = this.fb.array(
-            new Array(7).fill(true),
-            oneChecked()
-        );
+        console.log(this.data);
+
+        this.data
+            ? this.daysOpenArray = this.fb.array(
+                this.booleanArray(),
+                oneChecked()
+            )
+            : this.daysOpenArray = this.fb.array(
+                new Array(7).fill(true),
+                oneChecked()
+            );
         this.cuisineControl = this.fb.control(this.newRestaurant.cuisine, [
             Validators.required,
         ]);
@@ -148,7 +156,6 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
         this.exit = true;
 
         this.route.data.subscribe((data) => {
-
             if (data["restaurant"]) {
                 this.http
                     .addRestaurant(this.newRestaurant, data["restaurant"].id)
@@ -188,5 +195,46 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
             [validClass]: ngModel.touched && ngModel.valid,
             [errorClass]: ngModel.touched && ngModel.invalid,
         };
+    }
+
+    booleanArray(): boolean[] {
+        const array: boolean[] = new Array(7).fill(false);
+
+        if (this.data.id) {
+            for (let i = 0; i < this.newRestaurant.daysOpen.length; i++) {
+                switch (this.newRestaurant.daysOpen[i]) {
+                case "0":
+                case "Su":
+                    array[0] = true;
+                    break;
+                case "1":
+                case "Mo":
+                    array[1] = true;
+                    break;
+                case "2":
+                case "Tu":
+                    array[2] = true;
+                    break;
+                case "3":
+                case "We":
+                    array[3] = true;
+                    break;
+                case "4":
+                case "Th":
+                    array[4] = true;
+                    break;
+                case "5":
+                case "Fr":
+                    array[5] = true;
+                    break;
+                case "6":
+                case "Sa":
+                    array[6] = true;
+                    break;
+                }
+            }
+        }
+
+        return array;
     }
 }

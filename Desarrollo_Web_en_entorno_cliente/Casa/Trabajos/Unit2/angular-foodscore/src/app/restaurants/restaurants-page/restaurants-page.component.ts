@@ -28,6 +28,7 @@ export class RestaurantsPageComponent implements OnInit {
     user!: Auth;
     active = true;
     filterSearch = "";
+    userCreated = false;
     constructor(
         private readonly http: RestaurantService,
         private readonly route: ActivatedRoute,
@@ -37,6 +38,7 @@ export class RestaurantsPageComponent implements OnInit {
     ngOnInit(): void {
         this.route.queryParams.subscribe((params) => {
             if (params["creator"]) {
+                this.userCreated = true;
                 this.httpUser.getUser(params["creator"]).subscribe((user) => {
                     this.user = user;
                 });
@@ -51,7 +53,10 @@ export class RestaurantsPageComponent implements OnInit {
                 );
             } else {
                 this.http.getRestaurants().subscribe({
-                    next: (rest) => (this.restaurants = rest),
+                    next: (rest) => {
+                        this.userCreated = false;
+                        this.restaurants = rest;
+                    },
                     error: (error) => console.log(error),
                 });
             }

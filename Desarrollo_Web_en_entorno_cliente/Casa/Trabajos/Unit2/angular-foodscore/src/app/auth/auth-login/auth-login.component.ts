@@ -87,13 +87,17 @@ export class AuthLoginComponent implements OnInit {
         this.userInfo.token = user.getAuthResponse().id_token;
         console.log(this.userInfo, user.getAuthResponse().id_token);
 
-        this.http.loginGoogle(this.userInfo);
+        this.http.loginGoogle(this.userInfo).subscribe({
+            next: () => this.router.navigate(["/restaurants"]),
+        });
     }
 
     loggedFacebook(resp: fb.StatusResponse): void {
         this.userInfo.token = resp.authResponse.accessToken;
         this.userInfo.userId = resp.authResponse.userID;
-        this.http.loginFaceebok(this.userInfo);
+        this.http.loginFaceebok(this.userInfo).subscribe({
+            next: () => this.router.navigate(["/restaurants"]),
+        });
     }
 
     loggin(): void {
@@ -111,7 +115,6 @@ export class AuthLoginComponent implements OnInit {
                 });
             },
         });
-        // this.router.navigate(["/restaurants"]);
     }
     goRegister(): void {
         this.router.navigate(["auth/register"]);

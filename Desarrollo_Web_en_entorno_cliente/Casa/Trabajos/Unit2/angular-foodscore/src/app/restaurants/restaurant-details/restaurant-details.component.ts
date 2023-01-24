@@ -15,6 +15,7 @@ import {
     ReactiveFormsModule,
 } from "@angular/forms";
 import { StarRatingComponent } from "src/app/shared/star-rating/star-rating.component";
+import { UserService } from "src/app/users/services/user-service.service";
 
 @Component({
     selector: "fs-restaurant-details",
@@ -41,6 +42,7 @@ export class RestaurantDetailsComponent implements OnInit {
         stars: 0,
         text: "",
     };
+    isComented = false;
 
     commentGroup!: FormGroup;
     commentControl!: FormControl<string>;
@@ -49,7 +51,8 @@ export class RestaurantDetailsComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         private readonly http: RestaurantService,
-        private readonly fb: NonNullableFormBuilder
+        private readonly fb: NonNullableFormBuilder,
+        private readonly httpUser: UserService
     ) {}
 
     ngOnInit(): void {
@@ -58,13 +61,17 @@ export class RestaurantDetailsComponent implements OnInit {
         });
         this.http.getComments(this.restaurant.id!).subscribe((comment) => {
             this.comments = comment.comments;
+            this.httpUser.getUser().subscribe((user) => {
+                this.comments.forEach((comment) => {
+                    if (comment.user?.id == user.id) this.isComented = true;
+                });
+            });
         });
 
         this.commentGroup = this.fb.group({
             commentary: (this.commentControl = this.fb.control("")),
         });
     }
-
     goBack(): void {
         this.router.navigate(["/restaurants"]);
     }
@@ -75,7 +82,12 @@ export class RestaurantDetailsComponent implements OnInit {
     submitComment(): void {
         this.newComment.text = this.commentControl.value;
         this.http.addComment(this.restaurant.id!, this.newComment).subscribe({
-            next: () => console.log("All good"),
+            next: () => {
+                console.log(this.newComment);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 400);
+            },
             error: (e) => console.log(e),
         });
     }

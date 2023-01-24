@@ -11,6 +11,7 @@ import {
 } from "@angular/forms";
 import { UserService } from "../services/user-service.service";
 import { isTheSame } from "src/app/shared/validators/isTheSame";
+import Swal from "sweetalert2";
 
 @Component({
     selector: "fs-user-form",
@@ -66,15 +67,42 @@ export class UserFormComponent implements OnInit {
         this.user.name = this.nameControl.value;
         this.user.email = this.emailControl.value;
 
-        this.http.saveProfile(this.user.name, this.user.email).subscribe();
+        this.http.saveProfile(this.user.name, this.user.email).subscribe({
+            next: () => Swal.fire("Avatar saved!", "", "success"),
+            error: (e) => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: e,
+                });
+            },
+        });
     }
     submitAvatar(): void {
         this.user.avatar = this.imageControl.value;
-        this.http.saveAvatar(this.user.avatar).subscribe();
+        this.http.saveAvatar(this.user.avatar).subscribe({
+            next: () => Swal.fire("Avatar saved!", "", "success"),
+            error: (e) => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: e,
+                });
+            },
+        });
     }
     submitPassword(): void {
         if (this.passwordControl.value === this.password2Control.value) {
-            this.http.savePassword(this.passwordControl.value).subscribe();
+            this.http.savePassword(this.passwordControl.value).subscribe({
+                next: () => Swal.fire("Avatar saved!", "", "success"),
+                error: (e) => {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: e,
+                    });
+                },
+            });
         }
     }
     changeImage(event: Event): void {

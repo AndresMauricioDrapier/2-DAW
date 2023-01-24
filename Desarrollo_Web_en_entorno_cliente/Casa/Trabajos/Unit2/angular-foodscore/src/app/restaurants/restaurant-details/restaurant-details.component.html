@@ -58,7 +58,7 @@
     </li>
   </ul>
 
-  <form class="mt-4" id="commentForm" (submit)="submitComment()" [formGroup]="commentGroup">
+  <form class="mt-4" id="commentForm" (submit)="submitComment()" [formGroup]="commentGroup" *ngIf="!isComented">
     <h4>Write about this restaurant:</h4>
     <div class="form-group">
       <textarea class="form-control" formControlName="commentary" name="comment"
