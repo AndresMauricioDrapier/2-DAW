@@ -53,7 +53,7 @@ export class AuthService {
     }
 
     validateToken(): Observable<TokenResponse> {
-        return this.http.get<TokenResponse>("/auth/validate");
+        return this.http.get<TokenResponse>("auth/validate");
     }
     putToken(token?: string): void {
         if (token) localStorage.setItem("token", token);

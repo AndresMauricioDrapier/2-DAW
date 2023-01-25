@@ -20,6 +20,7 @@ import { ArcgisMapComponent } from "src/app/shared/maps/arcgis-map/arcgis-map.co
 import { ArcgisMarkerDirective } from "src/app/shared/maps/arcgis-marker/arcgis-marker.directive";
 import { ArcgisSearchDirective } from "src/app/shared/maps/arcgis-search/arcgis-search.directive";
 import { SearchResult } from "src/app/shared/maps/interfaces/search-result";
+import Swal from "sweetalert2";
 
 @Component({
     selector: "fs-restaurant-form",
@@ -71,6 +72,7 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
             if (data["restaurant"]) {
                 this.data = data["restaurant"];
                 this.newRestaurant = data["restaurant"];
+                console.log(this.data);
             }
         });
     }
@@ -86,14 +88,14 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
         console.log(this.data);
 
         this.data
-            ? this.daysOpenArray = this.fb.array(
+            ? (this.daysOpenArray = this.fb.array(
                 this.booleanArray(),
                 oneChecked()
-            )
-            : this.daysOpenArray = this.fb.array(
+            ))
+            : (this.daysOpenArray = this.fb.array(
                 new Array(7).fill(true),
                 oneChecked()
-            );
+            ));
         this.cuisineControl = this.fb.control(this.newRestaurant.cuisine, [
             Validators.required,
         ]);
@@ -126,11 +128,23 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
         | Promise<boolean | UrlTree>
         | boolean
         | UrlTree {
-        return (
-            this.exit ||
-            this.restaurantForm.pristine ||
-            confirm("Do you want to leave this page?. Changes can be lost")
-        );
+        if (this.exit || this.restaurantForm.pristine) {
+            return true;
+        } else {
+            return Swal.fire({
+                title: "Do you want to leave this page?",
+                showDenyButton: true,
+                confirmButtonText: "Exit",
+                denyButtonText: "Don't exit",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire("Changes have not been saved", "", "info");
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        }
     }
 
     changeImage(event: Event): void {
@@ -160,7 +174,11 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
                 this.http
                     .addRestaurant(this.newRestaurant, data["restaurant"].id)
                     .subscribe({
-                        next: () => this.router.navigate(["/restaurants"]),
+                        next: (e) => {
+                            console.log(e);
+
+                            this.router.navigate(["/restaurants"]);
+                        },
                         error: (e) => console.log(e),
                     });
             } else {

@@ -18,6 +18,7 @@ import { ArcgisMarkerDirective } from "src/app/shared/maps/arcgis-marker/arcgis-
 import { ArcgisSearchDirective } from "src/app/shared/maps/arcgis-search/arcgis-search.directive";
 import { SearchResult } from "src/app/shared/maps/interfaces/search-result";
 import { AuthService } from "../services/auth.service";
+import Swal from "sweetalert2";
 
 @Component({
     selector: "fs-auth-register",
@@ -29,14 +30,12 @@ import { AuthService } from "../services/auth.service";
         ArcgisMapComponent,
         ArcgisMarkerDirective,
         ArcgisSearchDirective,
-        RouterModule
+        RouterModule,
     ],
     templateUrl: "./auth-register.component.html",
     styleUrls: ["./auth-register.component.css"],
 })
-export class AuthRegisterComponent
-implements OnInit, CanDeactivateComponent
-{
+export class AuthRegisterComponent implements OnInit, CanDeactivateComponent {
     userForm!: FormGroup;
     nameControl!: FormControl<string>;
     emailControl!: FormControl<string>;
@@ -95,11 +94,23 @@ implements OnInit, CanDeactivateComponent
         | Promise<boolean | UrlTree>
         | boolean
         | UrlTree {
-        return (
-            this.exit ||
-            this.userForm.pristine ||
-            confirm("Do you want to leave this page?. Changes can be lost")
-        );
+        if (this.exit || this.userForm.pristine) {
+            return true;
+        } else {
+            return Swal.fire({
+                title: "Do you want to leave this page?",
+                showDenyButton: true,
+                confirmButtonText: "Exit",
+                denyButtonText: "Don't exit",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire("Changes have not been saved", "", "info");
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        }
     }
 
     changeImage(event: Event): void {
