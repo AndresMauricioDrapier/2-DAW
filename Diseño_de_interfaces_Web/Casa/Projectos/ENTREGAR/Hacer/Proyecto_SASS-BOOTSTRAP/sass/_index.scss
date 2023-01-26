@@ -24,98 +24,98 @@
 	margin-left: 10px;
 }
 
-.juegosSacadosIndex {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: flex-start;
-	align-content: flex-start;
-	width: 100%;
-	height: auto;
-	flex-direction: row;
-	.juegosIndex {
-		width: 300px;
-		height: 192px;
-		margin: 46px;
-		border: 1px solid black;
-		.precioIndex {
-			margin-left: 200px;
-			border-radius: 5px;
-			background-color: $background-color_gray;
-			color: $color_white;
-			padding: 5px;
-		}
-		.precio2Index {
-			margin-left: 175px;
-			border-radius: 5px;
-			background-color: $background-color_gray;
-			color: $color_white;
-			padding: 5px;
-		}
-		&:hover {
-			img {
-				@include highlight(animation,aparecer,0.5s,linear);
-			}
-		}
-	}
-	div {
-		img {
-			width: 300px;
-			height: 150px;
-		}
-	}
-	.iconoIndex {
-		padding-left: 2%;
-	}
-}
-.proximamenteLabel {
-	margin-left: 10px;
-}
-.proximamente {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: flex-start;
-	align-content: flex-start;
-	width: 100%;
-	height: auto;
-	flex-direction: row;
-	.juegoProximamente {
-		width: 300px;
-		height: 192px;
-		margin: 46px;
-		border: 1px solid black;
-		.proximoJuego {
-			margin-left: 140px;
-			border-radius: 5px;
-			background-color: $background-color_gray;
-			color: $color_white;
-			padding: 5px;
-		}
-		.proximoJuego2 {
-			margin-left: 120px;
-			border-radius: 5px;
-			background-color: $background-color_gray;
-			color: $color_white;
-			padding: 5px;
-		}
-		&:hover {
-			img {
-				-webkit-animation: aparecer 0.5s linear;
-				animation: aparecer 0.5s linear;
-			}
-		}
-	}
-	div {
-		img {
-			width: 300px;
-			height: 150px;
-		}
-	}
-	.iconoIndex {
-		padding-left: 2%;
-	}
-}
+// .juegosSacadosIndex {
+// 	display: flex;
+// 	flex-wrap: wrap;
+// 	justify-content: center;
+// 	align-items: flex-start;
+// 	align-content: flex-start;
+// 	width: 100%;
+// 	height: auto;
+// 	flex-direction: row;
+// 	.juegosIndex {
+// 		width: 300px;
+// 		height: 192px;
+// 		margin: 46px;
+// 		border: 1px solid black;
+// 		.precioIndex {
+// 			margin-left: 200px;
+// 			border-radius: 5px;
+// 			background-color: $background-color_gray;
+// 			color: $color_white;
+// 			padding: 5px;
+// 		}
+// 		.precio2Index {
+// 			margin-left: 175px;
+// 			border-radius: 5px;
+// 			background-color: $background-color_gray;
+// 			color: $color_white;
+// 			padding: 5px;
+// 		}
+// 		&:hover {
+// 			img {
+// 				@include highlight(animation,aparecer,0.5s,linear);
+// 			}
+// 		}
+// 	}
+// 	div {
+// 		img {
+// 			width: 300px;
+// 			height: 150px;
+// 		}
+// 	}
+// 	.iconoIndex {
+// 		padding-left: 2%;
+// 	}
+// }
+// .proximamenteLabel {
+// 	margin-left: 10px;
+// }
+// .proximamente {
+// 	display: flex;
+// 	flex-wrap: wrap;
+// 	justify-content: center;
+// 	align-items: flex-start;
+// 	align-content: flex-start;
+// 	width: 100%;
+// 	height: auto;
+// 	flex-direction: row;
+// 	.juegoProximamente {
+// 		width: 300px;
+// 		height: 192px;
+// 		margin: 46px;
+// 		border: 1px solid black;
+// 		.proximoJuego {
+// 			margin-left: 140px;
+// 			border-radius: 5px;
+// 			background-color: $background-color_gray;
+// 			color: $color_white;
+// 			padding: 5px;
+// 		}
+// 		.proximoJuego2 {
+// 			margin-left: 120px;
+// 			border-radius: 5px;
+// 			background-color: $background-color_gray;
+// 			color: $color_white;
+// 			padding: 5px;
+// 		}
+// 		&:hover {
+// 			img {
+// 				-webkit-animation: aparecer 0.5s linear;
+// 				animation: aparecer 0.5s linear;
+// 			}
+// 		}
+// 	}
+// 	div {
+// 		img {
+// 			width: 300px;
+// 			height: 150px;
+// 		}
+// 	}
+// 	.iconoIndex {
+// 		padding-left: 2%;
+// 	}
+// }
 
 @include responsive(900px){
 	.contenidoIndex {

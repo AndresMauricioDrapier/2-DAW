@@ -1,0 +1,29 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+// Define el color primario y dale el mismo tono que hicimos en la práctica 1 de Sass: #15a
+//$primary:
+// El color que tendrán los link será como el que le dimos al text hover: color primario con un 10% lighten
+// $link-hover-color:
+
+// Create la variable de fuente para el texto que sea Georgia, 'Times New Roman', Times, serif;
+
+// Crea los iconos como hicimos en la práctica 3 de Sass
+// TODO: Recuerda hacer la importación de compass @import "compass";
+
+// Modifica el border-radius de los formularios a 5px
+// $input-border-radius: 
+// Establece el fondo del dropdown como primary
+// $dropdown-bg: 
+// Asigna el color blanco o uno de los del abanico de grises para los enlaces del dropdown
+// $dropdown-link-color: 
+// Asigna al dropdown el color del link-hover-color
+// $dropdown-link-hover-color: 
+
+
+// Required
+@import "../node_modules/bootstrap/scss/bootstrap";
