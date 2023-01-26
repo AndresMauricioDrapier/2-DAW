@@ -72,7 +72,6 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
             if (data["restaurant"]) {
                 this.data = data["restaurant"];
                 this.newRestaurant = data["restaurant"];
-                console.log(this.data);
             }
         });
     }
@@ -85,7 +84,6 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
             this.newRestaurant.description,
             [Validators.required]
         );
-        console.log(this.data);
 
         this.data
             ? (this.daysOpenArray = this.fb.array(
@@ -103,7 +101,7 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
             Validators.required,
             Validators.pattern("(\\+?[0-9]2 ?)?[0-9]{9}"),
         ]);
-        this.imageControl = this.fb.control(this.newRestaurant.image, [
+        this.imageControl = this.fb.control("", [
             Validators.required,
         ]);
         this.addressControl = this.fb.control(this.newRestaurant.address);
@@ -174,8 +172,7 @@ export class RestaurantFormComponent implements OnInit, CanDeactivateComponent {
                 this.http
                     .addRestaurant(this.newRestaurant, data["restaurant"].id)
                     .subscribe({
-                        next: (e) => {
-                            console.log(e);
+                        next: () => {
 
                             this.router.navigate(["/restaurants"]);
                         },
