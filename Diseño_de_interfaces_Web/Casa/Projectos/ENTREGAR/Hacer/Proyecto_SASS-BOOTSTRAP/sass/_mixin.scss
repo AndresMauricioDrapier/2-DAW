@@ -20,4 +20,9 @@
 	-webkit-#{$size}: $property $duration $timing;
 	#{$size}: $property $duration $timing;
 }
+@mixin highlightValues($size,$property...) {
+	-moz-#{$size}: $property;
+	-webkit-#{$size}: $property ;
+	#{$size}: $property;
+}
 
