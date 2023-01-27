@@ -37,8 +37,8 @@ h1 {
 	}
 }
 
-.novedades {
-	margin-left: 10px;
+.novedades,.proximamenteLabel {
+	margin: 10px;
 }
 .card {
 	margin: 2px;
@@ -65,9 +65,9 @@ h1 {
 	margin-bottom: 5em;
 }
 
+
 @include responsive(900px) {
 	.contenidoIndex {
-		background-color: $background-color_gray;
 		#carousel {
 			display: none;
 		}
@@ -103,3 +103,4 @@ h1 {
 			  transform: scale(1) rotateY(180deg);
 	}
   }
+

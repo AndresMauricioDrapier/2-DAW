@@ -128,7 +128,7 @@
     transform: scale(1) rotateZ(360deg);
   }
 }
-/* line 1, ../sass/_pie.scss */
+/* line 2, ../sass/_pie.scss */
 .footer {
   background: #171c24;
   position: fixed;
@@ -139,7 +139,7 @@
   color: white;
   justify-content: space-between;
 }
-/* line 10, ../sass/_pie.scss */
+/* line 11, ../sass/_pie.scss */
 .footer i {
   color: #fff;
   font-size: 18px;
@@ -148,27 +148,27 @@
   text-align: center;
   padding: 0px 10px 0px 10px;
 }
-/* line 18, ../sass/_pie.scss */
+/* line 19, ../sass/_pie.scss */
 .footer .avisoLegal {
   margin-left: 100px;
 }
 
 @media screen and (max-width: 1250px) {
-  /* line 24, ../sass/_pie.scss */
+  /* line 25, ../sass/_pie.scss */
   .footer {
     max-width: 100%;
     padding: 0 20px;
   }
 }
 @media screen and (max-width: 900px) {
-  /* line 30, ../sass/_pie.scss */
+  /* line 31, ../sass/_pie.scss */
   .footer i {
     font-size: 15px;
     cursor: pointer;
     text-align: center;
   }
 
-  /* line 35, ../sass/_pie.scss */
+  /* line 36, ../sass/_pie.scss */
   .avisoLegal {
     margin-left: 0px;
   }
@@ -222,8 +222,8 @@ h1 {
 }
 
 /* line 40, ../sass/_index.scss */
-.novedades {
-  margin-left: 10px;
+.novedades, .proximamenteLabel {
+  margin: 10px;
 }
 
 /* line 43, ../sass/_index.scss */
@@ -260,10 +260,6 @@ h1 {
 }
 
 @media screen and (max-width: 900px) {
-  /* line 69, ../sass/_index.scss */
-  .contenidoIndex {
-    background-color: gray;
-  }
   /* line 71, ../sass/_index.scss */
   .contenidoIndex #carousel {
     display: none;
