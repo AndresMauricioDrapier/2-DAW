@@ -21,7 +21,7 @@ export const JuegoSchema = new mongoose.Schema({
   },
   tipo: {
     enum: ['rol', 'escape', 'dados', 'fichas', 'cartas', 'tablero'],
-    required: true,
+    //required: true,
   },
   precio: {
     type: Number,

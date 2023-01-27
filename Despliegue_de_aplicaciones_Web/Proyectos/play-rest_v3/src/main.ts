@@ -16,6 +16,7 @@ async function bootstrap() {
       secret: '1234',
       resave: true,
       saveUninitialized: false,
+      expires: new Date(Date.now() + 30 * 60 * 1000), //  La sesión expirará en
     }),
   );
 
@@ -23,7 +24,7 @@ async function bootstrap() {
     res.locals.session = req.session;
     next();
   });
-  app.useStaticAssets(__dirname + '/../public', { prefix: 'public' });
+  app.useStaticAssets(__dirname + '/../views', { prefix: 'public' });
   app.useStaticAssets(__dirname + '/../node_modules/bootstrap/dist');
   app.setViewEngine('njk');
   await app.listen(3000);

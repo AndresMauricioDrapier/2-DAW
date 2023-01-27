@@ -7,12 +7,15 @@ export class AppController {
 
   @Get()
   async index(@Res() res) {
-    return res.render('publico_index');
+    return res.render('public/listado_juegos');
   }
+  // @  Get()
+  // getHello(): string {
+  //   return this.appService.getHello();
+  // }
   @Get('/buscar')
   async listar(@Res() res, @Body() buscar: string) {
-    const resultado = await this.appService.listar(buscar);
-    if (resultado)
-      return res.render('contactos_listado', { contacto: resultado });
+    const resultado = await this.appService.listarBuscar(buscar);
+    if (resultado) return res.render('listado_juegos', { contacto: resultado });
   }
 }

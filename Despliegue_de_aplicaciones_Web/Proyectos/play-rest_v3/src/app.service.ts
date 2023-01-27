@@ -6,15 +6,15 @@ import { Juego } from './juego/interfaces/juego/juego.interface';
 @Injectable()
 export class AppService {
   constructor(
-    @InjectModel('juego')
+    @InjectModel('Juego')
     private readonly contactoModel: Model<Juego>,
   ) {}
   getHello(): string {
     return 'Hello World!';
   }
-  async listar(nombre: string): Promise<Juego[]> {
+  async listarBuscar(nombre: string): Promise<Juego[]> {
     return await this.contactoModel
-      .find((juegos) => {
+      .find((juegos: Juego[]) => {
         juegos.filter((juego) => juego.nombre == nombre);
       })
       .exec();

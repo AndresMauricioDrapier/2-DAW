@@ -22,9 +22,10 @@
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
-    "@nestjs/platform-express": "^9.0.0",
     "@nestjs/mongoose": "^9.2.1",
+    "@nestjs/platform-express": "^9.0.0",
     "bootstrap": "^5.2.3",
+    "class-validator": "^0.14.0",
     "express-session": "^1.17.3",
     "method-override": "^3.0.0",
     "mongoose": "^6.8.4",

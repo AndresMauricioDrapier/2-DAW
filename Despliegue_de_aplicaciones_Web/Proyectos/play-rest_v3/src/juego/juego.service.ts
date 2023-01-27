@@ -7,37 +7,37 @@ import { Juego } from './interfaces/juego/juego.interface';
 @Injectable()
 export class JuegoService {
   constructor(
-    @InjectModel('juego')
-    private readonly contactoModel: Model<Juego>,
+    @InjectModel('Juego')
+    private readonly juegoModel: Model<Juego>,
   ) {}
 
   async listar(): Promise<Juego[]> {
-    return await this.contactoModel.find().exec();
+    return await this.juegoModel.find().exec();
   }
   async listarId(id: string) {
-    return await this.contactoModel.findById(id).exec();
+    return await this.juegoModel.findById(id).exec();
   }
 
   async insertar(crearContactoDto: JuegoDto): Promise<Juego> {
-    const nuevoContacto = new this.contactoModel(crearContactoDto);
+    const nuevoContacto = new this.juegoModel(crearContactoDto);
     return await nuevoContacto.save();
   }
 
-  async actualizar(id: string, actualizarTareaDto: JuegoDto): Promise<Juego> {
-    return await this.contactoModel
+  async actualizar(id: string, actualizarJuegoDto: JuegoDto): Promise<Juego> {
+    return await this.juegoModel
       .findByIdAndUpdate(
         id,
 
         {
           $set: {
-            nombre: actualizarTareaDto.nombre,
-            descripcion: actualizarTareaDto.descripcion,
-            edad: actualizarTareaDto.edad,
-            numJugadores: actualizarTareaDto.numJugadores,
-            tipo: actualizarTareaDto.tipo,
-            precio: actualizarTareaDto.precio,
-            imagen: actualizarTareaDto.imagen,
-            edicion: actualizarTareaDto.edicion,
+            nombre: actualizarJuegoDto.nombre,
+            descripcion: actualizarJuegoDto.descripcion,
+            edad: actualizarJuegoDto.edad,
+            numJugadores: actualizarJuegoDto.numJugadores,
+            tipo: actualizarJuegoDto.tipo,
+            precio: actualizarJuegoDto.precio,
+            imagen: actualizarJuegoDto.imagen,
+            edicion: actualizarJuegoDto.edicion,
           },
         },
         { new: true, runValidators: true },
@@ -46,6 +46,6 @@ export class JuegoService {
   }
 
   async borrar(id: string): Promise<Juego> {
-    return await this.contactoModel.findByIdAndDelete(id).exec();
+    return await this.juegoModel.findByIdAndDelete(id).exec();
   }
 }
