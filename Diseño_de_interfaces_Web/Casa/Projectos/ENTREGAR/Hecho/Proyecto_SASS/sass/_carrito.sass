@@ -1,0 +1,249 @@
+$gradient: linear-gradient(135deg, rgba(91, 36, 122, 0.45) 0%, rgba(27, 206, 223, 0.55) 100%)
+$shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)
+$primary: #4183d7
+$secondary: #66cc99
+
+#carritoPrincipal
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+  justify-content: center
+  align-content: flex-start
+  align-items: center
+  color: $color_black
+  padding: 218px
+  background-color: #354152
+
+  div
+    h2
+      color: $color_skyblue
+      margin-bottom: 10px
+
+  #carritoIzquierda
+    margin-right: 5em
+    border-radius: 5px
+    padding: 3em
+    box-shadow: 0 0 250px $color_black
+    width: 800px
+
+    .carritoProducto
+      display: flex
+      width: 30em
+      border: 1px solid $color_white
+      box-shadow: 0px 0px 10px $color_white
+      border-radius: 10px
+      width: 700px
+      margin-bottom: 2%
+
+      .imgProductoCarrito
+        width: 200px
+        height: 150px
+        border-radius: 5px
+        margin: 10px
+
+    .textoProductoCarrito
+      position: relative
+      width: 450px
+      height: 150px
+
+      .nombreCarrito
+        list-style: none
+        color: $color_white
+        font-family: $font-family
+        padding: 1em
+        color: $color_white
+        font-size: 1.25rem
+
+      .precioCarrito
+        position: absolute
+        bottom: 0
+        right: 0
+        color: $color_white
+        font-size: 1.25rem
+
+  #carritoDerecha
+    border-radius: 5px
+    padding: 3em
+    box-shadow: 0 0 250px $color_black
+    width: 500px
+
+    #pagar
+      text-align: center
+
+      .inputPagar
+        border: 1px solid #4a576b
+        border-radius: 999px
+        background-color: $background-transparent
+        text-align: center
+        color: $color_white
+        width: 100%
+        margin: 15px
+        background-image: linear-gradient(160deg, #354152, #171c24 100%)
+        color: $color_white
+        margin-bottom: 1rem
+        width: 100%
+        cursor: pointer
+        height: 40px
+
+  .nombrePrecioPago
+    display: flex
+    color: $color_white
+    margin: 5px
+    color: $color_white
+
+    .nombrePago
+      width: 200px
+      margin: 0
+
+      > h4
+        color: $color_black
+
+  .carritoInput
+    border: 1px solid #4a576b
+    border-radius: 999px
+    background-color: $background-transparent
+    text-align: center
+    color: $color_white
+    width: 100%
+    margin: 15px
+
+    &::placeholder
+      color: $color_white
+
+  .carritoFormaspago
+    i
+      color: $color_white
+      font-size: 25px
+
+/*Efectos
+.modalmask
+  position: fixed
+  font-family: Arial, sans-serif
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background: rgba(0, 0, 0, 0.8)
+  z-index: 99999
+  opacity: 0
+  -webkit-transition: opacity 400ms ease-in
+  -moz-transition: opacity 400ms ease-in
+  transition: opacity 400ms ease-in
+  pointer-events: none
+
+.modalmask:target
+  opacity: 1
+  pointer-events: auto
+
+/*Movimientos
+.movedown
+  margin: 0 auto
+
+.rotate
+  margin: 10% auto
+  -webkit-transform: scale(-5, -5)
+  transform: scale(-5, -5)
+
+.resize
+  margin: 10% auto
+  width: 0
+  height: 0
+
+.modalmask:target .movedown
+  margin: 10% auto
+
+.modalmask:target .rotate
+  transform: rotate(360deg) scale(1, 1)
+  -webkit-transform: rotate(360deg) scale(1, 1)
+
+.modalmask:target .resize
+  width: 400px
+  height: 200px
+
+/*Boton de cerrar
+.close
+  background: #606061
+  color: #ffffff
+  line-height: 25px
+  position: absolute
+  right: 1px
+  text-align: center
+  top: 1px
+  width: 24px
+  text-decoration: none
+  font-weight: bold
+  border-radius: 3px
+
+.close:hover
+  background: #faac58
+  color: #222
+
+#pago
+  margin: 10% 40%
+  width: 100%
+  height: 100%
+  display: flex
+  flex-flow: row nowrap
+  align-items: center
+  justify-content: center
+  background: linear-gradient(#bbbbbb, #354152)
+  font-family: "Raleway", sans-serif
+  position: relative
+  width: 350px
+  height: 330px
+  left: 30px
+  border-radius: 10px
+  box-shadow: $shadow
+  background-color: white
+
+#right
+  position: absolute
+  height: 100%
+  display: flex
+  flex-flow: column nowrap
+  padding-left: 20px
+
+#right form
+  display: flex
+  flex-flow: column nowrap
+  width: 100%
+
+#right form input,
+#right form select
+  appearance: none
+  border: none
+  border-bottom: 1.5px solid #ccc
+  padding: 5px
+  margin-top: 2.5px
+  position: relative
+
+#right form .form-field
+  display: flex
+  flex-flow: column nowrap
+  justify-content: center
+  margin-bottom: 12.5px
+
+#right form #date-val
+  display: flex
+  justify-content: space-between
+
+#right form #date-val select
+  width: 45%
+
+#right form button[type="submit"]
+  background: linear-gradient(135deg, #1f0543 0%, #354152 100%)
+  padding: 5px
+  border: none
+  border-radius: 50px
+  color: white
+  font-weight: 400
+  font-size: 12pt
+  margin-top: 10px
+
+#right form button[type="submit"]:hover
+  background: transparent
+  box-shadow: 0 0 0 3px $primary
+  color: $primary
+
+a.inputPagar
+  padding: 6px 42%

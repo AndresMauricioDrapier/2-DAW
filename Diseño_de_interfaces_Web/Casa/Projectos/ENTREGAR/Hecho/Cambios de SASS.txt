@@ -1,0 +1,23 @@
+Partes corregidas:
+
+Logo de inicio: Animación cambiada.
+
+Texto del apartado de nosotros: Sombreado quitado.
+
+Copyright: Añadido el nombre y logo.
+
+Cartas de los videojuegos: Animación cambiada.
+
+Añadido:
+
+Time, Figure, Figurecaption: Añadido en las cartas de los juegos.
+
+Variables locales: Añadidos en el _menu.scss y también en _carrito.scss.
+
+Mixin con $valor...: Añadido en _mixin.scss , su uso esta en _index.scss linea 143 y 193.
+
+Placeholder, extend: Añadido, su uso esta en _nosotros.scss y _session.scss.
+
+Splites, foreach: Añadido, su uso esta en _index.scss, usado para las imagenes de los videojuegos en el index.
+
+Formulario modal: Añadido, su uso esta en carrito.html, al hacer click a targeta sale el formulario para pagar con targeta.
