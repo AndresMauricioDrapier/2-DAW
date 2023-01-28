@@ -40,7 +40,7 @@ h1 {
 .novedades,.proximamenteLabel {
 	margin: 10px;
 }
-.card {
+.cardIndex {
 	margin: 2px;
 	img {
 		border-radius: 5px;
@@ -48,6 +48,9 @@ h1 {
 	}
 	.card-text {
 		text-align: right;
+	}
+	.hollow{
+		font-size: 1.10em;
 	}
 	.card-body {
 		height: 5em;

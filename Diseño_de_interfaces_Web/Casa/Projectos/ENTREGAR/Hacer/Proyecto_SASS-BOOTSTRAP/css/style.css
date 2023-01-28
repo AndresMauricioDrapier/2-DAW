@@ -227,40 +227,44 @@ h1 {
 }
 
 /* line 43, ../sass/_index.scss */
-.card {
+.cardIndex {
   margin: 2px;
 }
 /* line 45, ../sass/_index.scss */
-.card img {
+.cardIndex img {
   border-radius: 5px;
   height: 10em;
 }
 /* line 49, ../sass/_index.scss */
-.card .card-text {
+.cardIndex .card-text {
   text-align: right;
 }
 /* line 52, ../sass/_index.scss */
-.card .card-body {
-  height: 5em;
+.cardIndex .hollow {
+  font-size: 1.10em;
 }
 /* line 55, ../sass/_index.scss */
-.card .precioIndex {
+.cardIndex .card-body {
+  height: 5em;
+}
+/* line 58, ../sass/_index.scss */
+.cardIndex .precioIndex {
   font-size: 1.5em;
 }
-/* line 59, ../sass/_index.scss */
-.card:hover img {
+/* line 62, ../sass/_index.scss */
+.cardIndex:hover img {
   -moz-animation: flip-scale-up-ver 0.5s linear both;
   -webkit-animation: flip-scale-up-ver 0.5s linear both;
   animation: flip-scale-up-ver 0.5s linear both;
 }
 
-/* line 64, ../sass/_index.scss */
+/* line 67, ../sass/_index.scss */
 .proximamente {
   margin-bottom: 5em;
 }
 
 @media screen and (max-width: 900px) {
-  /* line 71, ../sass/_index.scss */
+  /* line 74, ../sass/_index.scss */
   .contenidoIndex #carousel {
     display: none;
   }
@@ -394,132 +398,136 @@ h1 {
   cursor: pointer;
 }
 
-/* line 2, ../sass/_carrito.scss */
+/* line 6, ../sass/_carrito.scss */
 #carritoPrincipal {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-content: flex-start;
-  align-items: center;
-  color: black;
-  padding: 218px;
   background-color: #354152;
+  padding-bottom: 12.2vh;
 }
-/* line 14, ../sass/_carrito.scss */
-#carritoPrincipal div h2 {
-  color: #d0e1ff;
-  margin-bottom: 10px;
+
+/* line 10, ../sass/_carrito.scss */
+.fa-brands {
+  width: 20px;
 }
-/* line 20, ../sass/_carrito.scss */
-#carritoPrincipal #carritoIzquierda {
-  margin-right: 5em;
-  border-radius: 5px;
-  padding: 3em;
-  box-shadow: 0 0 250px black;
-  width: 800px;
-}
-/* line 27, ../sass/_carrito.scss */
-#carritoPrincipal #carritoIzquierda .carritoProducto {
-  display: flex;
-  width: 30em;
-  border: 1px solid white;
-  box-shadow: 0px 0px 10px white;
-  border-radius: 10px;
-  width: 700px;
-  margin-bottom: 2%;
-}
-/* line 35, ../sass/_carrito.scss */
-#carritoPrincipal #carritoIzquierda .carritoProducto .imgProductoCarrito {
-  width: 200px;
-  height: 150px;
-  border-radius: 5px;
-  margin: 10px;
-}
-/* line 43, ../sass/_carrito.scss */
-#carritoPrincipal #carritoIzquierda .textoProductoCarrito {
-  position: relative;
-  width: 450px;
-  height: 150px;
-}
-/* line 47, ../sass/_carrito.scss */
-#carritoPrincipal #carritoIzquierda .textoProductoCarrito .nombreCarrito {
-  list-style: none;
-  color: white;
-  font-family: "Poppins", sans-serif;
-  padding: 1em;
-  color: white;
-  font-size: 1.25rem;
-}
-/* line 55, ../sass/_carrito.scss */
-#carritoPrincipal #carritoIzquierda .textoProductoCarrito .precioCarrito {
-  position: absolute;
-  bottom: 0;
+
+/* MODAL FORM /*
+/*Efectos*/
+/* line 16, ../sass/_carrito.scss */
+.modalmask {
+  position: fixed;
+  font-family: Arial, sans-serif;
+  top: 0;
   right: 0;
-  color: white;
-  font-size: 1.25rem;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
 }
-/* line 64, ../sass/_carrito.scss */
-#carritoPrincipal #carritoDerecha {
-  border-radius: 5px;
-  padding: 3em;
-  box-shadow: 0 0 250px black;
-  width: 500px;
+/* line 28, ../sass/_carrito.scss */
+.modalmask .movedown {
+  margin: 0 auto;
 }
-/* line 69, ../sass/_carrito.scss */
-#carritoPrincipal #carritoDerecha #pagar {
+/* line 31, ../sass/_carrito.scss */
+.modalmask:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* line 34, ../sass/_carrito.scss */
+.modalmask:target .movedown {
+  margin: 10% auto;
+}
+/* line 38, ../sass/_carrito.scss */
+.modalmask .close {
+  background: #606061;
+  color: #ffffff;
+  line-height: 25px;
+  position: absolute;
+  right: 1px;
   text-align: center;
+  top: 1px;
+  width: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 3px;
 }
-/* line 71, ../sass/_carrito.scss */
-#carritoPrincipal #carritoDerecha #pagar .inputPagar {
-  border: 1px solid #4a576b;
-  border-radius: 999px;
-  background-color: transparent;
-  text-align: center;
-  color: white;
-  width: 100%;
-  margin: 15px;
-  background-image: linear-gradient(160deg, #354152, #171c24 100%);
-  color: white;
-  margin-bottom: 1rem;
-  width: 100%;
-  cursor: pointer;
-  height: 40px;
+/* line 50, ../sass/_carrito.scss */
+.modalmask .close:hover {
+  background: #faac58;
+  color: #222;
 }
-/* line 89, ../sass/_carrito.scss */
-#carritoPrincipal .nombrePrecioPago {
+
+/* line 57, ../sass/_carrito.scss */
+#pago {
+  margin: 10% 40%;
+  width: 100%;
+  height: 100%;
   display: flex;
-  color: white;
-  margin: 5px;
-  color: white;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#bbbbbb, #354152);
+  font-family: "Raleway", sans-serif;
+  position: relative;
+  width: 350px;
+  height: 330px;
+  left: 30px;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  background-color: white;
 }
-/* line 94, ../sass/_carrito.scss */
-#carritoPrincipal .nombrePrecioPago .nombrePago {
-  width: 200px;
-  margin: 0;
+/* line 80, ../sass/_carrito.scss */
+#pago #right {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  padding-left: 20px;
 }
-/* line 97, ../sass/_carrito.scss */
-#carritoPrincipal .nombrePrecioPago .nombrePago > h4 {
-  color: black;
-}
-/* line 103, ../sass/_carrito.scss */
-#carritoPrincipal .carritoInput {
-  border: 1px solid #4a576b;
-  border-radius: 999px;
-  background-color: transparent;
-  text-align: center;
-  color: white;
+/* line 88, ../sass/_carrito.scss */
+#pago #right form {
+  display: flex;
+  flex-flow: column nowrap;
   width: 100%;
-  margin: 15px;
+}
+/* line 93, ../sass/_carrito.scss */
+#pago #right form input,
+#pago #right form select {
+  appearance: none;
+  border: none;
+  border-bottom: 1.5px solid #ccc;
+  padding: 5px;
+  margin-top: 2.5px;
+  position: relative;
+}
+/* line 104, ../sass/_carrito.scss */
+#pago #right form .form-field {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  margin-bottom: 12.5px;
 }
 /* line 111, ../sass/_carrito.scss */
-#carritoPrincipal .carritoInput::placeholder {
+#pago #right form button[type="submit"] {
+  background: linear-gradient(135deg, #1f0543 0%, #354152 100%);
+  padding: 5px;
+  border: none;
+  border-radius: 50px;
   color: white;
+  font-weight: 400;
+  font-size: 12pt;
+  margin-top: 10px;
 }
-/* line 117, ../sass/_carrito.scss */
-#carritoPrincipal .carritoFormaspago i {
-  color: white;
-  font-size: 25px;
+/* line 121, ../sass/_carrito.scss */
+#pago #right form button[type="submit"]:hover {
+  background: transparent;
+  box-shadow: 0 0 0 3px #4183d7;
+  color: #4183d7;
+}
+/* line 127, ../sass/_carrito.scss */
+#pago #right form a.inputPagar {
+  padding: 6px 42%;
 }
 
 /* line 3, ../sass/_nosotros.scss */
