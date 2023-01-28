@@ -85,7 +85,7 @@
 
           <div class="carritoProducto hollowKnightCarrito">
 
-            <img src="../img/Juegos/HK.jpg" alt="Hollow Knight" class="imgProductoCarrito" />
+            <img src="../img/Juegos/juegosSplite/HK.png" alt="Hollow Knight" class="imgProductoCarrito" />
 
             <div class="textoProductoCarrito">
               <div class="nombreCarrito">
@@ -98,8 +98,8 @@
           </div>
 
           <div class="carritoProducto SonicFrontiersCarrito">
-            <img src="../img/Juegos/SF.jpg" alt="Sonic Frontiers" class="imgProductoCarrito" />
-            
+            <img src="../img/Juegos/juegosSplite/SF.png" alt="Sonic Frontiers" class="imgProductoCarrito" />
+
             <div class="textoProductoCarrito">
               <div class="nombreCarrito">
                 Sonic Frontiers
@@ -115,7 +115,7 @@
 
     <div class="derechaCarrito">
       <h2 class="carritoTitulo">Pago</h2>
-      
+
       <div id="carritoDerecha">
         <h4>RESUMEN DEL PEDIDO</h4>
 
@@ -143,7 +143,7 @@
         </div>
 
         <form class="carritoCodigo">
-          <input class= "carritoInput" type="text" name="codigoPro" id="codigoPro" placeholder="Código promocional">
+          <input class="carritoInput" type="text" name="codigoPro" id="codigoPro" placeholder="Código promocional">
         </form>
 
         <div class="carritoFormaspago">
@@ -154,23 +154,84 @@
           <i class="fa-brands fa-cc-amex"></i>
         </div>
         <div id="pagar">
-          <input class="inputPagar" type="submit" value="Pagar">
-          O
           <input class="inputPagar" type="submit" value="Paypal">
+          <a class="inputPagar" href="#modal1" type="submit">Targeta</a>
         </div>
 
 
       </div>
-
   </main>
+  <section>
+    <div id="modal1" class="modalmask">
+      <div class=" movedown">
+
+        <a href="#close" title="Close" class="close">X</a>
+        <main id="pago">
+          <section id="right">
+            <h1>Purchase</h1>
+            <form action="#">
+              <div class="form-field">
+                <label for="cc-number">Card number:</label>
+                <input id="cc-number" maxlength="19" placeholder="1111 2222 3333 4444" required>
+              </div>
+
+              <div class="form-field">
+                <label>Expiry date:</label>
+                <div >
+                  <select required>
+                    <option value="" default="default" selected="selected">Month</option>
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  <select  required>
+                    <option  value="" default="" selected="selected">Year</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                    <option value="2031">2031</option>
+                    <option value="2032">2032</option>
+                    <option value="2033">2033</option>
+                    <option value="2034">2034</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="form-sec-code" class="form-field">
+                <label for="sec-code">Security code:</label>
+                <input type="password" maxlength="3" placeholder="123" required>
+              </div>
+
+              <button type="submit">Purchase Premium</button>
+            </form>
+          </section>
+        </main>
+
+      </div>
+
+    </div>
+  </section>
   <footer class="footer">
-    <label class="copyright-icon"><i class="fa-regular fa-copyright"></i></label>
+    <label class="copyright-icon"><i class="fa-regular fa-copyright"></i> Copyright</label>
     <div class="avisoLegal">GamesBip - Aviso legal</div>
     <div class="imgContact">
-      <a class="linkeding-icon" href="#"><i class="fa-brands fa-linkedin"></i></a>
-      <a class="instagram-icon" href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a class="twitter-icon" href="#"><i class="fa-brands fa-twitter"></i></a>
-      <a class="whatsapp-icon" href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      <a class="linkeding-icon" href="https://www.linkedin.com/in/andrés-mauricio-drapier-25ab7a164/"><i class="fa-brands fa-linkedin"></i></a>
+      <a class="instagram-icon" href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+      <a class="twitter-icon" href="https://twitter.com/?lang=es"><i class="fa-brands fa-twitter"></i></a>
+      <a class="whatsapp-icon" href="https://www.whatsapp.com/?lang=es"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
   </footer>
 </body>

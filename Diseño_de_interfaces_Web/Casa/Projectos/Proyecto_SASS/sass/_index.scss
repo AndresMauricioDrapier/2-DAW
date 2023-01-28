@@ -1,3 +1,20 @@
+@import "compass";
+
+$icons: sprite-map("../img/Juegos/juegosSplite/*.png");
+
+@each $i in sprite-names($icons) {
+	.icon-#{$i} {
+		background-position: sprite-position($icons, $i);
+		@include sprite-dimensions($icons, $i);
+	}
+}
+figure {
+	img {
+		background: $icons;
+		display: inline-block;
+	}
+}
+
 #carousel {
 	.slides {
 		margin-top: 10px;
@@ -103,7 +120,7 @@
 		width: 300px;
 		height: 192px;
 		margin: 46px;
-		border: 1px solid black;
+		border: 1px solid $color_black;
 		.precioIndex {
 			margin-left: 200px;
 			border-radius: 5px;
@@ -118,12 +135,12 @@
 			color: $color_white;
 			padding: 5px;
 		}
-		time{
+		time {
 			display: none;
 		}
 		&:hover {
 			img {
-				@include highlightValues(animation,flip-scale-up-ver 0.5s linear both);
+				@include highlightValues(animation, flip-scale-up-ver 0.5s linear both);
 			}
 		}
 	}
@@ -153,7 +170,7 @@
 		width: 300px;
 		height: 192px;
 		margin: 46px;
-		border: 1px solid black;
+		border: 1px solid $color_black;
 		.proximoJuego {
 			margin-left: 140px;
 			border-radius: 5px;
@@ -168,9 +185,12 @@
 			color: $color_white;
 			padding: 5px;
 		}
+		time {
+			display: none;
+		}
 		&:hover {
 			img {
-				@include highlightValues(animation,flip-scale-up-ver 0.5s linear both);
+				@include highlightValues(animation, flip-scale-up-ver 0.5s linear both);
 			}
 		}
 	}
@@ -185,7 +205,7 @@
 	}
 }
 
-@include responsive(900px){
+@include responsive(900px) {
 	.contenidoIndex {
 		background-color: $background-color_gray;
 		#carousel {
@@ -194,32 +214,31 @@
 	}
 }
 
-
 @-webkit-keyframes flip-scale-up-ver {
 	0% {
-	  -webkit-transform: scale(1) rotateY(0);
-			  transform: scale(1) rotateY(0);
+		-webkit-transform: scale(1) rotateY(0);
+		transform: scale(1) rotateY(0);
 	}
 	50% {
-	  -webkit-transform: scale(1) rotateY(90deg);
-			  transform: scale(1) rotateY(90deg);
+		-webkit-transform: scale(1) rotateY(90deg);
+		transform: scale(1) rotateY(90deg);
 	}
 	100% {
-	  -webkit-transform: scale(1) rotateY(180deg);
-			  transform: scale(1) rotateY(180deg);
+		-webkit-transform: scale(1) rotateY(180deg);
+		transform: scale(1) rotateY(180deg);
 	}
-  }
-  @keyframes flip-scale-up-ver {
+}
+@keyframes flip-scale-up-ver {
 	0% {
-	  -webkit-transform: scale(1) rotateY(0);
-			  transform: scale(1) rotateY(0);
+		-webkit-transform: scale(1) rotateY(0);
+		transform: scale(1) rotateY(0);
 	}
 	50% {
-	  -webkit-transform: scale(1) rotateY(90deg);
-			  transform: scale(1) rotateY(90deg);
+		-webkit-transform: scale(1) rotateY(90deg);
+		transform: scale(1) rotateY(90deg);
 	}
 	100% {
-	  -webkit-transform: scale(1) rotateY(180deg);
-			  transform: scale(1) rotateY(180deg);
+		-webkit-transform: scale(1) rotateY(180deg);
+		transform: scale(1) rotateY(180deg);
 	}
-  }
+}

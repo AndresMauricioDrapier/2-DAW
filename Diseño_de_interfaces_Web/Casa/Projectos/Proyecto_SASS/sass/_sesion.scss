@@ -1,6 +1,21 @@
+%crearIniciar {
+    margin: 0 auto;
+    max-width: 25rem;
+    width: 100%;
+}
+%inputForm {
+    border: 1px solid #7a8eab;
+    border-radius: 999px;
+    background-color: $background-transparent;
+    text-align: center;
+    color: $color_skyblue;
+}
+$bg-colorContenido: #242c37;
+
+
 .contenidoSesion {
     padding: 175px;
-    background-color: #242c37;
+    background-color: $bg-colorContenido;
     .inputForm {
         border: 0;
         font: inherit;
@@ -21,14 +36,10 @@
         }
     }
     .iniciarSesion {
-        margin: 0 auto;
-        max-width: 25rem;
-        width: 100%;
+        @extend %crearIniciar;
     }
     .crearCuenta {
-        margin: 0 auto;
-        max-width: 25rem;
-        width: 100%;
+        @extend %crearIniciar;
     }
     h2 {
         font-size: 2.75em;
@@ -44,11 +55,7 @@
         text-align: center;
         padding: 4rem 2rem;
         input.inputForm {
-            border: 1px solid #7b828d;
-            border-radius: 999px;
-            background-color: $background-transparent;
-            text-align: center;
-            color: $color_skyblue;
+            @extend %inputForm;
         }
         input.sendForm {
             background-image: linear-gradient(160deg, #354152, #171c24 100%);
@@ -68,11 +75,7 @@
             color: #7e8ba3;
         }
         input.inputForm {
-            border: 1px solid #7a8eab;
-            border-radius: 999px;
-            background-color: $background-transparent;
-            text-align: center;
-            color: $color_skyblue;
+            @extend %inputForm;
         }
         input.sendForm {
             background-image: linear-gradient(160deg, #354152, #171c24 100%);
@@ -82,5 +85,4 @@
             cursor: pointer;
         }
     }
-    
 }

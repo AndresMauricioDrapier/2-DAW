@@ -1,4 +1,11 @@
-
+%nosotrosTextoHijos {
+	display: block;
+	flex-grow: 0;
+	flex-shrink: 1;
+	flex-basis: auto;
+	align-self: auto;
+	order: 0;
+}
 
 .contenidoNosotros {
 	display: flex;
@@ -11,7 +18,7 @@
 	.nosotros {
 		text-align: center;
 		color: $color_white;
-		text-shadow: 3px 3px 2px white;
+		text-shadow: 1px 1px 1px white;
 		font-size: 50px;
 	}
 	.nosotrosTexto {
@@ -23,24 +30,14 @@
 			margin: 10px;
 		}
 		&:nth-child(2) {
-			display: block;
-			flex-grow: 0;
-			flex-shrink: 1;
-			flex-basis: auto;
-			align-self: auto;
-			order: 0;
+			@extend %nosotrosTextoHijos;
 		}
 	}
 	.saberMas {
 		text-align: center;
 		font-size: 25px;
 		&:nth-child(3) {
-			display: block;
-			flex-grow: 0;
-			flex-shrink: 1;
-			flex-basis: auto;
-			align-self: auto;
-			order: 0;
+			@extend %nosotrosTextoHijos;
 		}
 	}
 	#imagenNosotros {
@@ -52,14 +49,7 @@
 		padding: 15%;
 		background-position: center;
 		&:nth-child(1) {
-			display: block;
-			flex-grow: 0;
-			flex-shrink: 1;
-			flex-basis: auto;
-			align-self: auto;
-			order: 0;
+			@extend %nosotrosTextoHijos;
 		}
 	}
 }
-
-
