@@ -18,7 +18,27 @@ export class JuegoController {
   @Get()
   async listar(@Res() res) {
     const juego = await this.juegoService.listar();
-    if (juego) return res.render('listado_juegos', { juego: juego });
+    if (juego) return res.render('public/listado_juegos', { juegos: juego });
+  }
+
+  // GET /juego /nuevo
+  @Get('/nuevo')
+  async llevarForm(@Res() res) {
+    return res.render('admin/admin_nuevo');
+  }
+
+  //GET /juegos/editar/:id HAY QUE EDITARLO PARA QUE LLEVEN AL MISMO FORMULARIO
+  @Get('/editar/:id')
+  async editarJuego(@Res() res, @Param() id: string) {
+    try {
+      const juego = await this.juegoService.listarId(id);
+      if (juego) return res.render('admin_editar', { juego: juego });
+      else {
+        throw new Error();
+      }
+    } catch (error) {
+      return res.render('error', { error: error });
+    }
   }
   // GET /juego/:id
   @Get('/:id')
@@ -33,30 +53,19 @@ export class JuegoController {
       return res.render('error', { error: error });
     }
   }
-  // GET /juego/nuevo
-  @Get('/nuevo')
-  async llevarForm(@Res() res) {
-    return res.render('admin_nuevo');
-  }
 
-  //GET /juegos/editar/:id
-  @Get('/editar/:id')
-  async editarJuego(@Res() res, @Param() id: string) {
+  // POST /juego
+  @Post()
+  async crear(@Body() crearJuegoDTO: JuegoDto, @Res() res) {
     try {
-      const juego = await this.juegoService.listarId(id);
-      if (juego) return res.render('admin_editar', { juego: juego });
+      const juego = this.juegoService.insertar(crearJuegoDTO);
+      if (juego) return res.render('public/listado_juegos');
       else {
         throw new Error();
       }
     } catch (error) {
       return res.render('error', { error: error });
     }
-  }
-
-  // POST /juego
-  @Post()
-  async crear(@Body() crearJuegoDTO: JuegoDto) {
-    return this.juegoService.insertar(crearJuegoDTO);
   }
 
   // PUT /juego/:id

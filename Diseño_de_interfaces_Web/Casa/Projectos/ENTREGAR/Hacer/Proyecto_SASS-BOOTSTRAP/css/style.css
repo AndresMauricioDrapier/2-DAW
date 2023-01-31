@@ -298,104 +298,14 @@ h1 {
   }
 }
 /* line 1, ../sass/_sesion.scss */
-.contenidoSesion {
-  padding: 175px;
+.sesionContenido {
   background-color: #242c37;
+  padding-bottom: 2em;
 }
-/* line 4, ../sass/_sesion.scss */
-.contenidoSesion .inputForm {
-  border: 0;
-  font: inherit;
-}
-/* line 7, ../sass/_sesion.scss */
-.contenidoSesion .inputForm::placeholder {
-  color: #d0e1ff;
-}
-/* line 11, ../sass/_sesion.scss */
-.contenidoSesion .inputsForm {
-  margin-bottom: 1rem;
-}
-/* line 15, ../sass/_sesion.scss */
-.contenidoSesion .form input {
-  outline: 0;
-  padding: 0.5rem 1rem;
-}
-/* line 19, ../sass/_sesion.scss */
-.contenidoSesion .form .inputForm {
-  width: 100%;
-}
-/* line 23, ../sass/_sesion.scss */
-.contenidoSesion .iniciarSesion {
-  margin: 0 auto;
-  max-width: 25rem;
-  width: 100%;
-}
-/* line 28, ../sass/_sesion.scss */
-.contenidoSesion .crearCuenta {
-  margin: 0 auto;
-  max-width: 25rem;
-  width: 100%;
-}
-/* line 33, ../sass/_sesion.scss */
-.contenidoSesion h2 {
-  font-size: 2.75em;
-  font-weight: 1em;
-  margin: 0 0 1rem;
-  text-transform: uppercase;
-}
-/* line 39, ../sass/_sesion.scss */
-.contenidoSesion a {
-  color: gray;
-}
-/* line 42, ../sass/_sesion.scss */
-.contenidoSesion .login {
+/* line 5, ../sass/_sesion.scss */
+.sesionContenido .bordeZona {
   box-shadow: 0 0 250px #5c6b65;
-  text-align: center;
-  padding: 4rem 2rem;
-}
-/* line 46, ../sass/_sesion.scss */
-.contenidoSesion .login input.inputForm {
-  border: 1px solid #7b828d;
-  border-radius: 999px;
-  background-color: transparent;
-  text-align: center;
-  color: #d0e1ff;
-}
-/* line 53, ../sass/_sesion.scss */
-.contenidoSesion .login input.sendForm {
-  background-image: linear-gradient(160deg, #354152, #171c24 100%);
-  color: white;
-  margin-bottom: 2rem;
-  width: 100%;
-  cursor: pointer;
-}
-/* line 61, ../sass/_sesion.scss */
-.contenidoSesion .register {
-  box-shadow: 0 0 250px #649a9a;
-  text-align: center;
-  padding: 4rem 2rem;
-}
-/* line 65, ../sass/_sesion.scss */
-.contenidoSesion .register .checkbox {
-  text-align: left;
-  padding: 10px;
-  color: #7e8ba3;
-}
-/* line 70, ../sass/_sesion.scss */
-.contenidoSesion .register input.inputForm {
-  border: 1px solid #7a8eab;
-  border-radius: 999px;
-  background-color: transparent;
-  text-align: center;
-  color: #d0e1ff;
-}
-/* line 77, ../sass/_sesion.scss */
-.contenidoSesion .register input.sendForm {
-  background-image: linear-gradient(160deg, #354152, #171c24 100%);
-  color: white;
-  margin-bottom: 2rem;
-  width: 100%;
-  cursor: pointer;
+  border-radius: 1rem;
 }
 
 /* line 6, ../sass/_carrito.scss */
@@ -404,14 +314,9 @@ h1 {
   padding-bottom: 12.2vh;
 }
 
-/* line 10, ../sass/_carrito.scss */
-.fa-brands {
-  width: 20px;
-}
-
 /* MODAL FORM /*
 /*Efectos*/
-/* line 16, ../sass/_carrito.scss */
+/* line 13, ../sass/_carrito.scss */
 .modalmask {
   position: fixed;
   font-family: Arial, sans-serif;
@@ -425,20 +330,20 @@ h1 {
   transition: opacity 400ms ease-in;
   pointer-events: none;
 }
-/* line 28, ../sass/_carrito.scss */
+/* line 25, ../sass/_carrito.scss */
 .modalmask .movedown {
   margin: 0 auto;
 }
-/* line 31, ../sass/_carrito.scss */
+/* line 28, ../sass/_carrito.scss */
 .modalmask:target {
   opacity: 1;
   pointer-events: auto;
 }
-/* line 34, ../sass/_carrito.scss */
+/* line 31, ../sass/_carrito.scss */
 .modalmask:target .movedown {
   margin: 10% auto;
 }
-/* line 38, ../sass/_carrito.scss */
+/* line 35, ../sass/_carrito.scss */
 .modalmask .close {
   background: #606061;
   color: #ffffff;
@@ -452,13 +357,13 @@ h1 {
   font-weight: bold;
   border-radius: 3px;
 }
-/* line 50, ../sass/_carrito.scss */
+/* line 47, ../sass/_carrito.scss */
 .modalmask .close:hover {
   background: #faac58;
   color: #222;
 }
 
-/* line 57, ../sass/_carrito.scss */
+/* line 54, ../sass/_carrito.scss */
 #pago {
   margin: 10% 40%;
   width: 100%;
@@ -477,7 +382,7 @@ h1 {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   background-color: white;
 }
-/* line 80, ../sass/_carrito.scss */
+/* line 77, ../sass/_carrito.scss */
 #pago #right {
   position: absolute;
   height: 100%;
@@ -485,13 +390,13 @@ h1 {
   flex-flow: column nowrap;
   padding-left: 20px;
 }
-/* line 88, ../sass/_carrito.scss */
+/* line 85, ../sass/_carrito.scss */
 #pago #right form {
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
 }
-/* line 93, ../sass/_carrito.scss */
+/* line 90, ../sass/_carrito.scss */
 #pago #right form input,
 #pago #right form select {
   appearance: none;
@@ -501,14 +406,14 @@ h1 {
   margin-top: 2.5px;
   position: relative;
 }
-/* line 104, ../sass/_carrito.scss */
+/* line 101, ../sass/_carrito.scss */
 #pago #right form .form-field {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   margin-bottom: 12.5px;
 }
-/* line 111, ../sass/_carrito.scss */
+/* line 108, ../sass/_carrito.scss */
 #pago #right form button[type="submit"] {
   background: linear-gradient(135deg, #1f0543 0%, #354152 100%);
   padding: 5px;
@@ -519,13 +424,13 @@ h1 {
   font-size: 12pt;
   margin-top: 10px;
 }
-/* line 121, ../sass/_carrito.scss */
+/* line 118, ../sass/_carrito.scss */
 #pago #right form button[type="submit"]:hover {
   background: transparent;
   box-shadow: 0 0 0 3px #4183d7;
   color: #4183d7;
 }
-/* line 127, ../sass/_carrito.scss */
+/* line 124, ../sass/_carrito.scss */
 #pago #right form a.inputPagar {
   padding: 6px 42%;
 }

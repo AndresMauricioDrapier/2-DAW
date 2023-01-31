@@ -18,9 +18,9 @@ export class JuegoService {
     return await this.juegoModel.findById(id).exec();
   }
 
-  async insertar(crearContactoDto: JuegoDto): Promise<Juego> {
-    const nuevoContacto = new this.juegoModel(crearContactoDto);
-    return await nuevoContacto.save();
+  async insertar(crearJuegoDto: JuegoDto): Promise<Juego> {
+    const nuevoJuego = new this.juegoModel(crearJuegoDto);
+    return await nuevoJuego.save();
   }
 
   async actualizar(id: string, actualizarJuegoDto: JuegoDto): Promise<Juego> {

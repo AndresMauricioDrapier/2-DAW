@@ -9,14 +9,15 @@ export class AppService {
     @InjectModel('Juego')
     private readonly contactoModel: Model<Juego>,
   ) {}
-  getHello(): string {
-    return 'Hello World!';
-  }
   async listarBuscar(nombre: string): Promise<Juego[]> {
-    return await this.contactoModel
-      .find((juegos: Juego[]) => {
-        juegos.filter((juego) => juego.nombre == nombre);
-      })
-      .exec();
+    let juegos = await this.contactoModel.find().exec();
+    juegos = juegos.filter((juego) => {
+      return juego.nombre.includes(nombre);
+    });
+    return juegos;
+  }
+
+  async listar(): Promise<Juego[]> {
+    return await this.contactoModel.find().exec();
   }
 }

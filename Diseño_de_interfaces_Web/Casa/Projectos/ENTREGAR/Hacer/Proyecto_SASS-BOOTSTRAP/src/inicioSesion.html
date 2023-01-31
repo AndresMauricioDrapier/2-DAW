@@ -65,7 +65,8 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="inicioSesion.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="inicioSesion.html" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
               Iniciar sesión
             </a>
             <ul class="dropdown-menu">
@@ -83,47 +84,65 @@
       <button type="submit" class="go-iconNav"><i class="fas fa-long-arrow-alt-right"></i></button>
     </form>
   </nav>
-  <main class="contenidoSesion">
+  <main>
+    <section class="vh-100 sesionContenido">
+      <div class="container py-5">
+        <div class="row d-flex justify-content-center align-items-center ">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-dark text-white bordeZona">
+              <div class="card-body p-5 pb-1 text-center">
 
-    <div class="iniciarSesion">
+                <div><a href="../index.html"><img src="../img/Iconos/iconPage.png"></a></div>
+                <div class="mb-md-5 mt-md-4 pb-5">
 
-      <div class="login">
+                  <h2 class="fw-bold mb-2 text-uppercase">Iniciar Sesion</h2>
+                  <p class="text-white-50 mb-5"></p>
 
-        <div class="logoImagenSesion"><a href="../index.html"><img src="../img/Iconos/iconPage.png"></a></div>
+                  <div class="form-outline form-white mb-4">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control form-control-lg" placeholder="info@mail.com" />
 
-        <h2>Iniciar sesión</h2>
+                  </div>
 
-        <form action="" method="post" class="form">
+                  <div class="form-outline form-white mb-4">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" class="form-control form-control-lg" placeholder="••••••••••••" />
 
-          <div class="inputsForm">
-            <input class="inputForm" type="email" placeholder="info@mailaddress.com">
+                  </div>
+
+                  <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="">¿Has olvidado la contraseña?</a></p>
+
+                  <button class="btn btn-outline-light btn-lg px-5" type="submit">Iniciar sesión</button>
+
+                  <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                    <a href="https://www.facebook.com" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="https://twitter.com/i/flow/login" class="text-white"><i
+                        class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                    <a href="https://www.google.com/intl/es/account/about/" class="text-white"><i
+                        class="fab fa-google fa-lg"></i></a>
+                  </div>
+                  <div class="mt-5">
+                    <p class="mb-0">¿No tienes cuenta? <a href="crearCuenta.html"
+                        class="text-white-50 fw-bold">¡Registrate!</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div class="inputsForm">
-            <input class="inputForm" type="password" placeholder="••••••••••••">
-          </div>
-
-          <div class="inputsForm">
-            <input class="sendForm inputForm" type="submit" value="Iniciar sesión">
-          </div>
-
-        </form>
-
-        <p>¿No tienes una cuenta? <a href="crearCuenta.html"><b>Registrarse</b></a></p>
-
-      </div>
-
-    </div>
+        </div>
+    </section>
   </main>
 
   <footer class="footer">
     <label class="copyright-icon"><i class="fa-regular fa-copyright"></i></label>
     <div class="avisoLegal">GamesBip - Aviso legal</div>
     <div class="imgContact">
-      <a class="linkeding-icon" href="#"><i class="fa-brands fa-linkedin"></i></a>
-      <a class="instagram-icon" href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a class="twitter-icon" href="#"><i class="fa-brands fa-twitter"></i></a>
-      <a class="whatsapp-icon" href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      <a class="linkeding-icon" href="https://www.linkedin.com/in/andrés-mauricio-drapier-25ab7a164/"><i
+          class="fa-brands fa-linkedin"></i></a>
+      <a class="instagram-icon" href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+      <a class="twitter-icon" href="https://twitter.com/?lang=es"><i class="fa-brands fa-twitter"></i></a>
+      <a class="whatsapp-icon" href="https://www.whatsapp.com/?lang=es"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
   </footer>
 
