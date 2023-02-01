@@ -1,4 +1,4 @@
-{% extends "base.njk" %}
+{% extends "./base.njk" %}
 {% block titulo %}
     Juego | Ficha
 {% endblock %}
@@ -20,7 +20,7 @@
             {% endif %}
         </div>
         <div class="card-footer">
-            <h1>Ediciones del juego</h1>
+            <h3>Ediciones del juego</h3>
             {% for edicion in juegos.edicion %}
                 <div class="row m-1">
                     <div class="col-6">{{ edicion.nombre }}</div>
