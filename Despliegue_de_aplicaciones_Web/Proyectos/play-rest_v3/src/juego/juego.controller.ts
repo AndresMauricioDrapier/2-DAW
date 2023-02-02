@@ -1,72 +1,121 @@
 import {
   Body,
   Controller,
-  Delete,
   Get,
   Param,
   Post,
   Put,
   Res,
-  Session,
+  Req,
   UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { JuegoDto } from './dto/juego-dto/juego-dto';
+import { Juego } from './interfaces/juego/juego.interface';
 import { JuegoService } from './juego.service';
 
 @Controller('juego')
 export class JuegoController {
   constructor(private readonly juegoService: JuegoService) {}
 
-  //GET /juego
+  //GET /juegos
   @Get()
   async listar(@Res() res) {
-    const juego = await this.juegoService.listar();
-    if (juego) return res.render('public/listado_juegos', { juegos: juego });
+    return res.redirect('/');
   }
 
-  // GET /juego /nuevo
+  // GET /juego/nuevo
   @Get('/nuevo')
-  async llevarForm(@Res() res) {
-    return res.render('admin/admin_nuevo');
+  async llevarForm(@Res() res, @Req() req) {
+    if (req.session && req.session.usuario)
+      return res.render('admin/admin_nuevo');
+    else {
+      res.render('public/error', { error: 'No eres administrador' });
+    }
   }
 
-  //GET /juegos/editar/:id HAY QUE EDITARLO PARA QUE LLEVEN AL MISMO FORMULARIO
+  //GET /juegos/editar/:id
   @Get('/editar/:id')
-  async editarJuego(@Res() res, @Param() id: string, @Session() session) {
+  async editarJuego(@Res() res, @Param() id, @Req() req) {
     try {
-      if (session && session.usuario) {
-        const juego = await this.juegoService.listarId(id);
-        if (juego) return res.render('admin_editar', { juego: juego });
-        else {
-          throw new Error();
-        }
+      if (req.session && req.session.usuario) {
+        await this.juegoService
+          .listarId(id.id)
+          .then((juego) => {
+            return res.render('admin/admin_nuevo', { juego: juego });
+          })
+          .catch((error) => {
+            res.render('public/error', { error: error });
+          });
       } else {
-        res.render('error', { error: 'No eres administrador' });
+        res.render('public/error', { error: 'No eres administrador' });
       }
     } catch (error) {
-      return res.render('error', { error: error });
+      return res.render('public/error', { error: error });
     }
   }
   // GET /juego/:id
   @Get('/:id')
-  async buscarPorId(@Res() res, @Param('id') id: string) {
+  async buscarPorId(@Res() res, @Param('id') id) {
     try {
-      const juego = await this.juegoService.listarId(id);
-      if (juego) return res.render('public/juego_ficha', { juego: juego });
-      else {
-        throw new Error();
-      }
+      await this.juegoService
+        .listarId(id)
+        .then((juego) => {
+          return res.render('public/juego_ficha', { juego: juego });
+        })
+        .catch((error) => {
+          res.render('public/error', { error: error });
+        });
     } catch (error) {
-      return res.render('error', { error: error });
+      return res.render('public/error', { error: error });
     }
   }
 
-  // POST /juego
+  // BORRAR JUEGO /juego/borrar/:id
+  @Post('borrar/:id')
+  async borrarJuego(@Res() res, @Param('id') id) {
+    await this.juegoService.borrar(id).then(() => {
+      return res.render('public/error', {
+        error: 'Juego borrado correctamente',
+      });
+    });
+  }
 
-  @Post()
+  //ACTUALIZAR JUEGO /juego/editar/:id
+  @Post('/editar/:id')
+  async actualizarJuego(
+    @Param('id') id: string,
+    @Body() actualizarJuego: Juego,
+    @Res() res,
+    @Req() req,
+  ) {
+    try {
+      if (req.session && req.session.usuario) {
+        const juego = await this.juegoService.listarId(id);
+        actualizarJuego.imagen = actualizarJuego.imagen
+          ? actualizarJuego.imagen
+          : juego.imagen;
+        await this.juegoService
+          .actualizar(id, actualizarJuego)
+          .then(() => {
+            return res.redirect('/juego/' + id);
+          })
+          .catch((e) => {
+            res.render('public/error', { error: e });
+          });
+      } else {
+        res.render('public/error', { error: 'No eres administrador' });
+      }
+    } catch (error) {
+      return res.render('public/error', { error: error });
+    }
+  }
+
+  //TODO: POST /juego/nuevo
+
+  @Post('/nuevo')
   @UseInterceptors(
     FileInterceptor('imagen', {
       storage: diskStorage({
@@ -82,15 +131,15 @@ export class JuegoController {
   async crear(
     @Body() crearJuegoDTO: JuegoDto,
     @Res() res,
-    @Session() session,
+    @Req() req,
     @UploadedFiles() file: Express.Multer.File,
   ) {
     console.log(file, crearJuegoDTO.imagen);
-    if (session && session.usuario) {
+    if (req.session && req.session.usuario) {
       this.juegoService
         .insertar(crearJuegoDTO)
         .then((juego) => {
-          if (juego) return res.render('public/listado_juegos');
+          if (juego) return res.redirect('/');
           else {
             throw new Error();
           }
@@ -99,54 +148,7 @@ export class JuegoController {
           return res.render('public/error', { error: error });
         });
     } else {
-      res.render('error', { error: 'No eres administrador' });
-    }
-  }
-
-  // PUT /juego/:id
-  @Put(':id')
-  async actualizar(
-    @Param('id') id: string,
-    @Body() actualizarJuego: JuegoDto,
-    @Res() res,
-    @Session() session,
-  ) {
-    try {
-      if (session && session.usuario) {
-        const juego = await this.juegoService.listarId(id);
-        const juegoEditar = await this.juegoService.actualizar(
-          id,
-          actualizarJuego,
-        );
-        juegoEditar.imagen = juegoEditar.imagen
-          ? juegoEditar.imagen
-          : juego.imagen;
-        if (juego) return res.render('listado_juegos', { juego: juego });
-        else {
-          throw new Error();
-        }
-      } else {
-        res.render('error', { error: 'No eres administrador' });
-      }
-    } catch (error) {
-      return res.render('error', { error: error });
-    }
-  }
-  //  DELETE /juego/:id
-  @Delete(':id')
-  async borrar(@Param('id') id: string, @Res() res, @Session() session) {
-    try {
-      if (session && session.usuario) {
-        const borrado = await this.juegoService.borrar(id);
-        if (borrado) return res.render('listado_juegos');
-        else {
-          throw new Error();
-        }
-      } else {
-        res.render('error', { error: 'No eres administrador' });
-      }
-    } catch (error) {
-      return res.render('error', { error: error });
+      res.render('public/error', { error: 'No eres administrador' });
     }
   }
 }

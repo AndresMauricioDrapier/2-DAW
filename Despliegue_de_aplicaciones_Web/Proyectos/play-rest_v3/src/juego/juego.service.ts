@@ -46,6 +46,6 @@ export class JuegoService {
   }
 
   async borrar(id: string): Promise<Juego> {
-    return await this.juegoModel.findByIdAndDelete(id).exec();
+    return await this.juegoModel.findByIdAndRemove(id).exec();
   }
 }

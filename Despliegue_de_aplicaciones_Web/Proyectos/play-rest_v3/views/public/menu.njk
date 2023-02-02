@@ -4,11 +4,14 @@
     </li>
     {% if (session and session.usuario) %}   
     <li class="nav-item">
-        <a class="nav-link text-bg-primary" href="/web/logout">Cerrar sesión: {{ session.usuario }}</a>
+        <a class="nav-link text-bg-primary" href="/auth/logout">Cerrar sesión: {{ session.usuario.login }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-bg-primary" href="/juego/nuevo">Nuevo juego</a>
     </li>
     {% else %}
     <li class="nav-item">
-        <a class="nav-link text-bg-primary" href="/web/contactos/iniciarSesion">Administracion</a>
+        <a class="nav-link text-bg-primary" href="/auth">Administracion</a>
     </li>
     {% endif %}
 </ul>

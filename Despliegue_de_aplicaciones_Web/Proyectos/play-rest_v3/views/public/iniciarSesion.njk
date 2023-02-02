@@ -1,16 +1,16 @@
-{% extends "base.njk" %}
+{% extends "./base.njk" %}
 {% block titulo %}Iniciar sesión{% endblock %}
 {% block contenido %}
     <h1>Inicia sesión</h1>
-    <form method="post" action="/usuario/nuevo">
+    <form method="post" action="/auth/login">
         <div class="form-group mb-3">
             <label for="usuario">Usuario:
             </label>
-            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Introduce tu usuario">
+            <input type="text" class="form-control" name="login" placeholder="Introduce tu usuario">
         </div>
         <div class="form-group mb-3">
             <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+            <input type="password" class="form-control" name="password" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-primary mb-3">Iniciar</button>
     </form>

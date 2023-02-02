@@ -21,8 +21,7 @@
                 </div>
                 {% if (session and session.usuario) %}
                     <div class="col-auto">
-                        <form action="/juego/borrar/{{ juego.id }}" method="post">
-                            <input type="hidden" name="_method" value="delete"/>
+                        <form action="/juego/borrar/{{ juego.id}}" method="post">
                             <button type="submit" class="btn btn-danger">Borrar</button>
                         </form>
                     </div>
