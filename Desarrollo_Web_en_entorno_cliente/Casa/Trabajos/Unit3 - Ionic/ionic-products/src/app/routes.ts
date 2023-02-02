@@ -16,6 +16,6 @@ export const APP_ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/auth',
+    redirectTo: '/auth/login',
   },
 ];

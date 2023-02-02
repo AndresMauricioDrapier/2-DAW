@@ -1,0 +1,20 @@
+<nav class="navbar navbar-light bg-light justify-content-between mt-3 row">
+
+  <ul class="nav nav-pills col-auto ms-3">
+    <li class="nav-item">
+      <a class="activate nav-link" [ngClass]="{'active':active}" (click)="changeClassButton()">Show open</a>
+    </li>
+  </ul>
+
+  <form class="container-fluid col">
+    <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search"
+      [(ngModel)]="filterSearch" class="form-control" id="filter" placeholder="Filter...">
+  </form>
+</nav>
+<h2 id="creator" *ngIf="userCreated && user">List of restaurants created by {{user.name}}</h2>
+<div id="placesContainer" class="mb-4 mt-4 row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+  <div class="col" *ngFor="let restaurant of restaurants | restaurantFilter: filterSearch:!active">
+    <fs-restaurant-card [restaurant]="restaurant" (deleted)="delete(restaurant)">
+    </fs-restaurant-card>
+  </div>
+</div>

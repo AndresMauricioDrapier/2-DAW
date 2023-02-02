@@ -1,0 +1,74 @@
+<div class="container mt-4">
+  <div class="row">
+    <div id="cardContainer" class="col">
+      <fs-restaurant-card [restaurant]="restaurant" (deleted)="delete()"></fs-restaurant-card>
+    </div>
+    <div class="card mt-4" *ngIf="restaurant.mine">
+      <button class="btn btn-primary btn-sm float-end" [routerLink]="['/restaurants/edit',restaurant.id]">
+        Edit
+      </button>
+    </div>
+  </div>
+
+  <div class="card mt-4">
+    <div class="card-header bg-success text-white" id="address">{{restaurant.address}}</div>
+    <div id="map">
+      <arcgis-map [coords]="[restaurant.lng,restaurant.lat]">
+        <arcgis-marker [coords]="[restaurant.lng,restaurant.lat]" color="red"></arcgis-marker>
+      </arcgis-map>
+    </div>
+  </div>
+
+  <div class="card mt-4" id="creatorCard">
+    <div class="card-header bg-danger text-white">Restaurant's owner</div>
+    <div [routerLink]="['/user',restaurant.creator?.id]" class="card-body d-flex flex-row">
+      <div>
+        <img id="creatorImg" class="rounded-circle me-3" style="width: 40px;" src="{{restaurant.creator?.avatar}}"
+          alt="">
+      </div>
+      <div>
+        <div><strong id="creatorName">{{restaurant.creator?.name}}</strong></div>
+        <div><small id="creatorEmail">{{restaurant.creator?.email}}</small></div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="list-group mt-4 mb-4" id="comments">
+    <li class="list-group-item active">Restaurant comments</li>
+    <li *ngFor="let comment of comments " class="list-group-item d-flex flex-row">
+      <div>
+        <a [routerLink]="['/user',comment.user?.id]">
+          <img class="rounded-circle me-3" style="width: 40px;" src="{{comment.user!.avatar}}" alt="">
+        </a>
+      </div>
+      <div>
+        <div>
+          <strong>
+            {{comment.user!.name}}
+          </strong>
+          {{comment.text}}
+        </div>
+        <div>
+          <fs-star-rating [rating]="comment.stars" [edit]="false"></fs-star-rating>
+        </div>
+        <div>
+          <small>{{comment.date}}</small>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <form class="mt-4" id="commentForm" (submit)="submitComment()" [formGroup]="commentGroup" *ngIf="!isComented">
+    <h4>Write about this restaurant:</h4>
+    <div class="form-group">
+      <textarea class="form-control" formControlName="commentary" name="comment"
+        placeholder="Write an opinion"></textarea>
+    </div>
+    <div>
+      <fs-star-rating [rating]="newComment.stars" (changed)="setRating($event)" [edit]="true"></fs-star-rating>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Send</button>
+  </form>
+
+</div>
