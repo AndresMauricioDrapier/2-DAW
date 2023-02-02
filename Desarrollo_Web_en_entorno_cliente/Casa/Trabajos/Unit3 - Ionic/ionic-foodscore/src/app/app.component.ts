@@ -21,12 +21,21 @@ export class AppComponent {
   menuDisabled = true;
 
   public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    {
+      title: 'Profile',
+      url: '/profile',
+      icon: 'person-circle',
+    },
+    {
+      title: 'Restaurants',
+      url: '/restaurants',
+      icon: 'restaurant',
+    },
+    {
+      title: 'Add restaurant',
+      url: '/restaurants/add',
+      icon: 'add-circle',
+    },
   ];
 
   constructor(

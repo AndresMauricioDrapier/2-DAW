@@ -20,7 +20,9 @@ export class RegisterComponent implements OnInit {
     name: '',
     password: '',
     email: '',
-    avatar: ''
+    avatar: '',
+    lat:0,
+    lng:0
   };
   password2 = '';
 
