@@ -2,14 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { PushNotifications, Token } from '@capacitor/push-notifications';
 import {
   AlertController,
   IonicModule,
   NavController,
   Platform,
 } from '@ionic/angular';
+import { UserLogin } from '../interfaces/user.interface';
 import { AuthService } from '../services/auth.service';
+import { User, GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,16 @@ export class LoginComponent implements OnInit {
   email = '';
   password = '';
   firebaseToken = '';
+  user: UserLogin = {
+    email: '',
+    password: '',
+    lat: 0,
+    lng: 0,
+    token: '',
+    image: '',
+    userId: '',
+  };
+  userGoogle!: User;
 
   constructor(
     private platform: Platform,
@@ -31,19 +42,17 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.platform.is('capacitor')) {
-      PushNotifications.register();
-
-      // On success, we should be able to receive notifications
-      PushNotifications.addListener('registration', (token: Token) => {
-        this.firebaseToken = token.value;
-        console.log(token);
-      });
-
-      PushNotifications.addListener('registrationError', (error) => {
-        console.log(error);
-      });
-    }
+    // if (this.platform.is('capacitor')) {
+    //   PushNotifications.register();
+    //   // On success, we should be able to receive notifications
+    //   PushNotifications.addListener('registration', (token: Token) => {
+    //     this.firebaseToken = token.value;
+    //     console.log(token);
+    //   });
+    //   PushNotifications.addListener('registrationError', (error) => {
+    //     console.log(error);
+    //   });
+    // }
   }
 
   login() {
@@ -55,29 +64,26 @@ export class LoginComponent implements OnInit {
           (
             await this.alertCtrl.create({
               header: 'Login error',
-              message: 'Incorrect email and/or password',
+              message: error.error,
               buttons: ['Ok'],
             })
           ).present();
         },
       });
   }
+  async loggedGoogle() {
+    try {
+      await GoogleAuth.signIn().then(() => {
+        this.email = 'andres@gmail.com';
+        this.password = 'andres';
+        this.login();
+      });
+      console.log(this.userGoogle);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //   userForm!: FormGroup;
 //   emailControl!: FormControl<string>;

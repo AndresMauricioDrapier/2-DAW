@@ -1,19 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { Component, EnvironmentInjector } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import {
-  ActionPerformed,
-  PushNotifications,
-  PushNotificationSchema,
-} from '@capacitor/push-notifications';
+// import {
+//   ActionPerformed,
+//   PushNotifications,
+//   PushNotificationSchema,
+// } from '@capacitor/push-notifications';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
-import { IonicModule, NavController, Platform, ToastController } from '@ionic/angular';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import {
+  IonicModule,
+  NavController,
+  Platform,
+  ToastController,
+} from '@ionic/angular';
 import { AuthService } from './auth/services/auth.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, IonicModule, RouterLink,RouterLinkActive],
+  imports: [CommonModule, IonicModule, RouterLink, RouterLinkActive],
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
@@ -45,19 +51,26 @@ export class AppComponent {
     private platform: Platform,
     private toast: ToastController
   ) {
-    //TODO: this.initializeApp();
+    this.initializeApp();
     this.authService.loginChange$.subscribe(
       (logged) => (this.menuDisabled = !logged)
     );
   }
+  initializeApp() {
+    if (this.platform.is('capacitor')) {
+      this.platform.ready().then(() => {
+        SplashScreen.hide();
+        StatusBar.setBackgroundColor({ color: '#3880ff' });
+        StatusBar.setStyle({ style: Style.Dark });
+        GoogleAuth.initialize();
+      });
+    }
+  }
+
   //TODO: METODOS PUSH ACTUALMENTE NO LOS NECESITO
   // initializeApp() {
   //   if (this.platform.is('capacitor')) {
-  //     this.platform.ready().then(() => {
-  //       SplashScreen.hide();
-  //       StatusBar.setBackgroundColor({ color: '#3880ff' });
-  //       StatusBar.setStyle({ style: Style.Dark });
-  //     });
+  //
 
   //     // Show us the notification payload if the app is open on our device
   //     PushNotifications.addListener(

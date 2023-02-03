@@ -9,7 +9,8 @@
     <ion-list>
       <ion-item>
         <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" name="email" required [(ngModel)]="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></ion-input>
+        <ion-input type="email" name="email" required [(ngModel)]="email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Password</ion-label>
@@ -32,23 +33,34 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-grid>
-      <ion-row>
+  </form>
+  <ion-row>
+    <form (ngSubmit)="loggedGoogle()" #loginForm="ngForm">
+      <ion-grid>
+
         <ion-col>
-          <ion-button type="button" color="primary" expand="block" >
+          <ion-button type="submit" color="primary" expand="block">
             <ion-icon name="logo-google"></ion-icon>
             &nbsp;
-             Login with Google
+            Login with Google
           </ion-button>
         </ion-col>
+
+      </ion-grid>
+    </form>
+    <form (ngSubmit)="loggedGoogle()" #loginForm="ngForm">
+      <ion-grid>
+
         <ion-col>
-          <ion-button type="button" color="primary"  expand="block">
+          <ion-button type="submit" color="primary" expand="block">
             <ion-icon name="logo-facebook"></ion-icon>
             &nbsp;
-             Login with Facebook
+            Login with Facebook
           </ion-button>
         </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+
+      </ion-grid>
+    </form>
+  </ion-row>
+
 </ion-content>
