@@ -38,11 +38,4 @@ export class RestaurantDetailsComponent implements OnInit {
       this.restaurant = rest;
     });
   }
-  goBack(): void {
-    this.router.navigate(['/restaurants']);
-  }
-
-  delete(): void {
-    this.router.navigate(['/restaurants']);
-  }
 }

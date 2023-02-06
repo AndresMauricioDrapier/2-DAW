@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const APP_ROUTES: Routes = [
   {
-    path: 'details',
+    path: 'detail',
     loadComponent: () =>
       import('./restaurant-detail/restaurant-detail.component').then(
         (m) => m.RestaurantDetailComponent
@@ -18,6 +18,6 @@ export const APP_ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'details',
+    redirectTo: 'detail',
   },
 ];
