@@ -15,9 +15,12 @@
       <ion-list>
 
         <ion-item>
-          <ion-thumbnail slot="start">
-            <img alt="Silhouette of mountains" src="{{restaurant.creator?.avatar}}" />
-          </ion-thumbnail>
+          <ion-avatar slot="start">
+            <a [routerLink]="['/user',restaurant.creator?.id]">
+              <img src="{{restaurant.creator?.avatar}}" />
+            </a>
+
+          </ion-avatar>
           <ion-label> <b>{{restaurant.creator?.name}}</b></ion-label>
         </ion-item>
 

@@ -8,13 +8,20 @@ export const APP_ROUTES: Routes = [
         (m) => m.RestaurantDetailComponent
       ),
   },
-  // {
-  //   path: 'comments',
-  //   loadComponent: () =>
-  //     import('./product-comments/product-comments.component').then(
-  //       (m) => m.ProductCommentsComponent
-  //     ),
-  // },
+  {
+    path: 'comments',
+    loadComponent: () =>
+      import('./restaurant-comments/restaurant-comments.component').then(
+        (m) => m.RestaurantCommentsComponent
+      ),
+  },
+  {
+    path: 'location',
+    loadComponent: () =>
+      import('./restaurant-location/restaurant-location.component').then(
+        (m) => m.RestaurantLocationComponent
+      ),
+  },
   {
     path: '',
     pathMatch: 'full',

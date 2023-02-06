@@ -1,0 +1,57 @@
+<form action="#" id="registerProfile" class="mt-4" (ngSubmit)="submitProfile()" [formGroup]="profileForm">
+  <legend>Edit profile</legend>
+  <div class="mb-3">
+    <label for="nombre">Name:</label>
+    <input type="text" class="form-control"  formControlName="name"/>
+  </div>
+
+  <div class="mb-3">
+    <label for="correo">Email:</label>
+    <input type="text" class="form-control"  formControlName="email" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Edit profile</button>
+</form>
+
+
+
+<form action="#" id="registerAvatar" class="mt-4" (ngSubmit)="submitAvatar()" novalidate [formGroup]="avatarForm">
+  <legend>Edit photo</legend>
+
+  <div class="mb-3">
+    <label for="image">Avatar image</label>
+    <input type="file" class="form-control" formControlName="avatar" formControlName="avatar"
+      (change)="changeImage($event)" />
+  </div>
+  <div>
+    <img src="{{user.avatar}}" alt="" id="imgPreview" class="img-thumbnail" />
+    <img src="{{imageControl.value}}" alt="" id="imgPreview" class="img-thumbnail" />
+  </div>
+  <button type="submit" class="btn btn-primary">Edit photo</button>
+</form>
+
+
+<form action="#" id="registerPass" class="mt-4" (ngSubmit)="submitPassword()" novalidate [formGroup]="passwordForm">
+  <legend>Edit password</legend>
+
+  <div class="mb-3">
+    <label for="password">Password:</label>
+    <input type="password" class="form-control"placeholder="Password"
+      formControlName="password" [ngClass]="validClasses(passwordControl)"/>
+
+    <div class="invalid-feedback" *ngIf="passwordControl.errors?.['pattern']">
+      Password must have at least 4 characters
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="password">Repeat password:</label>
+    <input type="password" class="form-control"placeholder="Password"
+      formControlName="password2" [ngClass]="validClasses(password2Control)" />
+
+    <div class="invalid-feedback" *ngIf="passwordControl.errors">
+      Password aren't same
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Edit password</button>
+</form>

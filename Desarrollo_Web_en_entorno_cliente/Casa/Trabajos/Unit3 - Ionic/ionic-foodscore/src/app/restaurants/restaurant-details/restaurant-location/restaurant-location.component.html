@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar></ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="restaurant">
+
+  <arcgis-map [coords]="[restaurant.lng,restaurant.lat]">
+    <arcgis-marker [coords]="[restaurant.lng,restaurant.lat]" color="red"></arcgis-marker>
+  </arcgis-map>
+
+</ion-content>

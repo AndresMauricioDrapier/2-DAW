@@ -9,6 +9,8 @@ import { RestaurantService } from '../services/restaurant.service';
 import { User } from 'src/app/auth/interfaces/user.interface';
 
 import { IonicModule, IonRefresher } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/users/services/user-service.service';
 
 @Component({
   selector: 'fs-restaurants-page',
@@ -29,22 +31,45 @@ export class RestaurantsPageComponent implements OnInit {
   active = true;
   filterSearch = '';
   userCreated = false;
-  constructor(private readonly http: RestaurantService) {}
+  constructor(
+    private readonly http: RestaurantService,
+    private readonly route: ActivatedRoute,
+    private readonly userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.http.getRestaurants().subscribe({
-      next: (rest) => {
+    this.route.queryParams.subscribe((params) => {
+      if (params['creator']) {
+        this.userService
+          .getUser(+params['creator'])
+          .subscribe((u) => (this.user = u));
+        this.http.getRestaurants().subscribe(
+          (restaurant) =>
+            (this.restaurants = restaurant.filter((r) => {
+              if (r.mine) {
+                return r.creator?.id == params['creator'];
+              } else {
+                return r.creator == params['creator'];
+              }
+            }))
+        );
+        this.userCreated = true;
+      } else {
+        this.http
+          .getRestaurants()
+          .subscribe((restaurant) => (this.restaurants = restaurant));
+
         this.userCreated = false;
-        this.restaurants = rest;
-      },
-      error: (error) => console.log(error),
+      }
     });
   }
   reloadProducts(refresher: IonRefresher) {
-    this.http.getRestaurants().subscribe((prods) => {
-      this.restaurants = prods;
-      refresher.complete();
-    });
+    if (!this.userCreated) {
+      this.http.getRestaurants().subscribe((prods) => {
+        this.restaurants = prods;
+        refresher.complete();
+      });
+    }
   }
 
   changeClassButton(): boolean {

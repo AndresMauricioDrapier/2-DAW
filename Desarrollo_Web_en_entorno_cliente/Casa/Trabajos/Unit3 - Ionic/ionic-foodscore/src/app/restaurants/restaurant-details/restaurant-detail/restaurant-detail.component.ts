@@ -6,11 +6,12 @@ import { Restaurant } from '../../interfaces/restaurant';
 import { RestaurantService } from '../../services/restaurant.service';
 import { RestaurantDetailsComponent } from '../restaurant-details.component';
 import { RestaurantCardComponent } from '../../restaurant-card/restaurant-card.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-info',
   standalone: true,
-  imports: [CommonModule, IonicModule, RestaurantCardComponent],
+  imports: [CommonModule, IonicModule, RestaurantCardComponent,RouterModule],
   templateUrl: './restaurant-detail.component.html',
   styleUrls: ['./restaurant-detail.component.scss'],
 })
