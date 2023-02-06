@@ -21,7 +21,7 @@ export interface UserLogin {
 }
 export interface GoogleLogin {
   email: string;
-  authentication:{accessToken:string}
+  authentication:{accessToken:string,idToken:string}
   lat?: number;
   lng?: number;
 }

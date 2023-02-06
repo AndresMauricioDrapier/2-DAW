@@ -74,8 +74,18 @@ export class LoginComponent implements OnInit {
   async loggedGoogle() {
     try {
       await GoogleAuth.signIn().then((user) => {
-
-        this.authService.loginGoogle(user);
+        this.authService.loginGoogle(user).subscribe({
+          next: () => this.navCtrl.navigateRoot(['/restaurants']),
+          error: async (err) => {
+            (
+              await this.alertCtrl.create({
+                header: 'Login error',
+                message: err.error,
+                buttons: ['Ok'],
+              })
+            ).present();
+          },
+        });
       });
     } catch (err) {
       console.error(err);

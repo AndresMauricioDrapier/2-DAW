@@ -36,21 +36,24 @@ export class AuthService {
         })
       );
   }
-  loginGoogle(userLogin: GoogleLogin) {
-    const login = this.http
+  loginGoogle(userLogin: GoogleLogin):Observable<void> {
+
+    return this.http
       .post<{ accessToken: string }>('auth/google', {
-        token: userLogin.authentication.accessToken,
+        token: userLogin.authentication.idToken,
         lat: userLogin.lng,
         lng: userLogin.lat,
       })
-      .subscribe(async (r) => {
-        try {
-          Preferences.set({ key: 'fs-token', value: r.accessToken });
-          this.setLogged(true);
-        } catch (e) {
-          throw new Error("Can't save authentication token in storage!");
-        }
-      });
+      .pipe(
+        switchMap(async (r) => {
+          try {
+            await Preferences.set({ key: 'fs-token', value: r.accessToken });
+            this.setLogged(true);
+          } catch (e) {
+            throw new Error("Can't save authentication token in storage!");
+          }
+        })
+      );
   }
   // loginFaceebok(userLogin: AuthLogin): Observable<void> {
   //   const login = this.http.post<void>('/auth/facebook', userLogin);
