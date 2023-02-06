@@ -12,11 +12,18 @@ export interface User {
 
 export interface UserLogin {
   email: string;
-  password: string;
+  password?: string;
   lat?: number;
   lng?: number;
   token?:string;
   image?:string;
   userId?:string;
 }
+export interface GoogleLogin {
+  email: string;
+  authentication:{accessToken:string}
+  lat?: number;
+  lng?: number;
+}
+
 

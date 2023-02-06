@@ -73,12 +73,10 @@ export class LoginComponent implements OnInit {
   }
   async loggedGoogle() {
     try {
-      await GoogleAuth.signIn().then(() => {
-        this.email = 'andres@gmail.com';
-        this.password = 'andres';
-        this.login();
+      await GoogleAuth.signIn().then((user) => {
+
+        this.authService.loginGoogle(user);
       });
-      console.log(this.userGoogle);
     } catch (err) {
       console.error(err);
     }

@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { RestaurantCardComponent } from '../restaurant-card/restaurant-card.component';
 import { RestaurantFilterPipe } from '../pipes/restaurant-filter.pipe';
 import { RestaurantService } from '../services/restaurant.service';
-import { ActivatedRoute } from '@angular/router';
+
 import { User } from 'src/app/auth/interfaces/user.interface';
-import { AuthService } from 'src/app/auth/services/auth.service';
+
 import { IonicModule, IonRefresher } from '@ionic/angular';
 
 @Component({
@@ -18,7 +18,7 @@ import { IonicModule, IonRefresher } from '@ionic/angular';
     FormsModule,
     RestaurantCardComponent,
     RestaurantFilterPipe,
-    IonicModule
+    IonicModule,
   ],
   templateUrl: './restaurants-page.component.html',
   styleUrls: ['./restaurants-page.component.css'],
@@ -29,11 +29,7 @@ export class RestaurantsPageComponent implements OnInit {
   active = true;
   filterSearch = '';
   userCreated = false;
-  constructor(
-    private readonly http: RestaurantService,
-    private readonly route: ActivatedRoute,
-    private readonly httpUser: AuthService
-  ) {}
+  constructor(private readonly http: RestaurantService) {}
 
   ngOnInit(): void {
     this.http.getRestaurants().subscribe({
@@ -45,9 +41,7 @@ export class RestaurantsPageComponent implements OnInit {
     });
   }
   reloadProducts(refresher: IonRefresher) {
-    this.http
-    .getRestaurants()
-    .subscribe((prods) => {
+    this.http.getRestaurants().subscribe((prods) => {
       this.restaurants = prods;
       refresher.complete();
     });
@@ -57,5 +51,4 @@ export class RestaurantsPageComponent implements OnInit {
     this.active = !this.active;
     return this.active;
   }
-
 }

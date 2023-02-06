@@ -1,0 +1,22 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/restaurants"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="restaurant">{{restaurant.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-tabs [environmentInjector]="environmentInjector">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="details">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>Details</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="comments">
+        <ion-icon name="chatbox-ellipses"></ion-icon>
+        <ion-label>Comments</ion-label>
+      </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

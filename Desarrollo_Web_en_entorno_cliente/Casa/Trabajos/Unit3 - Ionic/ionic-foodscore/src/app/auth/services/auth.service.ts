@@ -3,7 +3,7 @@ import { Observable, of, from, ReplaySubject } from 'rxjs';
 import { switchMap, catchError, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Preferences } from '@capacitor/preferences';
-import { User } from '../interfaces/user.interface';
+import { GoogleLogin, User, UserLogin } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -31,11 +31,37 @@ export class AuthService {
             await Preferences.set({ key: 'fs-token', value: r.accessToken });
             this.setLogged(true);
           } catch (e) {
-            throw new Error('Can\'t save authentication token in storage!');
+            throw new Error("Can't save authentication token in storage!");
           }
         })
       );
   }
+  loginGoogle(userLogin: GoogleLogin) {
+    const login = this.http
+      .post<{ accessToken: string }>('auth/google', {
+        token: userLogin.authentication.accessToken,
+        lat: userLogin.lng,
+        lng: userLogin.lat,
+      })
+      .subscribe(async (r) => {
+        try {
+          Preferences.set({ key: 'fs-token', value: r.accessToken });
+          this.setLogged(true);
+        } catch (e) {
+          throw new Error("Can't save authentication token in storage!");
+        }
+      });
+  }
+  // loginFaceebok(userLogin: AuthLogin): Observable<void> {
+  //   const login = this.http.post<void>('/auth/facebook', userLogin);
+
+  //   login.subscribe((token) => {
+  //     this.loginChange$.next(true);
+  //     this.putToken((token as unknown as TokenResponse).accessToken);
+  //   });
+
+  //   return login;
+  // }
 
   register(user: User): Observable<void> {
     return this.http.post<void>('auth/register', user);
