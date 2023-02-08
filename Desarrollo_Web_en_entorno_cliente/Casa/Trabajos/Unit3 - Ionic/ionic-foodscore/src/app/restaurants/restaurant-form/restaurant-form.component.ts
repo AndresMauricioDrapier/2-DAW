@@ -160,24 +160,7 @@ export class RestaurantFormComponent implements OnInit {
       }
     });
   }
-  // addRestaurant() {
-  //   this.restaurantService.addRestaurant(this.newProd).subscribe(
-  //     async prod => {
-  //       (await this.toastCtrl.create({
-  //         position: 'bottom',
-  //         duration: 3000,
-  //         message: 'Restaurant added succesfully',
-  //         color: 'success'
-  //       })).present();
-  //       this.nav.navigateRoot(['/restaurants']);
-  //     },
-  //     async error => (await this.toastCtrl.create({
-  //       position: 'bottom',
-  //       duration: 3000,
-  //       message: 'Error adding restaurant'
-  //     })).present()
-  //   );
-  // }
+
 
   async showAlert2() {
     const alert = await this.alertController.create({

@@ -9,7 +9,7 @@ import { RestaurantService } from '../services/restaurant.service';
 import { User } from 'src/app/auth/interfaces/user.interface';
 
 import { IonicModule, IonRefresher } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { UserService } from 'src/app/users/services/user-service.service';
 
 @Component({
@@ -21,6 +21,7 @@ import { UserService } from 'src/app/users/services/user-service.service';
     RestaurantCardComponent,
     RestaurantFilterPipe,
     IonicModule,
+    RouterLink
   ],
   templateUrl: './restaurants-page.component.html',
   styleUrls: ['./restaurants-page.component.css'],
@@ -71,6 +72,11 @@ export class RestaurantsPageComponent implements OnInit {
       });
     }
   }
+
+  setActive() {
+    this.active=this.active?false:true;
+  }
+
 
   changeClassButton(): boolean {
     this.active = !this.active;

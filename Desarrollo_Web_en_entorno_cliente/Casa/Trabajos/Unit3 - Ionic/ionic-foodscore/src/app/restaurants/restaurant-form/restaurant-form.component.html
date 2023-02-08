@@ -8,35 +8,35 @@
 </ion-header>
 
 <ion-content>
-  <form action="#" class="mt-4" (ngSubmit)="addRestaurant()" id="newRestaurant" [formGroup]="restaurantForm" novalidate>
+  <form action="#"  (ngSubmit)="addRestaurant()" id="newRestaurant" [formGroup]="restaurantForm" novalidate>
     <ion-list>
 
       <ion-item>
         <ion-label>Name</ion-label>
-        <ion-input type="text" class="form-control" name="name" placeholder="Enter name" pattern="[a-zA-Z ]+"
+        <ion-input type="text"  name="name" placeholder="Enter name" pattern="[a-zA-Z ]+"
           formControlName="name"></ion-input>
-        <ion-text class="invalid-feedback" *ngIf=" nameControl.touched && nameControl.errors?.['required']">Name is
+        <ion-text  *ngIf=" nameControl.touched && nameControl.errors?.['required']">Name is
           required
         </ion-text>
-        <ion-text class="invalid-feedback" *ngIf=" nameControl.touched && nameControl.errors?.['pattern']">Name must be
+        <ion-text  *ngIf=" nameControl.touched && nameControl.errors?.['pattern']">Name must be
           contains letters and
           spaces</ion-text>
       </ion-item>
 
       <ion-item>
         <ion-label>Description</ion-label>
-        <ion-textarea class="form-control" name="description" rows="3" placeholder="Description"
+        <ion-textarea name="description" rows="3" placeholder="Description"
           formControlName="description"></ion-textarea>
-        <ion-text class="invalid-feedback"
+        <ion-text
           *ngIf=" descriptionControl.touched && descriptionControl.errors?.['required']">Description is required
         </ion-text>
       </ion-item>
 
       <ion-item>
         <ion-label>Cuisine</ion-label>
-        <ion-input type="text" class="form-control" name="cuisine" placeholder="Cuisine"
+        <ion-input type="text"  name="cuisine" placeholder="Cuisine"
           formControlName="cuisine"></ion-input>
-        <ion-text class="invalid-feedback"
+        <ion-text
           *ngIf=" cuisineControl.touched && cuisineControl.errors?.['required']">Cuisine
           is required </ion-text>
       </ion-item>
@@ -44,16 +44,16 @@
       <ion-item>
         <ion-label>Opening days: {{days}}</ion-label>
         <ion-button (click)="showAlert2()">Show days open</ion-button>
-        <ion-text class="text-danger" *ngIf="!days">You must choose at least 1 day. </ion-text>
+        <ion-text  *ngIf="!days">You must choose at least 1 day. </ion-text>
       </ion-item>
 
       <ion-item>
         <ion-label>Phone number</ion-label>
-        <ion-input type="text" class="form-control" name="phone" placeholder="Phone number"
+        <ion-input type="text"  name="phone" placeholder="Phone number"
           formControlName="phone"></ion-input>
-        <ion-text class="invalid-feedback" *ngIf="  phoneControl.touched &&phoneControl.errors?.['required']"> Phone is
+        <ion-text  *ngIf="  phoneControl.touched &&phoneControl.errors?.['required']"> Phone is
           required </ion-text>
-        <ion-text class="invalid-feedback" *ngIf=" phoneControl.touched && phoneControl.errors?.['pattern']">Phone must
+        <ion-text  *ngIf=" phoneControl.touched && phoneControl.errors?.['pattern']">Phone must
           be contains 9
           numbers</ion-text>
       </ion-item>
@@ -69,19 +69,19 @@
           <ion-icon name="images" slot="start"></ion-icon>
           Gallery
         </ion-button>
-        <ion-text class="invalid-feedback" *ngIf="!newRestaurant.image">
+        <ion-text  *ngIf="!newRestaurant.image">
           Image is required
         </ion-text>
-        <img [src]="newRestaurant.image" alt="" class="img-thumbnail mb-3 mb-3"
+        <img [src]="newRestaurant.image" alt=""
           *ngIf="!(newRestaurant.image ==='')?'d-none':''">
       </ion-item>
 
       <ion-item>
 
         <ion-label>Address</ion-label>
-        <ion-input type="search" class="form-control" id="address" name="address" readonly
+        <ion-input type="search"  id="address" name="address" readonly
           [value]="newRestaurant.address" formControlName="address"></ion-input>
-        <ion-text class="invalid-feedback" *ngIf=" nameControl.touched && nameControl.errors?.['required']">Address is
+        <ion-text  *ngIf="addressControl.touched && addressControl.errors?.['required']">Address is
           required.
         </ion-text>
       </ion-item>

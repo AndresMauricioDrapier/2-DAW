@@ -17,14 +17,6 @@ export const APP_ROUTES: Routes = [
             ),
     },
     {
-        path: "edit/:id",
-        loadComponent: () =>
-            import("./user-form/user-form.component").then(
-                (m) => m.UserFormComponent
-            ),
-        resolve: { user: userResolver },
-    },
-    {
         path: ":id",
         loadComponent: () =>
             import("./user-details/user-details.component").then(

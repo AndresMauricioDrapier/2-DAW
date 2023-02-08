@@ -1,15 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Restaurants</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <ion-refresher #refresher slot="fixed" (ionRefresh)="reloadProducts(refresher)">
     <ion-refresher-content>
     </ion-refresher-content>
   </ion-refresher>
-  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="secondary" [routerLink]="['/products/add']" [routerDirection]="'root'">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary" [routerLink]="['/restaurants/add']" [routerDirection]="'root'">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
-  </ion-fab> -->
+  </ion-fab>
+  <ion-grid style="background-color: #1E1E1E;">
+    <ion-row style="background-color: #1E1E1E;">
+      <ion-col  class="buttonActive">
+        <ion-button
+          color="primary"
+          style="cursor: pointer; width: 100%;"
+          (click)="setActive()"
+          >Show open</ion-button
+        >
+      </ion-col>
+      <ion-col size="8">
+        <ion-searchbar
+        type="text"
+        name="search"
+        show-clear-button="focus"
+        style="width: 100%; border-radius: 10px !important;"
+        placeholder="Search"
+        aria-label="Search"
+        [(ngModel)]="filterSearch"
+      />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-list id="product-list" style="padding-bottom: 50px">
-    <ion-item *ngFor="let rest of restaurants">
+    <ion-item *ngFor="let rest of restaurants | restaurantFilter:filterSearch:!active">
       <fs-restaurant-card [restaurant]="rest"></fs-restaurant-card>
     </ion-item>
   </ion-list>

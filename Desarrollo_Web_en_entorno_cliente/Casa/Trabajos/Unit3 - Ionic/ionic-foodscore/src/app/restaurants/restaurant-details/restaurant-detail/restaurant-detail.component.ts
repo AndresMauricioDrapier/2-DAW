@@ -31,26 +31,4 @@ export class RestaurantDetailComponent implements OnInit {
       this.restaurant = restaurant;
     });
   }
-
-  // async delete() {
-  //   const alert = await this.alertCrl.create({
-  //     header: 'Delete product',
-  //     message: 'Are you sure you want to delete this product?',
-  //     buttons: [
-  //       {
-  //         text: 'Ok',
-  //         handler: () => {
-  //           this.restaurantService
-  //             .deleteProduct(this.product.id!)
-  //             .subscribe(() => this.nav.navigateBack(['/products']));
-  //         }
-  //       },
-  //       {
-  //         text: 'Cancel',
-  //         role: 'cancel'
-  //       }
-  //     ]
-  //   });
-  //   alert.present();
-  // }
 }
