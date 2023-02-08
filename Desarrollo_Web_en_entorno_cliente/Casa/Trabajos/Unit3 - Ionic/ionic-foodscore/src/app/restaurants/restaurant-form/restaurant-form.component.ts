@@ -47,7 +47,7 @@ export class RestaurantFormComponent implements OnInit {
   addressControl!: FormControl<string>;
   daysOpen = OPENDAYS;
   days!: string[];
-  daysShow!: '';
+
 
   newRestaurant: Restaurant = {
     name: '',
@@ -71,7 +71,7 @@ export class RestaurantFormComponent implements OnInit {
     private readonly alertController: AlertController,
   ) {
     this.route.data.subscribe((data) => {
-      console.log(data);
+
 
       if (data['restaurant']) {
         this.data = data['restaurant'];
@@ -96,6 +96,7 @@ export class RestaurantFormComponent implements OnInit {
       Validators.pattern('(\\+?[0-9]2 ?)?[0-9]{9}'),
     ]);
     this.addressControl = this.fb.control(this.newRestaurant.address);
+    this.days = this.data.daysOpen?this.data.daysOpen:[];
 
     this.restaurantForm = this.fb.group({
       name: this.nameControl,
@@ -224,7 +225,6 @@ export class RestaurantFormComponent implements OnInit {
 
     const resp = await alert.onDidDismiss();
     if (resp.data && resp.role !== 'cancel') {
-      this.daysShow = resp.data.values.toString();
       this.days = resp.data.values;
     }
   }

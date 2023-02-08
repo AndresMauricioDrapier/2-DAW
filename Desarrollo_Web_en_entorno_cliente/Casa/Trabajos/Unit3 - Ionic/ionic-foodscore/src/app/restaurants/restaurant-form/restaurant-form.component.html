@@ -91,7 +91,7 @@
       <arcgis-marker [coords]="[newRestaurant.lng,newRestaurant.lat]" color="red"></arcgis-marker>
       <arcgis-search position="top-right" (result)="searchResult($event)"></arcgis-search>
     </arcgis-map>
-    <ion-button type="submit" [disabled]="restaurantForm.invalid" color="primary">Create</ion-button>
+    <ion-button type="submit" [disabled]="restaurantForm.invalid && !days" color="primary">Create</ion-button>
   </form>
 
 
