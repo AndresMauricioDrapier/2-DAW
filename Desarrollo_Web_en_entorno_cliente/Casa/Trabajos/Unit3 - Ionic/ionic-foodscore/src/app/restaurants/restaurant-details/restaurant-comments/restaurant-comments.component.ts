@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { User } from '@codetrix-studio/capacitor-google-auth';
 import {
   IonicModule,
   AlertController,
@@ -8,13 +9,15 @@ import {
   IonRefresher,
 } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { StarRatingComponent } from 'src/app/shared/star-rating/star-rating.component';
+import { UserService } from 'src/app/users/services/user-service.service';
 import { Commentary } from '../../interfaces/comment';
 import { RestaurantService } from '../../services/restaurant.service';
 
 @Component({
   selector: 'app-restaurant-comments',
   standalone: true,
-  imports: [CommonModule, IonicModule],
+  imports: [CommonModule, IonicModule,StarRatingComponent],
   templateUrl: './restaurant-comments.component.html',
   styleUrls: ['./restaurant-comments.component.scss'],
 })
@@ -27,12 +30,14 @@ export class RestaurantCommentsComponent implements OnInit, OnDestroy {
     stars: 0,
     text: '',
   };
+  userId!: number;
   commented = false;
 
   constructor(
     private alertCtrl: AlertController,
     private route: ActivatedRoute,
     private restaurantService: RestaurantService,
+    private userService: UserService,
     private platform: Platform,
     private ngZone: NgZone
   ) {}
@@ -50,7 +55,13 @@ export class RestaurantCommentsComponent implements OnInit, OnDestroy {
 
   loadComments(refresher?: IonRefresher) {
     this.idProd = +this.route.snapshot.parent!.params['id'];
+    this.userService.getUser().subscribe((user) => {
+      this.userId = user.id!;
+    });
     this.restaurantService.getComments(this.idProd).subscribe((comments) => {
+      comments.comments.forEach((com) => {
+        if (com.user?.id == this.userId) this.commented = true;
+      });
       this.comments = comments.comments;
       refresher?.complete();
     });
@@ -92,7 +103,10 @@ export class RestaurantCommentsComponent implements OnInit, OnDestroy {
 
       this.restaurantService
         .addComment(this.idProd, this.newComment)
-        .subscribe((comment) => this.comments.push(comment));
+        .subscribe((comment) => {
+          this.comments.push(comment);
+          window.location.reload();
+        });
     }
   }
 }
