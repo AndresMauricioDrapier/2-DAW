@@ -29,6 +29,7 @@
       <ion-item>
         <ion-label><b>Cuisine: </b>{{restaurant.cuisine}}</ion-label>{{restaurant.distance | number:'1.2-2'}}km
       </ion-item>
+      <ion-button *ngIf="restaurant.mine" (click)="deleteRestaurant()" color="danger">Delete</ion-button>
     </ion-list>
   </ion-card-content>
 </ion-card>

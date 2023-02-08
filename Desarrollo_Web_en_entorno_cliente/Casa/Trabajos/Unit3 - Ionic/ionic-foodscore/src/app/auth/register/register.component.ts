@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Camera, CameraSource, CameraResultType } from '@capacitor/camera';
 import { IonicModule, NavController, ToastController } from '@ionic/angular';
-import { MatchValidator } from 'src/app/validators/match.validator';
+import { MatchValidator } from 'src/app/shared/validators/match.validator';
 import { User } from '../interfaces/user.interface';
 import { AuthService } from '../services/auth.service';
 

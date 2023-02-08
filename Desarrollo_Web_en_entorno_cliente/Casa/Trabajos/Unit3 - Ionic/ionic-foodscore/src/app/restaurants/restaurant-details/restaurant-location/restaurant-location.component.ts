@@ -5,7 +5,6 @@ import { ArcgisMapComponent } from 'src/app/shared/maps/arcgis-map/arcgis-map.co
 import { ArcgisMarkerDirective } from 'src/app/shared/maps/arcgis-marker/arcgis-marker.directive';
 import { ArcgisSearchDirective } from 'src/app/shared/maps/arcgis-search/arcgis-search.directive';
 import { Restaurant } from '../../interfaces/restaurant';
-import { RestaurantService } from '../../services/restaurant.service';
 import { RestaurantDetailsComponent } from '../restaurant-details.component';
 
 @Component({

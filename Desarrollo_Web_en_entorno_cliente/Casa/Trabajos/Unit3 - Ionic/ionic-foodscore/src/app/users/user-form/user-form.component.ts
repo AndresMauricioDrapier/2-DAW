@@ -10,7 +10,7 @@ import {
     Validators,
 } from "@angular/forms";
 import { UserService } from "../services/user-service.service";
-import { isTheSame } from "src/app/validators/isTheSame";
+import { isTheSame } from "src/app/shared/validators/isTheSame";
 
 
 @Component({

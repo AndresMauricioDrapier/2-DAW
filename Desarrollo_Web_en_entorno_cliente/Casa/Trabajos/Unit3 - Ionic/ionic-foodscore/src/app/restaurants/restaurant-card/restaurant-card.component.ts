@@ -11,8 +11,14 @@ import { Restaurant } from '../interfaces/restaurant';
 import { RestaurantService } from '../services/restaurant.service';
 import { RouterModule } from '@angular/router';
 import { OPENDAYS } from 'src/app/shared/consts';
-import { IonicModule, NavController } from '@ionic/angular';
+import {
+  AlertController,
+  IonicModule,
+  NavController,
+  ToastController,
+} from '@ionic/angular';
 import { StarRatingComponent } from 'src/app/shared/star-rating/star-rating.component';
+import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'fs-restaurant-card',
@@ -23,10 +29,11 @@ import { StarRatingComponent } from 'src/app/shared/star-rating/star-rating.comp
 })
 export class RestaurantCardComponent implements OnChanges {
   @Input() restaurant!: Restaurant;
-  @Output() deleted = new EventEmitter<void>();
   constructor(
     private readonly http: RestaurantService,
-    private navController: NavController
+    private readonly navController: NavController,
+    private readonly alertController: AlertController,
+    private readonly toastController: ToastController
   ) {}
 
   ngOnChanges(): void {
@@ -78,23 +85,66 @@ export class RestaurantCardComponent implements OnChanges {
       return false;
     }
   }
-  // deleteRestaurant(): void {
-  //     Swal.fire({
-  //         title: "Are you sure?",
-  //         text: "You won't be able to revert this!",
-  //         icon: "warning",
-  //         showCancelButton: true,
-  //         confirmButtonColor: "#3085d6",
-  //         cancelButtonColor: "#d33",
-  //         confirmButtonText: "Yes, delete it!",
-  //     }).then(async (result) => {
-  //         if (result.isConfirmed) {
-  //             Swal.fire("Deleted!", "Your file has been deleted.", "success");
-  //             this.http.deleteRestaurant(this.restaurant.id!).subscribe({
-  //                 next: () => this.deleted.emit(),
-  //                 error: (error) => console.error(error),
-  //             });
-  //         }
-  //     });
-  // }
+  async presentAlert(): Promise<HTMLIonAlertElement> {
+    const alert = await this.alertController.create({
+      header: 'Are you sure?',
+      cssClass: 'custom-alert',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'alert-button-cancel',
+
+        },
+        {
+          text: 'Yes',
+          role: 'confirm',
+          cssClass: 'alert-button-confirm',
+        },
+      ],
+    });
+
+    return alert;
+  }
+  async presentToast() {}
+
+  deleteRestaurant(): void {
+    this.presentAlert().then(async (a) => {
+      await a.present();
+
+      if ((await a.onDidDismiss()).role =="cancel") {
+
+        const toast = await this.toastController.create({
+          message: 'The restaurant has not been deleted',
+          duration: 3000,
+          cssClass: 'custom-toast',
+          buttons: [
+            {
+              text: 'Dismiss',
+              role: 'cancel',
+            },
+          ],
+        });
+
+        await toast.present();
+      } else {
+        const toast = await this.toastController.create({
+          message: 'The restaurant has been successfully deleted',
+          duration: 3000,
+          cssClass: 'custom-toast',
+          buttons: [
+            {
+              text: 'Dismiss',
+              role: 'cancel',
+            },
+          ],
+        });
+        await toast.present().then(() => {
+          this.http.deleteRestaurant(this.restaurant.id!).subscribe(() => {
+            window.location.reload();
+          });
+        });
+      }
+    });
+  }
 }
