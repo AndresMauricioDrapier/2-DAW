@@ -69,9 +69,10 @@ export class RestaurantFormComponent implements OnInit {
     private readonly fb: NonNullableFormBuilder,
     private readonly route: ActivatedRoute,
     private readonly alertController: AlertController,
-    private readonly toastController: ToastController
   ) {
     this.route.data.subscribe((data) => {
+      console.log(data);
+
       if (data['restaurant']) {
         this.data = data['restaurant'];
         this.newRestaurant = data['restaurant'];
