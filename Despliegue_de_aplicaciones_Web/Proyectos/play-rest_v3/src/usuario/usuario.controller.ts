@@ -19,6 +19,12 @@ export class UsuarioController {
       return res.render('public/iniciarSesion');
     else return res.redirect('/');
   }
+  @Get('/register')
+  async llevarFormRegister(@Res() res, @Req() req) {
+    if (!(req.session && req.session.usuario))
+      return res.render('public/register');
+    else return res.redirect('/');
+  }
   // GET /auth/logout
   @Get('logout')
   async cerrarSession(@Res() res, @Req() req) {
@@ -51,23 +57,19 @@ export class UsuarioController {
       });
   }
 
-  //*POST /auth  PARA REGISTRARME DE PRUEBA
-  // @Post()
-  // async crear(
-  //   @Body() crearUsuarioDto: UsuarioDto,
-  //   @Res() res,
-  //   @Session() session,
-  // ) {
-  //   this.usuarioService
-  //     .insertar(crearUsuarioDto)
-  //     .then((juego) => {
-  //       if (juego) return res.redirect('/');
-  //       else {
-  //         throw new Error();
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       return res.render('public/error', { error: error });
-  //     });
-  // }
+  //POST /auth  PARA REGISTRARME DE PRUEBA
+  @Post('register')
+  async crearUser(@Body() crearUsuarioDto: UsuarioDto, @Res() res) {
+    this.usuarioService
+      .insertar(crearUsuarioDto)
+      .then((juego) => {
+        if (juego) return res.redirect('/');
+        else {
+          throw new Error();
+        }
+      })
+      .catch((error) => {
+        return res.render('public/error', { error: error });
+      });
+  }
 }
