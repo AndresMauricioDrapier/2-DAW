@@ -238,8 +238,6 @@ export class RestaurantFormComponent implements OnInit {
 
   booleanArray(): string[] {
     const array: string[] = [];
-    console.log(this.days);
-
 
     for (let i = 0; i < this.days.length; i++) {
       switch (this.days[i]) {

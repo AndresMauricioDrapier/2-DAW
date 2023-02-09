@@ -55,16 +55,23 @@ export class AuthService {
         })
       );
   }
-  // loginFaceebok(userLogin: AuthLogin): Observable<void> {
-  //   const login = this.http.post<void>('/auth/facebook', userLogin);
+  loginFaceebok(token: string,
+    lat?: string,
+    lng?: string): Observable<void> {
+    const login = this.http.post<{ accessToken: string }>('/auth/facebook', {token:token}).pipe(
+      switchMap(async (r) => {
+        try {
+          await Preferences.set({ key: 'fs-token', value: r.accessToken });
+          this.setLogged(true);
+        } catch (e) {
+          throw new Error("Can't save authentication token in storage!");
+        }
+      })
+    );
 
-  //   login.subscribe((token) => {
-  //     this.loginChange$.next(true);
-  //     this.putToken((token as unknown as TokenResponse).accessToken);
-  //   });
 
-  //   return login;
-  // }
+    return login;
+  }
 
   register(user: User): Observable<void> {
     return this.http.post<void>('auth/register', user);

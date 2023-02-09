@@ -11,6 +11,8 @@ import {
 import { UserLogin } from '../interfaces/user.interface';
 import { AuthService } from '../services/auth.service';
 import { User, GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { FacebookLogin } from '@capacitor-community/facebook-login';
+import { FacebookLoginResponse } from '@capacitor-community/facebook-login/dist/esm/definitions';
 
 @Component({
   selector: 'app-login',
@@ -33,6 +35,7 @@ export class LoginComponent implements OnInit {
     userId: '',
   };
   userGoogle!: User;
+  accessToken = '';
 
   constructor(
     private platform: Platform,
@@ -41,18 +44,44 @@ export class LoginComponent implements OnInit {
     private alertCtrl: AlertController
   ) {}
 
-  ngOnInit() {
-    // if (this.platform.is('capacitor')) {
-    //   PushNotifications.register();
-    //   // On success, we should be able to receive notifications
-    //   PushNotifications.addListener('registration', (token: Token) => {
-    //     this.firebaseToken = token.value;
-    //     console.log(token);
-    //   });
-    //   PushNotifications.addListener('registrationError', (error) => {
-    //     console.log(error);
-    //   });
-    // }
+  async ngOnInit() {
+    const resp =
+      (await FacebookLogin.getCurrentAccessToken()) as FacebookLoginResponse;
+    if (resp.accessToken) {
+      this.accessToken = resp.accessToken.token;
+    }
+  }
+
+  // if (this.platform.is('capacitor')) {
+  //   PushNotifications.register();
+  //   // On success, we should be able to receive notifications
+  //   PushNotifications.addListener('registration', (token: Token) => {
+  //     this.firebaseToken = token.value;
+  //     console.log(token);
+  //   });
+  //   PushNotifications.addListener('registrationError', (error) => {
+  //     console.log(error);
+  //   });
+  // }
+  async loginFaceebok() {
+    const resp = (await FacebookLogin.login({
+      permissions: ['email'],
+    })) as FacebookLoginResponse;
+
+    if (resp.accessToken) {
+      this.authService.loginFaceebok(resp.accessToken.token).subscribe({
+        next: () => this.navCtrl.navigateRoot(['/restaurants']),
+        error: async (err) => {
+          (
+            await this.alertCtrl.create({
+              header: 'Login error',
+              message: err.error,
+              buttons: ['Ok'],
+            })
+          ).present();
+        },
+      });
+    }
   }
 
   login() {
@@ -92,4 +121,3 @@ export class LoginComponent implements OnInit {
     }
   }
 }
-
