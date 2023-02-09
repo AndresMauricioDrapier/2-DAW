@@ -115,8 +115,7 @@ export class RestaurantFormComponent implements OnInit {
       quality: 90,
       height: 640,
       width: 640,
-      // allowEditing: true,
-      resultType: CameraResultType.DataUrl, // Base64 (url encoded)
+      resultType: CameraResultType.DataUrl,
     });
 
     this.newRestaurant.image = photo.dataUrl as string;
@@ -127,8 +126,8 @@ export class RestaurantFormComponent implements OnInit {
       source: CameraSource.Photos,
       height: 640,
       width: 640,
-      // allowEditing: true,
-      resultType: CameraResultType.DataUrl, // Base64 (url encoded)
+
+      resultType: CameraResultType.DataUrl,
     });
 
     this.newRestaurant.image = photo.dataUrl as string;
@@ -232,7 +231,6 @@ export class RestaurantFormComponent implements OnInit {
     this.newRestaurant.cuisine = this.cuisineControl.value;
     this.newRestaurant.daysOpen = this.booleanArray();
     this.newRestaurant.phone = this.phoneControl.value;
-    console.log(this.newRestaurant);
 
   }
 

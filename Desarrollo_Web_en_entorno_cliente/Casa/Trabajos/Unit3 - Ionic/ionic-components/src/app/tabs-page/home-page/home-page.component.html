@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Tabs - Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p>Home page</p>
+  <ion-button routerDirection="root" [routerLink]="['/tabs', 'about']">Go to about page</ion-button>
+  <ion-button (click)="goAbout()">Go to about page (code)</ion-button>
+  <ion-button (click)="goButtons()">Go to buttons page (code)</ion-button>
+
+</ion-content>

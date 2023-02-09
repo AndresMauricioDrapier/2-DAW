@@ -42,7 +42,6 @@ export class RestaurantService {
             .post<Commentary>(`${this.RESTAURANTS_URL}/${id}/comments`, comment)
             .pipe(
                 map((rest) => {
-                    console.log(rest);
 
                     return rest;
                 })

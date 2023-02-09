@@ -7,5 +7,6 @@
   <arcgis-map [coords]="[restaurant.lng,restaurant.lat]">
     <arcgis-marker [coords]="[restaurant.lng,restaurant.lat]" color="red"></arcgis-marker>
   </arcgis-map>
+  <ion-button (click)="startNavigation()" fill="outline">Go to restaurant</ion-button>
 
 </ion-content>

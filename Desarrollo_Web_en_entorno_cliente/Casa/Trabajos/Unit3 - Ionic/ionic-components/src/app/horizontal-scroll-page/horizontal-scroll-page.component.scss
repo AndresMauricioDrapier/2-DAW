@@ -1,0 +1,9 @@
+
+.scrollX {
+    overflow: auto;
+    white-space: nowrap;
+    // Hide scroll bar
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
