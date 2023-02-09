@@ -14,30 +14,19 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(
-    email: string,
-    password: string,
-    firebaseToken: string
-  ): Observable<void> {
-    return this.http
-      .post<{ accessToken: string }>('auth/login', {
-        email,
-        password,
-        firebaseToken,
+  login(user: UserLogin): Observable<void> {
+    return this.http.post<{ accessToken: string }>('auth/login', user).pipe(
+      switchMap(async (r) => {
+        try {
+          await Preferences.set({ key: 'fs-token', value: r.accessToken });
+          this.setLogged(true);
+        } catch (e) {
+          throw new Error("Can't save authentication token in storage!");
+        }
       })
-      .pipe(
-        switchMap(async (r) => {
-          try {
-            await Preferences.set({ key: 'fs-token', value: r.accessToken });
-            this.setLogged(true);
-          } catch (e) {
-            throw new Error("Can't save authentication token in storage!");
-          }
-        })
-      );
+    );
   }
-  loginGoogle(userLogin: GoogleLogin):Observable<void> {
-
+  loginGoogle(userLogin: GoogleLogin): Observable<void> {
     return this.http
       .post<{ accessToken: string }>('auth/google', {
         token: userLogin.authentication.idToken,
@@ -55,20 +44,23 @@ export class AuthService {
         })
       );
   }
-  loginFaceebok(token: string,
-    lat?: string,
-    lng?: string): Observable<void> {
-    const login = this.http.post<{ accessToken: string }>('/auth/facebook', {token:token}).pipe(
-      switchMap(async (r) => {
-        try {
-          await Preferences.set({ key: 'fs-token', value: r.accessToken });
-          this.setLogged(true);
-        } catch (e) {
-          throw new Error("Can't save authentication token in storage!");
-        }
+  loginFaceebok(token: string, lat?: number, lng?: number): Observable<void> {
+    const login = this.http
+      .post<{ accessToken: string }>('/auth/facebook', {
+        token: token,
+        lat: lat,
+        lng: lng,
       })
-    );
-
+      .pipe(
+        switchMap(async (r) => {
+          try {
+            await Preferences.set({ key: 'fs-token', value: r.accessToken });
+            this.setLogged(true);
+          } catch (e) {
+            throw new Error("Can't save authentication token in storage!");
+          }
+        })
+      );
 
     return login;
   }

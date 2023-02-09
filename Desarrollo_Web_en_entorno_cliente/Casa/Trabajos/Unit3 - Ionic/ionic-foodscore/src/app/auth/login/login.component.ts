@@ -22,9 +22,6 @@ import { FacebookLoginResponse } from '@capacitor-community/facebook-login/dist/
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  email = '';
-  password = '';
-  firebaseToken = '';
   user: UserLogin = {
     email: '',
     password: '',
@@ -50,26 +47,19 @@ export class LoginComponent implements OnInit {
     if (resp.accessToken) {
       this.accessToken = resp.accessToken.token;
     }
+    navigator.geolocation.getCurrentPosition((pos) => {
+      this.user.lat = pos.coords.latitude;
+      this.user.lng = pos.coords.longitude;
+    });
   }
 
-  // if (this.platform.is('capacitor')) {
-  //   PushNotifications.register();
-  //   // On success, we should be able to receive notifications
-  //   PushNotifications.addListener('registration', (token: Token) => {
-  //     this.firebaseToken = token.value;
-  //     console.log(token);
-  //   });
-  //   PushNotifications.addListener('registrationError', (error) => {
-  //     console.log(error);
-  //   });
-  // }
   async loginFaceebok() {
     const resp = (await FacebookLogin.login({
       permissions: ['email'],
     })) as FacebookLoginResponse;
 
     if (resp.accessToken) {
-      this.authService.loginFaceebok(resp.accessToken.token).subscribe({
+      this.authService.loginFaceebok(resp.accessToken.token,this.user.lat,this.user.lng).subscribe({
         next: () => this.navCtrl.navigateRoot(['/restaurants']),
         error: async (err) => {
           (
@@ -86,7 +76,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService
-      .login(this.email, this.password, this.firebaseToken)
+      .login(this.user)
       .subscribe({
         next: () => this.navCtrl.navigateRoot(['/restaurants']),
         error: async (error) => {
