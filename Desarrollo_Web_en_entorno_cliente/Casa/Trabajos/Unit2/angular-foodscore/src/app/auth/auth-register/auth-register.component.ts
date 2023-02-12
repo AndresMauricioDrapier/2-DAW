@@ -131,6 +131,7 @@ export class AuthRegisterComponent implements OnInit, CanDeactivateComponent {
         this.newUser.password = this.passwordControl.value;
 
         this.http.register(this.newUser).subscribe(() => {
+            this.exit = true;
             this.router.navigate(["/auth/login"]);
         });
     }

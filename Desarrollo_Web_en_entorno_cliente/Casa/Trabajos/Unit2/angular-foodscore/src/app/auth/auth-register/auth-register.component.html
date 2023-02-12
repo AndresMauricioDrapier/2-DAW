@@ -72,14 +72,16 @@
 
   <div class="mb-3">
     <label for="image">Avatar image</label>
-    <input type="file" class="form-control" id="avatar" name="avatar" formControlName="avatar" required
+    <input type="file" class="form-control" id="avatar" name="avatar" formControlName="avatar" required (change)="changeImage($event)"
       formControlName="avatar" />
     <div class="invalid-feedback" *ngIf="imageControl.errors?.['required']">
       Avatar is required
     </div>
   </div>
 
-  <img src="" alt="" id="imgPreview" class="img-thumbnail d-none" />
+  <img [src]="newUser.avatar" alt="" class="img-thumbnail mb-3 mb-3"
+    *ngIf="!(newUser.avatar ==='')?'d-none':''">
+
   <p class="text-danger" id="errorInfo"></p>
   <button [routerLink]="['/auth/login']" routerLinkActive="router-link-active" class="btn btn-secondary">Have an
     account?</button>
